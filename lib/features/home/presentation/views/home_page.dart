@@ -35,16 +35,26 @@ class _HomePageState extends State<HomePage> {
           body: SafeArea(child: views[state]),
           floatingActionButton: BlocBuilder<BottomNavigationBarCubit, int>(
             builder: (context, state) {
-              return state == 1
-                  ? ButtonActionFloat(
-                onPressed: () {
-                  customPush(context, AppRouter.addNewActivityView);
-                },
-                icon: Icons.add,
-              )
-                  : const SizedBox.shrink();
+              if (state == 0) {
+                return ButtonActionFloat(
+                  onPressed: () {
+                    customPush(context, AppRouter.addNewNewsView);
+                  },
+                  icon: Icons.add,
+                );
+              } else if (state == 2) {
+                return ButtonActionFloat(
+                  onPressed: () {
+                    customPush(context, AppRouter.addNewActivityView);
+                  },
+                  icon: Icons.edit, // تقدر تغير الايقونة هنا
+                );
+              } else {
+                return const SizedBox.shrink();
+              }
             },
           ),
+
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: state,
             onTap: (index) {

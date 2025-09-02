@@ -21,8 +21,7 @@ class AddNewActivityForm extends StatefulWidget {
 class _AddNewActivityFormState extends State<AddNewActivityForm> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController categoryNameController = TextEditingController();
-  final TextEditingController reservationDurationController =
-      TextEditingController();
+  final TextEditingController reservationDurationController = TextEditingController();
   bool byReservation = false;
   File? selectedImage;
 

@@ -46,7 +46,7 @@ class ProfileView extends StatelessWidget {
             const VerticalSpace(16),
             userData.getUserMembership() != null
                 ? Icon(Iconsax.verify, color: AppColors.primaryColor, size: 96)
-                : Text('ggg'),
+                : SizedBox.shrink(),
           ],
         ),
       ),

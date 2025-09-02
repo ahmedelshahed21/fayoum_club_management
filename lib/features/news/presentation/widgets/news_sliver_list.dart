@@ -18,7 +18,7 @@ class NewsSliverList extends StatelessWidget {
       children: [
         Text(
           'الأخبار',
-          style: AppStyles.styleSemiBold16(
+          style: AppStyles.styleBold18(
             context,
           ).copyWith(color: AppColors.pureBlackColor),
         ),

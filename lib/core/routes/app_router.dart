@@ -1,12 +1,12 @@
 import 'package:fayoum_club_management/features/activites/data/models/activity_details_model/activity_details_model.dart';
 import 'package:fayoum_club_management/features/activites/presentation/views/activity_details_view.dart';
 import 'package:fayoum_club_management/features/activites/presentation/views/add_new_activity_view.dart';
-import 'package:fayoum_club_management/features/activites/presentation/views/pay_mob_view.dart';
 import 'package:fayoum_club_management/features/activites/presentation/views/trainer_view.dart';
 import 'package:fayoum_club_management/features/more/presentation/views/contact_us_view.dart';
 import 'package:fayoum_club_management/features/news/data/models/news_model.dart';
 import 'package:fayoum_club_management/features/home/presentation/views/home_page.dart';
 import 'package:fayoum_club_management/features/home/presentation/views/news_details_view.dart';
+import 'package:fayoum_club_management/features/news/presentation/views/add_new_news_view.dart';
 import 'package:fayoum_club_management/features/profile/presentation/view/profile_view.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/login/presentation/views/login_view.dart';
@@ -20,7 +20,7 @@ abstract class AppRouter {
   static const addNewActivityView = '/addNewActivityView';
   static const activityDetailsView = '/activityDetailsView';
   static const trainerView = '/trainerView';
-  static const payMobView = '/payMobView';
+  static const addNewNewsView = '/addNewNewsView';
   static const newsDetailsView = '/newsDetailsView';
 
   static const profileView = '/profileView';
@@ -59,13 +59,17 @@ abstract class AppRouter {
         },
       ),
       GoRoute(
-        path: payMobView,
-        builder: (context, state) {
-          final ActivityDetailsData activityDetailsData =
-              state.extra as ActivityDetailsData;
-          return PayMobView(activityDetailsData: activityDetailsData);
-        },
+        path: addNewNewsView,
+        builder: (context, state) => const AddNewNewsView(),
       ),
+      // GoRoute(
+      //   path: payMobView,
+      //   builder: (context, state) {
+      //     final ActivityDetailsData activityDetailsData =
+      //         state.extra as ActivityDetailsData;
+      //     return PayMobView(activityDetailsData: activityDetailsData);
+      //   },
+      // ),
       // GoRoute(
       //   path: payMobView,
       //   builder: (context, state) {
