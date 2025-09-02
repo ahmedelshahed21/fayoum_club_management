@@ -1,0 +1,89 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:fayoum_club_management/core/constants/app_colors.dart';
+import 'package:fayoum_club_management/core/constants/app_strings.dart';
+import 'package:fayoum_club_management/core/functions/navigation.dart';
+import 'package:fayoum_club_management/core/routes/app_router.dart';
+import 'package:fayoum_club_management/features/activites/presentation/views/activites_view.dart';
+import 'package:fayoum_club_management/features/activites/presentation/widgets/bottom_action_float.dart';
+import 'package:fayoum_club_management/features/home/presentation/views/home_view.dart';
+import 'package:fayoum_club_management/features/more/presentation/views/more_view.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
+import '../../../../core/constants/app_styles.dart';
+import '../../../../core/state_management/bottom_navigation_bar_cubit/bottom_navigation_bar_cubit.dart';
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    final List<Widget> views = [
+      const HomeView(),
+      const ActivitesView(),
+      const MoreView(),
+    ];
+
+    return BlocBuilder<BottomNavigationBarCubit, int>(
+      builder: (context, state) {
+        return Scaffold(
+          body: SafeArea(child: views[state]),
+          floatingActionButton: BlocBuilder<BottomNavigationBarCubit, int>(
+            builder: (context, state) {
+              return state == 1
+                  ? ButtonActionFloat(
+                onPressed: () {
+                  customPush(context, AppRouter.addNewActivityView);
+                },
+                icon: Icons.add,
+              )
+                  : const SizedBox.shrink();
+            },
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: state,
+            onTap: (index) {
+              context.read<BottomNavigationBarCubit>().changeIndex(index);
+            },
+            selectedLabelStyle: AppStyles.styleSemiBold12(context),
+            unselectedLabelStyle: AppStyles.styleSemiBold12(context),
+            backgroundColor: AppColors.pureWhiteColor,
+            selectedItemColor: AppColors.primaryColor,
+            unselectedItemColor: AppColors.lightGreyColor,
+            type: BottomNavigationBarType.fixed,
+            items: [
+              _buildNavItem(
+                icon: Iconsax.home_1,
+                name: AppStrings.home.tr(),
+                state == 0,
+              ),
+              _buildNavItem(
+                icon: Iconsax.category_2,
+                name: 'الأنشطة',
+                state == 1,
+              ),
+              _buildNavItem(
+                icon: Iconsax.user,
+                name: AppStrings.profile.tr(),
+                state == 2,
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  BottomNavigationBarItem _buildNavItem(
+    bool isSelected, {
+    required IconData icon,
+    required String name,
+  }) {
+    return BottomNavigationBarItem(label: name, icon: Icon(icon));
+  }
+}
