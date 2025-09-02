@@ -3,8 +3,10 @@ class EndPoints {
   static const String login = "/admin/login";
   static const String banners = "/banners";
   static const String news = "/news/lookup";
+  static const String deleteNews= "/admin/news/";
   static const String activities = "/activate";
   static const String deleteActivity = "/admin/activate/";
+
 
   static const String contactUs = "/details";
 

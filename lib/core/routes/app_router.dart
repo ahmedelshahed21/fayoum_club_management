@@ -5,7 +5,7 @@ import 'package:fayoum_club_management/features/activites/presentation/views/tra
 import 'package:fayoum_club_management/features/more/presentation/views/contact_us_view.dart';
 import 'package:fayoum_club_management/features/news/data/models/news_model.dart';
 import 'package:fayoum_club_management/features/home/presentation/views/home_page.dart';
-import 'package:fayoum_club_management/features/home/presentation/views/news_details_view.dart';
+import 'package:fayoum_club_management/features/news/presentation/views/news_details_view.dart';
 import 'package:fayoum_club_management/features/news/presentation/views/add_new_news_view.dart';
 import 'package:fayoum_club_management/features/profile/presentation/view/profile_view.dart';
 import 'package:go_router/go_router.dart';

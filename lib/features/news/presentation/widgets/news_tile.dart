@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fayoum_club_management/core/constants/app_colors.dart';
 import 'package:fayoum_club_management/core/constants/app_constants.dart';
+import 'package:fayoum_club_management/core/constants/app_styles.dart';
 import 'package:fayoum_club_management/core/functions/run_if_connected.dart';
 import 'package:fayoum_club_management/core/routes/app_router.dart';
 import 'package:fayoum_club_management/core/widgets/image_loading_effect.dart';
@@ -88,10 +89,7 @@ class NewsTile extends StatelessWidget {
                   news.title,
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: AppStyles.styleSemiBold16(context).copyWith(color: AppColors.pureBlackColor)
                 ),
               ),
               const VerticalSpace(8),

@@ -18,6 +18,7 @@ class ConfirmationDialogWithHorizontalButtons extends StatelessWidget {
   final bool isLoading;
   final int? firstButtonFlex;
   final int? secondButtonFlex;
+  final Color? iconColor;
 
   const ConfirmationDialogWithHorizontalButtons({
     super.key,
@@ -32,6 +33,7 @@ class ConfirmationDialogWithHorizontalButtons extends StatelessWidget {
     this.isLoading = false,
     this.firstButtonFlex,
     this.secondButtonFlex,
+    this.iconColor,
   });
 
   @override
@@ -53,7 +55,7 @@ class ConfirmationDialogWithHorizontalButtons extends StatelessWidget {
                     BlendMode.srcIn,
                   ),
                 )
-                : Icon(iconData, size: 110, color: AppColors.pureBlackColor),
+                : Icon(iconData, size: 110, color: iconColor ?? AppColors.pureBlackColor),
             const VerticalSpace(24),
             Text(
               title,

@@ -3,23 +3,25 @@ import 'package:fayoum_club_management/core/constants/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class TagWidget extends StatelessWidget {
-  const TagWidget({super.key, required this.tag});
+  const TagWidget({super.key, required this.tag, this.backgroundColor, this.textColor});
 
   final String tag;
+  final Color? backgroundColor;
+  final Color? textColor;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        color: AppColors.offWhiteColor,
+        color: backgroundColor ?? AppColors.offWhiteColor,
         borderRadius: BorderRadius.circular(4),
       ),
       child: Text(
         tag,
         style: AppStyles.styleMedium14(
           context,
-        ).copyWith(color: AppColors.primaryColor),
+        ).copyWith(color: textColor ?? AppColors.primaryColor),
       ),
     );
   }
