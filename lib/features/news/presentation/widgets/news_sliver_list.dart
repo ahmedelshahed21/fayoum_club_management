@@ -14,7 +14,7 @@ class NewsSliverList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiSliver(
+    return news.isNotEmpty ? MultiSliver(
       children: [
         Text(
           'الأخبار',
@@ -22,7 +22,7 @@ class NewsSliverList extends StatelessWidget {
             context,
           ).copyWith(color: AppColors.pureBlackColor),
         ),
-        VerticalSpace(16),
+        VerticalSpace(12),
         SliverList(
           delegate: SliverChildBuilderDelegate(
             childCount: news.length,
@@ -30,6 +30,6 @@ class NewsSliverList extends StatelessWidget {
           ),
         ),
       ],
-    );
+    ):SizedBox.shrink();
   }
 }

@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fayoum_club_management/core/constants/app_colors.dart';
 import 'package:fayoum_club_management/core/constants/app_styles.dart';
 import 'package:fayoum_club_management/core/constants/end_points.dart';
+import 'package:fayoum_club_management/features/home/presentation/widgets/dots_indicator.dart';
 import 'package:fayoum_club_management/features/news/data/models/news_model.dart';
 import 'package:fayoum_club_management/core/functions/is_arabic.dart';
 import 'package:fayoum_club_management/core/functions/run_if_connected.dart';
@@ -123,10 +124,10 @@ class _BannersSlidersState extends State<BannersSliders> {
           ),
         ),
         const VerticalSpace(12),
-        // DotsIndicator(
-        //   categories: widget.bannerData,
-        //   currentIndex: currentIndex,
-        // ),
+        DotsIndicator(
+          news: widget.newsData,
+          currentIndex: currentIndex,
+        ),
       ],
     );
   }

@@ -17,10 +17,13 @@ import 'package:fayoum_club_management/features/home/data/repos/banners_repo/ban
 import 'package:fayoum_club_management/features/home/data/repos/banners_repo/banners_repo_impl.dart';
 import 'package:fayoum_club_management/features/activites/presentation/manager/activites_cubit/activites_cubit.dart';
 import 'package:fayoum_club_management/features/home/presentation/manager/banners_cubit/banners_cubit.dart';
+import 'package:fayoum_club_management/features/news/data/repos/add_new_news_repo/add_new_news_repo.dart';
+import 'package:fayoum_club_management/features/news/data/repos/add_new_news_repo/add_new_news_repo_impl.dart';
 import 'package:fayoum_club_management/features/news/data/repos/delete_news_repo/delete_news_repo.dart';
 import 'package:fayoum_club_management/features/news/data/repos/delete_news_repo/delete_news_repo_impl.dart';
 import 'package:fayoum_club_management/features/news/data/repos/news_repo/news_repo.dart';
 import 'package:fayoum_club_management/features/news/data/repos/news_repo/news_repo_impl.dart';
+import 'package:fayoum_club_management/features/news/presentation/manager/add_new_news_cubit/add_new_news_cubit.dart';
 import 'package:fayoum_club_management/features/news/presentation/manager/delete_news_cubit/delete_news_cubit.dart';
 import 'package:fayoum_club_management/features/news/presentation/manager/news_cubit/news_cubit.dart';
 import 'package:get_it/get_it.dart';
@@ -150,6 +153,18 @@ void setupServiceLocator() {
         () => DeleteNewsCubit(
       deleteNewsRepo: getIt<DeleteNewsRepo>(),
     ),
+  );
+
+  // Add New News dependencies
+  getIt.registerLazySingleton<AddNewNewsRepo>(
+        () => AddNewNewsRepoImpl(
+      dioConsumer: getIt<DioConsumer>(),
+      networkCubit: getIt<NetworkConnectionCubit>(),
+      secureStorageHelper: getIt<SecureStorageHelper>(),
+    ),
+  );
+  getIt.registerFactory<AddNewNewsCubit>(
+        () => AddNewNewsCubit(addNewNewsRepo: getIt<AddNewNewsRepo>()),
   );
 
   // Contact Us dependencies

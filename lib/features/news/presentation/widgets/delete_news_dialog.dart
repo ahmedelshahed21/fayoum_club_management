@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:fayoum_club_management/core/widgets/confirmation_dialog_with_horizontal_buttons.dart';
 import 'package:fayoum_club_management/features/news/presentation/manager/delete_news_cubit/delete_news_cubit.dart';
 import 'package:fayoum_club_management/features/news/presentation/manager/delete_news_cubit/delete_news_state.dart';
+import 'package:fayoum_club_management/features/news/presentation/manager/news_cubit/news_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -22,11 +23,11 @@ class DeleteNewsDialog extends StatelessWidget {
     return BlocConsumer<DeleteNewsCubit, DeleteNewsState>(
       listener: (context, state) {
         if (state is DeleteNewsSuccess) {
-          // context.read<BottomNavigationBarCubit>().changeIndex(0);
+          context.read<NewsCubit>().getAllNews();
           GoRouter.of(context).go(AppRouter.homePage);
           primarySnackBar(
             context,
-            'تم حذف النشاط بنجاح',
+            'تم حذف الخبر بنجاح',
             icon: Icons.check_circle_outline,
             boxColor: AppColors.greenColor,
           );

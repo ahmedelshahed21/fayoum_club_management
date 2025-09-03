@@ -59,7 +59,7 @@ class NewsDetailsView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const VerticalSpace(16),
-                        Text(news.title, style: AppStyles.styleBold24(context)),
+                        Text(news.title, style: AppStyles.styleBold24(context).copyWith(color: AppColors.pureBlackColor)),
                         const VerticalSpace(8),
                         Row(
                           children: [
