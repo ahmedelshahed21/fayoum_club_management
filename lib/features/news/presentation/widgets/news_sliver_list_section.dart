@@ -1,6 +1,6 @@
 import 'package:fayoum_club_management/core/functions/dummy_lists.dart';
 import 'package:fayoum_club_management/core/widgets/retry_widget.dart';
-import 'package:fayoum_club_management/features/activites/presentation/manager/activites_cubit/activites_cubit.dart';
+import 'package:fayoum_club_management/core/widgets/spacing.dart';
 import 'package:fayoum_club_management/features/home/presentation/manager/banners_cubit/banners_cubit.dart';
 import 'package:fayoum_club_management/features/news/presentation/manager/news_cubit/news_cubit.dart';
 import 'package:fayoum_club_management/features/news/presentation/manager/news_cubit/news_state.dart';
@@ -25,17 +25,21 @@ class NewsSliverListSection extends StatelessWidget {
           );
         } else if (state is NewsFailure) {
           return SliverToBoxAdapter(
-            child: RetryWidget(
-              message: state.failure.errMessage,
-              onPressed: () {
-                context.read<BannersCubit>().getBanners();
-                context.read<NewsCubit>().getAllNews();
-                context.read<ActivitesCubit>().getActivites();
-              },
+            child: Column(
+              children: [
+                VerticalSpace(220),
+                RetryWidget(
+                  message: state.failure.errMessage,
+                  onPressed: () {
+                    context.read<BannersCubit>().getBanners();
+                    context.read<NewsCubit>().getAllNews();
+                  },
+                ),
+              ],
             ),
           );
         } else if (state is NewsSuccess) {
-          return NewsSliverList(news: state.news.data!);
+          return state.news.data!.isNotEmpty ? NewsSliverList(news: state.news.data!):SliverToBoxAdapter(child: SizedBox.shrink(),);
         }
         return SliverToBoxAdapter(child: SizedBox.shrink());
       },

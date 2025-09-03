@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fayoum_club_management/core/constants/app_strings.dart';
 import 'package:fayoum_club_management/core/constants/end_points.dart';
-import 'package:fayoum_club_management/core/data/models/auth_failure_model.dart';
+import 'package:fayoum_club_management/core/data/models/validation_model.dart';
 import 'package:fayoum_club_management/core/data/models/basic_model.dart';
 import 'package:fayoum_club_management/core/databases/api/dio_consumer.dart';
 import 'package:fayoum_club_management/core/databases/cache/secure_storage_helper.dart';
@@ -24,7 +24,7 @@ class AddNewActivityRepoImpl implements AddNewActivityRepo {
   });
 
   @override
-  Future<Either<AuthFailureModel, BasicModel>> addNewActivity({
+  Future<Either<ValidationModel, BasicModel>> addNewActivity({
     required AddNewActivityRequestModel requestModel,
     File? image,
   }) async {
@@ -32,7 +32,7 @@ class AddNewActivityRepoImpl implements AddNewActivityRepo {
 
     if (!isConnected) {
       return Left(
-        AuthFailureModel(
+        ValidationModel(
           status: "error",
           message: AppStrings.noInternetConnection.tr(),
           errors: [AppStrings.noInternetConnection.tr()],
@@ -66,11 +66,11 @@ class AddNewActivityRepoImpl implements AddNewActivityRepo {
         if (response[ApiKey.code] >= 200 && response[ApiKey.code] < 400) {
           return Right(BasicModel.fromJson(response));
         } else {
-          return Left(AuthFailureModel.fromJson(response));
+          return Left(ValidationModel.fromJson(response));
         }
       } else {
         return Left(
-          AuthFailureModel(
+          ValidationModel(
             status: "error",
             message: AppStrings.serverConnectionFailed.tr(),
             errors: [AppStrings.serverConnectionFailed.tr()],
@@ -80,7 +80,7 @@ class AddNewActivityRepoImpl implements AddNewActivityRepo {
       }
     } catch (e) {
       return Left(
-        AuthFailureModel(
+        ValidationModel(
           status: "error",
           message: AppStrings.unexpectedError.tr(),
           errors: [AppStrings.unexpectedError.tr()],

@@ -1,7 +1,8 @@
 import 'package:fayoum_club_management/features/activites/data/models/activity_details_model/activity_details_model.dart';
 import 'package:fayoum_club_management/features/activites/presentation/views/activity_details_view.dart';
 import 'package:fayoum_club_management/features/activites/presentation/views/add_new_activity_view.dart';
-import 'package:fayoum_club_management/features/activites/presentation/views/trainer_view.dart';
+import 'package:fayoum_club_management/features/trainers/presentation/views/add_new_trainer_view.dart';
+import 'package:fayoum_club_management/features/trainers/presentation/views/trainer_view.dart';
 import 'package:fayoum_club_management/features/more/presentation/views/contact_us_view.dart';
 import 'package:fayoum_club_management/features/news/data/models/news_model.dart';
 import 'package:fayoum_club_management/features/home/presentation/views/home_page.dart';
@@ -19,6 +20,7 @@ abstract class AppRouter {
   static const homePage = '/homePage';
   static const addNewActivityView = '/addNewActivityView';
   static const activityDetailsView = '/activityDetailsView';
+  static const addNewTrainerView = '/addNewTrainerView';
   static const trainerView = '/trainerView';
   static const addNewNewsView = '/addNewNewsView';
   static const newsDetailsView = '/newsDetailsView';
@@ -35,20 +37,29 @@ abstract class AppRouter {
       // ),
       GoRoute(path: loginView, builder: (context, state) => const LoginView()),
       GoRoute(path: homePage, builder: (context, state) => const HomePage()),
-      GoRoute(path: addNewActivityView, builder: (context, state) => const AddNewActivityView()),
-
       GoRoute(
-        path: newsDetailsView,
-        builder: (context, state) {
-          final NewsItem news = state.extra as NewsItem;
-          return NewsDetailsView(news: news);
-        },
+        path: addNewActivityView,
+        builder: (context, state) => const AddNewActivityView(),
       ),
       GoRoute(
         path: activityDetailsView,
         builder: (context, state) {
           final int id = state.extra as int;
           return ActivityDetailsView(id: id);
+        },
+      ),
+      GoRoute(
+        path: addNewTrainerView,
+        builder: (context, state) {
+          final int activityId = state.extra as int;
+          return AddNewTrainerView(activityId: activityId);
+        },
+      ),
+      GoRoute(
+        path: newsDetailsView,
+        builder: (context, state) {
+          final NewsItem news = state.extra as NewsItem;
+          return NewsDetailsView(news: news);
         },
       ),
       GoRoute(

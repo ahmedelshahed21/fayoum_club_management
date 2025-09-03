@@ -1,13 +1,10 @@
-
 class AddNewActivityRequestModel {
-
   final String title;
   final String description;
   final String money;
   final String moneyMember;
 
   AddNewActivityRequestModel({
-
     required this.title,
     required this.description,
     required this.money,
@@ -16,7 +13,6 @@ class AddNewActivityRequestModel {
 
   Map<String, dynamic> toJson() {
     return {
-
       'title': title,
       'description': description,
       'mony': money,

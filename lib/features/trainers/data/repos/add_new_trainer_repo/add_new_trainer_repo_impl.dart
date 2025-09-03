@@ -9,23 +9,23 @@ import 'package:fayoum_club_management/core/data/models/basic_model.dart';
 import 'package:fayoum_club_management/core/databases/api/dio_consumer.dart';
 import 'package:fayoum_club_management/core/databases/cache/secure_storage_helper.dart';
 import 'package:fayoum_club_management/core/state_management/network_connection_cubit/network_connection_cubit.dart';
-import 'package:fayoum_club_management/features/news/data/models/add_new_news_request_model/add_new_news_request_model.dart';
-import 'package:fayoum_club_management/features/news/data/repos/add_new_news_repo/add_new_news_repo.dart';
+import 'package:fayoum_club_management/features/trainers/data/models/add_new_trainer_request_model.dart';
+import 'package:fayoum_club_management/features/trainers/data/repos/add_new_trainer_repo/add_new_trainer_repo.dart';
 
-class AddNewNewsRepoImpl implements AddNewNewsRepo {
+class AddNewTrainerRepoImpl implements AddNewTrainerRepo {
   final DioConsumer dioConsumer;
   final SecureStorageHelper secureStorageHelper;
   final NetworkConnectionCubit networkCubit;
 
-  AddNewNewsRepoImpl({
+  AddNewTrainerRepoImpl({
     required this.dioConsumer,
     required this.secureStorageHelper,
     required this.networkCubit,
   });
 
   @override
-  Future<Either<ValidationModel, BasicModel>> addNewNews({
-    required AddNewNewsRequestModel requestModel,
+  Future<Either<ValidationModel, BasicModel>> addNewTrainer({
+    required AddNewTrainerRequestModel requestModel,
     File? image,
   }) async {
     final isConnected = await networkCubit.networkInfo.isConnected;
@@ -54,7 +54,7 @@ class AddNewNewsRepoImpl implements AddNewNewsRepo {
       });
 
       final response = await dioConsumer.post(
-        EndPoints.addNewNews,
+        EndPoints.addNewTrainer,
         headers: {Params.authorization: '${Params.bearer} $token'},
         data: formData,
       );

@@ -10,8 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class ActivitesGridViewSection extends StatelessWidget {
-  const ActivitesGridViewSection({super.key});
+class ActivitiesVerticalListViewSection extends StatelessWidget {
+  const ActivitiesVerticalListViewSection({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -3,11 +3,13 @@ class EndPoints {
   static const String login = "/admin/login";
   static const String banners = "/banners";
   static const String news = "/news/lookup";
-  static const String deleteNews= "/admin/news/";
+  static const String deleteNews = "/admin/news/";
   static const String addNewNews = "/admin/news";
   static const String activities = "/activate";
   static const String deleteActivity = "/admin/activate/";
   static const String addNewActivity = "/admin/activate/";
+  static const String deleteTrainer = "/admin/captain/";
+  static const String addNewTrainer = "/admin/captain";
   static const String contactUs = "/details";
 
   // static const String transportations = "/user/transportations";
@@ -96,7 +98,6 @@ class Params {
   static const String bearer = 'Bearer';
   static const String accept = 'Accept';
   static const String applicationJson = 'application/json';
-  static const String contentType='contentType';
-  static const String multipartFormData='multipartFormData';
-
+  static const String contentType = 'contentType';
+  static const String multipartFormData = 'multipartFormData';
 }

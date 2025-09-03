@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:fayoum_club_management/core/data/models/basic_model.dart';
-import 'package:fayoum_club_management/core/data/models/auth_failure_model.dart';
+import 'package:fayoum_club_management/core/data/models/validation_model.dart';
 
 abstract class AddNewActivityState extends Equatable {
   const AddNewActivityState();
@@ -28,7 +28,7 @@ class AddNewActivitySuccess extends AddNewActivityState {
 }
 
 class AddNewActivityFailure extends AddNewActivityState {
-  final AuthFailureModel failure;
+  final ValidationModel failure;
 
   const AddNewActivityFailure(this.failure);
 

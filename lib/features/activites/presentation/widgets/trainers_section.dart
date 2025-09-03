@@ -2,7 +2,7 @@ import 'package:fayoum_club_management/core/constants/app_colors.dart';
 import 'package:fayoum_club_management/core/constants/app_styles.dart';
 import 'package:fayoum_club_management/core/widgets/spacing.dart';
 import 'package:fayoum_club_management/features/activites/data/models/activity_details_model/activity_details_model.dart';
-import 'package:fayoum_club_management/features/activites/presentation/widgets/trainer_tile.dart';
+import 'package:fayoum_club_management/features/trainers/presentation/widgets/trainer_tile.dart';
 import 'package:flutter/material.dart';
 
 class TrainersSection extends StatelessWidget {
@@ -31,9 +31,10 @@ class TrainersSection extends StatelessWidget {
             ),
           ],
         )
-        : Text(
-          "لا يوجد مدربين متاحين",
-          style: AppStyles.styleRegular16(context),
-        );
+        : SizedBox.shrink();
+    // Text(
+    //   "لا يوجد مدربين متاحين",
+    //   style: AppStyles.styleRegular16(context),
+    // );
   }
 }

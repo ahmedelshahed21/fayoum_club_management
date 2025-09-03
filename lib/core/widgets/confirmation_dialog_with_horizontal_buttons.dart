@@ -51,11 +51,15 @@ class ConfirmationDialogWithHorizontalButtons extends StatelessWidget {
                   iconAsset!,
                   height: 100,
                   colorFilter: ColorFilter.mode(
-                    AppColors.pureBlackColor,
+                    iconColor ?? AppColors.pureBlackColor,
                     BlendMode.srcIn,
                   ),
                 )
-                : Icon(iconData, size: 110, color: iconColor ?? AppColors.pureBlackColor),
+                : Icon(
+                  iconData,
+                  size: 110,
+                  color: iconColor ?? AppColors.pureBlackColor,
+                ),
             const VerticalSpace(24),
             Text(
               title,

@@ -26,6 +26,12 @@ import 'package:fayoum_club_management/features/news/data/repos/news_repo/news_r
 import 'package:fayoum_club_management/features/news/presentation/manager/add_new_news_cubit/add_new_news_cubit.dart';
 import 'package:fayoum_club_management/features/news/presentation/manager/delete_news_cubit/delete_news_cubit.dart';
 import 'package:fayoum_club_management/features/news/presentation/manager/news_cubit/news_cubit.dart';
+import 'package:fayoum_club_management/features/trainers/data/repos/add_new_trainer_repo/add_new_trainer_repo.dart';
+import 'package:fayoum_club_management/features/trainers/data/repos/add_new_trainer_repo/add_new_trainer_repo_impl.dart';
+import 'package:fayoum_club_management/features/trainers/data/repos/delete_trainer_repo/delete_trainer_repo.dart';
+import 'package:fayoum_club_management/features/trainers/data/repos/delete_trainer_repo/delete_trainer_repo_impl.dart';
+import 'package:fayoum_club_management/features/trainers/presentation/manager/add_new_trainer_cubit/add_new_trainer_cubit.dart';
+import 'package:fayoum_club_management/features/trainers/presentation/manager/delete_trainer_cubit/delete_trainer_cubit.dart';
 import 'package:get_it/get_it.dart';
 import '../../features/login/data/repos/login_repo_impl.dart';
 import '../../features/login/presentation/manager/login_cubit.dart';
@@ -104,33 +110,51 @@ void setupServiceLocator() {
 
   // Delete Activity dependencies
   getIt.registerLazySingleton<DeleteActivityRepo>(
-        () => DeleteActivityRepoImpl(
+    () => DeleteActivityRepoImpl(
       dioConsumer: getIt<DioConsumer>(),
       networkCubit: getIt<NetworkConnectionCubit>(),
       secureStorageHelper: getIt<SecureStorageHelper>(),
     ),
   );
   getIt.registerFactory<DeleteActivityCubit>(
-        () => DeleteActivityCubit(
-      deleteActivityRepo: getIt<DeleteActivityRepo>(),
-    ),
+    () => DeleteActivityCubit(deleteActivityRepo: getIt<DeleteActivityRepo>()),
   );
-
 
   // Add New Activity dependencies
   getIt.registerLazySingleton<AddNewActivityRepo>(
-        () => AddNewActivityRepoImpl(
+    () => AddNewActivityRepoImpl(
       dioConsumer: getIt<DioConsumer>(),
       networkCubit: getIt<NetworkConnectionCubit>(),
       secureStorageHelper: getIt<SecureStorageHelper>(),
     ),
   );
   getIt.registerFactory<AddNewActivityCubit>(
-        () => AddNewActivityCubit(
-      addNewActivityRepo: getIt<AddNewActivityRepo>(),
-    ),
+    () => AddNewActivityCubit(addNewActivityRepo: getIt<AddNewActivityRepo>()),
   );
 
+  // Delete Trainer dependencies
+  getIt.registerLazySingleton<DeleteTrainerRepo>(
+        () => DeleteTrainerRepoImpl(
+      dioConsumer: getIt<DioConsumer>(),
+      networkCubit: getIt<NetworkConnectionCubit>(),
+      secureStorageHelper: getIt<SecureStorageHelper>(),
+    ),
+  );
+  getIt.registerFactory<DeleteTrainerCubit>(
+        () => DeleteTrainerCubit(deleteTrainerRepo: getIt<DeleteTrainerRepo>()),
+  );
+
+  // Add New Trainer dependencies
+  getIt.registerLazySingleton<AddNewTrainerRepo>(
+    () => AddNewTrainerRepoImpl(
+      dioConsumer: getIt<DioConsumer>(),
+      networkCubit: getIt<NetworkConnectionCubit>(),
+      secureStorageHelper: getIt<SecureStorageHelper>(),
+    ),
+  );
+  getIt.registerFactory<AddNewTrainerCubit>(
+    () => AddNewTrainerCubit(addNewTrainerRepo: getIt<AddNewTrainerRepo>()),
+  );
 
   // News dependencies
   getIt.registerLazySingleton<NewsRepo>(
@@ -143,28 +167,26 @@ void setupServiceLocator() {
 
   // Delete News dependencies
   getIt.registerLazySingleton<DeleteNewsRepo>(
-        () => DeleteNewsRepoImpl(
+    () => DeleteNewsRepoImpl(
       dioConsumer: getIt<DioConsumer>(),
       networkCubit: getIt<NetworkConnectionCubit>(),
       secureStorageHelper: getIt<SecureStorageHelper>(),
     ),
   );
   getIt.registerFactory<DeleteNewsCubit>(
-        () => DeleteNewsCubit(
-      deleteNewsRepo: getIt<DeleteNewsRepo>(),
-    ),
+    () => DeleteNewsCubit(deleteNewsRepo: getIt<DeleteNewsRepo>()),
   );
 
   // Add New News dependencies
   getIt.registerLazySingleton<AddNewNewsRepo>(
-        () => AddNewNewsRepoImpl(
+    () => AddNewNewsRepoImpl(
       dioConsumer: getIt<DioConsumer>(),
       networkCubit: getIt<NetworkConnectionCubit>(),
       secureStorageHelper: getIt<SecureStorageHelper>(),
     ),
   );
   getIt.registerFactory<AddNewNewsCubit>(
-        () => AddNewNewsCubit(addNewNewsRepo: getIt<AddNewNewsRepo>()),
+    () => AddNewNewsCubit(addNewNewsRepo: getIt<AddNewNewsRepo>()),
   );
 
   // Contact Us dependencies

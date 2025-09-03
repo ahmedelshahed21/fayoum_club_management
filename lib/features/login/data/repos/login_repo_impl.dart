@@ -4,7 +4,7 @@ import 'package:fayoum_club_management/core/databases/api/dio_consumer.dart';
 import 'package:fayoum_club_management/core/databases/cache/secure_storage_helper.dart';
 import 'package:fayoum_club_management/core/databases/cache/user_data_manager.dart';
 import 'package:fayoum_club_management/core/state_management/network_connection_cubit/network_connection_cubit.dart';
-import 'package:fayoum_club_management/core/data/models/auth_failure_model.dart';
+import 'package:fayoum_club_management/core/data/models/validation_model.dart';
 import 'package:fayoum_club_management/core/data/models/auth_success_model.dart';
 import 'package:fayoum_club_management/features/login/data/repos/login_repo.dart';
 import 'package:dartz/dartz.dart';
@@ -24,7 +24,7 @@ class LoginRepoImpl implements LoginRepo {
   });
 
   @override
-  Future<Either<AuthFailureModel, AuthSuccessModel>> login({
+  Future<Either<ValidationModel, AuthSuccessModel>> login({
     required String phoneNumber,
     required String password,
   }) async {
@@ -32,7 +32,7 @@ class LoginRepoImpl implements LoginRepo {
 
     if (!isConnected) {
       return Left(
-        AuthFailureModel(
+        ValidationModel(
           status: "error",
           message: AppStrings.noInternetConnection.tr(),
           errors: [AppStrings.noInternetConnection.tr()],
@@ -46,7 +46,7 @@ class LoginRepoImpl implements LoginRepo {
         EndPoints.login,
         data: {ApiKey.phoneNumber: phoneNumber, ApiKey.password: password},
       );
-print(response);
+      print(response);
       if (response != null && response is Map<String, dynamic>) {
         if (response[ApiKey.code] >= 200 && response[ApiKey.code] < 400) {
           final loginSuccessModel = AuthSuccessModel.fromJson(response);
@@ -66,11 +66,11 @@ print(response);
 
           return Right(loginSuccessModel);
         } else {
-          return Left(AuthFailureModel.fromJson(response));
+          return Left(ValidationModel.fromJson(response));
         }
       } else {
         return Left(
-          AuthFailureModel(
+          ValidationModel(
             status: "error",
             message: AppStrings.serverConnectionFailed.tr(),
             errors: [AppStrings.serverConnectionFailed.tr()],
@@ -80,7 +80,7 @@ print(response);
       }
     } catch (e) {
       return Left(
-        AuthFailureModel(
+        ValidationModel(
           status: "error",
           message: AppStrings.unexpectedError.tr(),
           errors: [AppStrings.unexpectedError.tr()],
