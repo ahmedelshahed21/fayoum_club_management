@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:fayoum_club_management/core/state_management/bottom_navigation_bar_cubit/bottom_navigation_bar_cubit.dart';
 import 'package:fayoum_club_management/core/widgets/confirmation_dialog_with_horizontal_buttons.dart';
 import 'package:fayoum_club_management/features/news/presentation/manager/delete_news_cubit/delete_news_cubit.dart';
 import 'package:fayoum_club_management/features/news/presentation/manager/delete_news_cubit/delete_news_state.dart';
@@ -11,7 +10,6 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/functions/app_snack_bars.dart';
 import '../../../../core/routes/app_router.dart';
-import '../../../../core/state_management/user_cubit/user_session_cubit.dart';
 
 class DeleteNewsDialog extends StatelessWidget {
   const DeleteNewsDialog({super.key, required this.id});
