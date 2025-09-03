@@ -21,7 +21,6 @@ class DeleteTrainerDialog extends StatelessWidget {
     return BlocConsumer<DeleteTrainerCubit, DeleteTrainerState>(
       listener: (context, state) {
         if (state is DeleteTrainerSuccess) {
-          // هنا يمكنك تحديث قائمة المدربين إذا كان لديك Cubit خاص بهم
           GoRouter.of(context).go(AppRouter.homePage);
           primarySnackBar(
             context,
