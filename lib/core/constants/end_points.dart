@@ -1,12 +1,12 @@
 class EndPoints {
-  static const String baserUrl = "https://389465f69782.ngrok-free.app/api";
+  static const String baserUrl = "https://c5a10bdf5aa3.ngrok-free.app/api";
   static const String login = "/admin/login";
   static const String banners = "/banners";
   static const String news = "/news/lookup";
   static const String deleteNews= "/admin/news/";
   static const String activities = "/activate";
   static const String deleteActivity = "/admin/activate/";
-
+  static const String addNewActivity = "/admin/activate/";
 
   static const String contactUs = "/details";
 
@@ -96,4 +96,7 @@ class Params {
   static const String bearer = 'Bearer';
   static const String accept = 'Accept';
   static const String applicationJson = 'application/json';
+  static const String contentType='contentType';
+  static const String multipartFormData='multipartFormData';
+
 }

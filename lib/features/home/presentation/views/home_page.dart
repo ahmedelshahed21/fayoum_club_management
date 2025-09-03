@@ -42,12 +42,12 @@ class _HomePageState extends State<HomePage> {
                   },
                   icon: Icons.add,
                 );
-              } else if (state == 2) {
+              } else if (state == 1) {
                 return ButtonActionFloat(
                   onPressed: () {
                     customPush(context, AppRouter.addNewActivityView);
                   },
-                  icon: Icons.edit, // تقدر تغير الايقونة هنا
+                  icon: Icons.add,
                 );
               } else {
                 return const SizedBox.shrink();

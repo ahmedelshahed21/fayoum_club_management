@@ -1,45 +1,35 @@
-import 'package:fayoum_club_management/core/constants/end_points.dart';
 
 class AddNewActivityRequestModel {
+
   final String title;
-  final String phoneNumber;
-  final String email;
-  final String password;
-  final int isMember;
-  final String? code;
-  final String gender;
+  final String description;
+  final String money;
+  final String moneyMember;
 
   AddNewActivityRequestModel({
+
     required this.title,
-    required this.phoneNumber,
-    required this.email,
-    required this.password,
-    required this.isMember,
-    this.code,
-    required this.gender,
+    required this.description,
+    required this.money,
+    required this.moneyMember,
   });
 
   Map<String, dynamic> toJson() {
     return {
+
       'title': title,
-      ApiKey.phoneNumber: phoneNumber,
-      ApiKey.email: email,
-      ApiKey.password: password,
-      ApiKey.isMember: isMember,
-      ApiKey.code: code,
-      ApiKey.gender: gender,
+      'description': description,
+      'mony': money,
+      'monyMember': moneyMember,
     };
   }
 
   factory AddNewActivityRequestModel.fromJson(Map<String, dynamic> json) {
     return AddNewActivityRequestModel(
       title: json['title'],
-      phoneNumber: json[ApiKey.phoneNumber],
-      email: json[ApiKey.email],
-      password: json[ApiKey.password],
-      isMember:  json[ApiKey.isMember],
-      code: json[ApiKey.code],
-      gender: json[ApiKey.gender],
+      description: json['description'],
+      money: json['mony'],
+      moneyMember: json['monyMember'],
     );
   }
 }

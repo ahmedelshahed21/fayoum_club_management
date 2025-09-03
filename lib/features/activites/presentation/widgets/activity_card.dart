@@ -4,8 +4,12 @@ import 'package:fayoum_club_management/core/constants/app_constants.dart';
 import 'package:fayoum_club_management/core/constants/app_styles.dart';
 import 'package:fayoum_club_management/core/functions/run_if_connected.dart';
 import 'package:fayoum_club_management/core/routes/app_router.dart';
+import 'package:fayoum_club_management/core/services/service_locator.dart';
 import 'package:fayoum_club_management/core/widgets/image_loading_effect.dart';
+import 'package:fayoum_club_management/features/activites/presentation/manager/delete_activity_cubit/delete_activity_cubit.dart';
+import 'package:fayoum_club_management/features/activites/presentation/widgets/delete_activity_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fayoum_club_management/features/activites/data/models/activites_model/activites_model.dart';
 
@@ -17,6 +21,21 @@ class ActivityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onDoubleTap: () => runIfConnected(
+        context: context,
+        onConnected: () {
+          showDialog(
+            context: context,
+            builder: (builder) {
+              return BlocProvider(
+                create:
+                    (_) => getIt<DeleteActivityCubit>(),
+                child:  DeleteActivityDialog(id: activityItem.id!),
+              );
+            },
+          );
+        },
+      ),
       onTap: () => runIfConnected(
         context: context,
         onConnected: () {
@@ -49,7 +68,7 @@ class ActivityCard extends StatelessWidget {
                   fit: BoxFit.fill,
                   placeholder: (context, url) => const ImageLoadingEffect(),
                   errorWidget: (context, url, error) =>
-                  const Icon(Icons.error, size: 50),
+                  const Icon(Icons.error),
                 ),
                 Center(
                   child: Container(

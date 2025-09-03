@@ -4,9 +4,12 @@ import 'package:fayoum_club_management/features/activites/data/repos/activites_r
 import 'package:fayoum_club_management/features/activites/data/repos/activites_repo/activites_repo_impl.dart';
 import 'package:fayoum_club_management/features/activites/data/repos/activity_details_repo/activity_details_repo.dart';
 import 'package:fayoum_club_management/features/activites/data/repos/activity_details_repo/activity_details_repo_impl.dart';
+import 'package:fayoum_club_management/features/activites/data/repos/add_new_activity_repo/add_new_activity_repo.dart';
+import 'package:fayoum_club_management/features/activites/data/repos/add_new_activity_repo/add_new_activity_repo_impl.dart';
 import 'package:fayoum_club_management/features/activites/data/repos/delete_activity_repo/delete_activity_repo.dart';
 import 'package:fayoum_club_management/features/activites/data/repos/delete_activity_repo/delete_activty_repo_impl.dart';
 import 'package:fayoum_club_management/features/activites/presentation/manager/activity_details_cubit/activity_details_cubit.dart';
+import 'package:fayoum_club_management/features/activites/presentation/manager/add_new_activity_cubit/add_new_activity_cubit.dart';
 import 'package:fayoum_club_management/features/activites/presentation/manager/delete_activity_cubit/delete_activity_cubit.dart';
 import 'package:fayoum_club_management/features/more/data/repos/contact_us_repo/contact_us_repo_impl.dart';
 import 'package:fayoum_club_management/features/more/presentation/manager/contact_us_cubit/contact_us_cubit.dart';
@@ -110,6 +113,20 @@ void setupServiceLocator() {
     ),
   );
 
+
+  // Add New Activity dependencies
+  getIt.registerLazySingleton<AddNewActivityRepo>(
+        () => AddNewActivityRepoImpl(
+      dioConsumer: getIt<DioConsumer>(),
+      networkCubit: getIt<NetworkConnectionCubit>(),
+      secureStorageHelper: getIt<SecureStorageHelper>(),
+    ),
+  );
+  getIt.registerFactory<AddNewActivityCubit>(
+        () => AddNewActivityCubit(
+      addNewActivityRepo: getIt<AddNewActivityRepo>(),
+    ),
+  );
 
 
   // News dependencies

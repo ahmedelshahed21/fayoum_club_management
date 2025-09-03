@@ -51,7 +51,6 @@ class _AddNewNewsFormState extends State<AddNewNewsForm> {
             hintText: 'تفاصيل الخبر',
             type: TextInputType.multiline,
             minLines: 5,
-            maxLength: 500,
           ),
           const VerticalSpace(16),
           Text("نوع الخبر", style: AppStyles.styleBold14(context)),

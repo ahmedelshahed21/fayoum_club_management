@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fayoum_club_management/core/widgets/confirmation_dialog_with_horizontal_buttons.dart';
+import 'package:fayoum_club_management/features/activites/presentation/manager/activites_cubit/activites_cubit.dart';
 import 'package:fayoum_club_management/features/activites/presentation/manager/delete_activity_cubit/delete_activity_cubit.dart';
 import 'package:fayoum_club_management/features/activites/presentation/manager/delete_activity_cubit/delete_activity_state.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,6 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/functions/app_snack_bars.dart';
 import '../../../../core/routes/app_router.dart';
-import '../../../../core/state_management/user_cubit/user_session_cubit.dart';
 
 class DeleteActivityDialog extends StatelessWidget {
   const DeleteActivityDialog({super.key, required this.id});
@@ -23,8 +23,8 @@ class DeleteActivityDialog extends StatelessWidget {
     return BlocConsumer<DeleteActivityCubit, DeleteActivityState>(
       listener: (context, state) {
         if (state is DeleteActivitySuccess) {
-          GoRouter.of(context).go(AppRouter.loginView);
-          context.read<UserSessionCubit>().setGuestStatus(isGuest: true);
+          context.read<ActivitesCubit>().getActivites();
+          GoRouter.of(context).go(AppRouter.homePage);
           primarySnackBar(
             context,
            'تم حذف النشاط بنجاح',
