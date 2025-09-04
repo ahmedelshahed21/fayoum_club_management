@@ -1,7 +1,6 @@
 import 'package:fayoum_club_management/core/state_management/user_cubit/user_session_cubit.dart';
 import 'package:fayoum_club_management/core/widgets/guest_circle_avatar.dart';
 import 'package:fayoum_club_management/features/more/presentation/widgets/account_section.dart';
-import 'package:fayoum_club_management/features/more/presentation/widgets/help_section.dart';
 import 'package:fayoum_club_management/features/more/presentation/widgets/logout_section.dart';
 import 'package:fayoum_club_management/features/more/presentation/widgets/more_view_header.dart';
 import 'package:flutter/material.dart';
@@ -17,24 +16,25 @@ class MoreView extends StatelessWidget {
       (cubit) => cubit.state.isGuest,
     );
     return Scaffold(
-      body: SingleChildScrollView(
+      body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        physics: const BouncingScrollPhysics(),
+        // physics: const BouncingScrollPhysics(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const VerticalSpace(16),
             isGuest ? const GuestCircleAvatar() : const MoreViewHeader(),
-            isGuest ? const SizedBox.shrink() : const VerticalSpace(64),
+            Spacer(),
             isGuest ? const SizedBox.shrink() : const AccountSection(),
             // const VerticalSpace(16),
             // const SettingsSection(),
-            const VerticalSpace(16),
-            const HelpSection(),
+            // const VerticalSpace(16),
+            // const HelpSection(),
             // const VerticalSpace(16),
             // const AboutSection(),
-            const VerticalSpace(16),
+            const VerticalSpace(48),
             const LogoutSection(),
+            Spacer(flex: 2),
             // const VerticalSpace(24),
           ],
         ),

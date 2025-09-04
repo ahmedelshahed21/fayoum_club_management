@@ -85,8 +85,8 @@ class _HomePageState extends State<HomePage> {
                 state == 2,
               ),
               _buildNavItem(
-                icon: Iconsax.user,
-                name: AppStrings.profile.tr(),
+                icon: Iconsax.profile_circle,
+                name: AppStrings.account.tr(),
                 state == 3,
               ),
             ],
