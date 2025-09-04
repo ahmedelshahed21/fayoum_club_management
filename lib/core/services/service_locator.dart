@@ -134,14 +134,14 @@ void setupServiceLocator() {
 
   // Delete Trainer dependencies
   getIt.registerLazySingleton<DeleteTrainerRepo>(
-        () => DeleteTrainerRepoImpl(
+    () => DeleteTrainerRepoImpl(
       dioConsumer: getIt<DioConsumer>(),
       networkCubit: getIt<NetworkConnectionCubit>(),
       secureStorageHelper: getIt<SecureStorageHelper>(),
     ),
   );
   getIt.registerFactory<DeleteTrainerCubit>(
-        () => DeleteTrainerCubit(deleteTrainerRepo: getIt<DeleteTrainerRepo>()),
+    () => DeleteTrainerCubit(deleteTrainerRepo: getIt<DeleteTrainerRepo>()),
   );
 
   // Add New Trainer dependencies

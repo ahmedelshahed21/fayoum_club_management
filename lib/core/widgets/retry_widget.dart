@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:fayoum_club_management/core/constants/app_strings.dart';
+import 'package:fayoum_club_management/core/utils/app_strings.dart';
 import 'package:fayoum_club_management/core/widgets/app_buttons.dart';
 import 'package:fayoum_club_management/core/widgets/error_container.dart';
 import 'package:fayoum_club_management/core/widgets/spacing.dart';

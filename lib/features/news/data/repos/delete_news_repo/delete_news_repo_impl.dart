@@ -3,8 +3,8 @@ import 'package:fayoum_club_management/core/data/models/basic_model.dart';
 import 'package:fayoum_club_management/core/databases/api/dio_consumer.dart';
 import 'package:fayoum_club_management/core/databases/cache/secure_storage_helper.dart';
 import 'package:fayoum_club_management/core/state_management/network_connection_cubit/network_connection_cubit.dart';
-import 'package:fayoum_club_management/core/constants/app_strings.dart';
-import 'package:fayoum_club_management/core/constants/end_points.dart';
+import 'package:fayoum_club_management/core/utils/app_strings.dart';
+import 'package:fayoum_club_management/core/utils/end_points.dart';
 import 'package:fayoum_club_management/features/news/data/repos/delete_news_repo/delete_news_repo.dart';
 
 class DeleteNewsRepoImpl implements DeleteNewsRepo {
@@ -37,16 +37,13 @@ class DeleteNewsRepoImpl implements DeleteNewsRepo {
     try {
       final response = await dioConsumer.delete(
         '${EndPoints.deleteNews}/$id',
-        headers: {
-          Params.authorization: '${Params.bearer} $token',
-        },
+        headers: {Params.authorization: '${Params.bearer} $token'},
       );
 
       if (response != null && response is Map<String, dynamic>) {
         if (response[ApiKey.code] >= 200 && response[ApiKey.code] < 400) {
           return BasicModel.fromJson(response);
-        }
-        else {
+        } else {
           return BasicModel.fromJson(response);
         }
       } else {
@@ -68,5 +65,4 @@ class DeleteNewsRepoImpl implements DeleteNewsRepo {
       );
     }
   }
-
 }

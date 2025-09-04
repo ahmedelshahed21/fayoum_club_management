@@ -1,5 +1,5 @@
-import 'package:fayoum_club_management/core/constants/app_colors.dart';
-import 'package:fayoum_club_management/core/constants/app_styles.dart';
+import 'package:fayoum_club_management/core/utils/app_colors.dart';
+import 'package:fayoum_club_management/core/utils/app_styles.dart';
 import 'package:fayoum_club_management/core/functions/input_border.dart';
 import 'package:fayoum_club_management/core/widgets/spacing.dart';
 import 'package:flutter/material.dart';
@@ -232,7 +232,6 @@ class SecondaryTextFormField extends StatelessWidget {
   }
 }
 
-
 class UnderLineInputBorderTextFormField extends StatelessWidget {
   final String? labelText;
   final String? hintText;
@@ -241,9 +240,7 @@ class UnderLineInputBorderTextFormField extends StatelessWidget {
   final String? Function(String? val)? validate;
   final TextInputType? type;
   final void Function(String)? onSubmit;
-  final String?Function(String val)? onChanged;
-
-
+  final String? Function(String val)? onChanged;
 
   const UnderLineInputBorderTextFormField({
     super.key,
@@ -255,7 +252,6 @@ class UnderLineInputBorderTextFormField extends StatelessWidget {
     this.type,
     this.onSubmit,
     this.onChanged,
-
   });
 
   @override
@@ -273,24 +269,35 @@ class UnderLineInputBorderTextFormField extends StatelessWidget {
         onChanged: onChanged,
         keyboardType: type,
         textAlign: TextAlign.center,
-        style: AppStyles.styleMedium18(context).copyWith(color: AppColors.pureBlackColor),
+        style: AppStyles.styleMedium18(
+          context,
+        ).copyWith(color: AppColors.pureBlackColor),
         validator: validate,
         decoration: InputDecoration(
           labelText: labelText,
-          labelStyle: AppStyles.styleRegular16(context).copyWith(color: AppColors.primaryColor),
+          labelStyle: AppStyles.styleRegular16(
+            context,
+          ).copyWith(color: AppColors.primaryColor),
           hintText: hintText,
-          hintStyle: AppStyles.styleRegular16(context).copyWith(color: AppColors.primaryColor),
-          enabledBorder: buildUnderlineInputBorder(color: AppColors.lightGreyColor),
-          focusedBorder: buildUnderlineInputBorder(color: AppColors.lightGreyColor),
+          hintStyle: AppStyles.styleRegular16(
+            context,
+          ).copyWith(color: AppColors.primaryColor),
+          enabledBorder: buildUnderlineInputBorder(
+            color: AppColors.lightGreyColor,
+          ),
+          focusedBorder: buildUnderlineInputBorder(
+            color: AppColors.lightGreyColor,
+          ),
           errorBorder: buildUnderlineInputBorder(color: AppColors.redColor),
-          focusedErrorBorder: buildUnderlineInputBorder(color: AppColors.redColor),
+          focusedErrorBorder: buildUnderlineInputBorder(
+            color: AppColors.redColor,
+          ),
         ),
         controller: controller,
       ),
     );
   }
 }
-
 
 class OutLineInputBorderTextFormField extends StatelessWidget {
   final String? labelText;
@@ -302,7 +309,7 @@ class OutLineInputBorderTextFormField extends StatelessWidget {
   final String? Function(String? val)? validate;
   final TextInputType? type;
   final void Function(String)? onSubmit;
-  final String?Function(String val)? onChanged;
+  final String? Function(String val)? onChanged;
   final int? minLines;
   final int? maxLength;
   final Widget? prefix;
@@ -321,39 +328,51 @@ class OutLineInputBorderTextFormField extends StatelessWidget {
     this.onSubmit,
     this.onChanged,
     this.minLines,
-    this.prefix, this.maxLength, this.readOnly
+    this.prefix,
+    this.maxLength,
+    this.readOnly,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      readOnly: readOnly??false,
+      readOnly: readOnly ?? false,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       cursorRadius: const Radius.circular(16),
       cursorColor: const Color(0xFF999999),
       cursorHeight: 28,
       cursorWidth: 1.2,
       minLines: minLines ?? 1,
-      maxLength:maxLength,
-      buildCounter: (context, {required currentLength, required isFocused, required maxLength}) => SizedBox.shrink(),
+      maxLength: maxLength,
+      buildCounter:
+          (
+            context, {
+            required currentLength,
+            required isFocused,
+            required maxLength,
+          }) => SizedBox.shrink(),
       maxLines: 5,
       obscureText: obscureText ?? false,
       onFieldSubmitted: onSubmit,
       onChanged: onChanged,
       keyboardType: type,
-      style: AppStyles.styleMedium18(context).copyWith(color: AppColors.pureBlackColor),
+      style: AppStyles.styleMedium18(
+        context,
+      ).copyWith(color: AppColors.pureBlackColor),
       validator: validate,
       decoration: InputDecoration(
         suffixIcon: IconButton(
-          icon: Icon(suffixIcon,
-            color: Colors.blueGrey,
-          ),
+          icon: Icon(suffixIcon, color: Colors.blueGrey),
           onPressed: suffixIconOnPressed,
         ),
         labelText: labelText,
-        labelStyle: AppStyles.styleRegular16(context).copyWith(color: AppColors.primaryColor),
+        labelStyle: AppStyles.styleRegular16(
+          context,
+        ).copyWith(color: AppColors.primaryColor),
         hintText: hintText,
-        hintStyle: AppStyles.styleRegular16(context).copyWith(color: AppColors.primaryColor),
+        hintStyle: AppStyles.styleRegular16(
+          context,
+        ).copyWith(color: AppColors.primaryColor),
         enabledBorder: buildOutlineInputBorder(color: AppColors.lightGreyColor),
         focusedBorder: buildOutlineInputBorder(color: AppColors.lightGreyColor),
         errorBorder: buildOutlineInputBorder(color: AppColors.redColor),

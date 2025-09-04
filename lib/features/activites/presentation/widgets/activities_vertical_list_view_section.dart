@@ -1,4 +1,4 @@
-import 'package:fayoum_club_management/core/constants/app_strings.dart';
+import 'package:fayoum_club_management/core/utils/app_strings.dart';
 import 'package:fayoum_club_management/core/functions/dummy_lists.dart';
 import 'package:fayoum_club_management/core/widgets/app_indicators.dart';
 import 'package:fayoum_club_management/core/widgets/retry_widget.dart';
@@ -22,9 +22,13 @@ class ActivitiesVerticalListViewSection extends StatelessWidget {
       child: BlocBuilder<ActivitesCubit, ActivitesState>(
         builder: (context, state) {
           if (state is ActivitesLoading) {
-            return Skeletonizer(child: ActivitesListView(activites: getDummyActivitiesList()));
+            return Skeletonizer(
+              child: ActivitesListView(activites: getDummyActivitiesList()),
+            );
           } else if (state is ActivitesSuccess) {
-            return ActivitesListView(activites: state.activitesModel.data!.items);
+            return ActivitesListView(
+              activites: state.activitesModel.data!.items,
+            );
           } else if (state is ActivitesFailure) {
             return RetryWidget(
               message: state.failure.errMessage,

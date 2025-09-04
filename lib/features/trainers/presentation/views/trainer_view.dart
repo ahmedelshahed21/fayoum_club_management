@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:fayoum_club_management/core/constants/app_colors.dart';
-import 'package:fayoum_club_management/core/constants/app_constants.dart';
-import 'package:fayoum_club_management/core/constants/app_styles.dart';
+import 'package:fayoum_club_management/core/utils/app_colors.dart';
+import 'package:fayoum_club_management/core/utils/app_constants.dart';
+import 'package:fayoum_club_management/core/utils/app_styles.dart';
 import 'package:fayoum_club_management/core/services/service_locator.dart';
 import 'package:fayoum_club_management/core/widgets/app_app_bars.dart';
 import 'package:fayoum_club_management/core/widgets/app_buttons.dart';
@@ -47,7 +47,8 @@ class TrainerView extends StatelessWidget {
                             width: 150,
                             height: 150,
                             fit: BoxFit.cover,
-                            placeholder: (context, url) => const ImageLoadingEffect(),
+                            placeholder:
+                                (context, url) => const ImageLoadingEffect(),
                             errorWidget:
                                 (context, url, error) => Container(
                                   width: 150,
@@ -94,9 +95,8 @@ class TrainerView extends StatelessWidget {
                     context: context,
                     builder: (builder) {
                       return BlocProvider(
-                        create:
-                            (_) => getIt<DeleteTrainerCubit>(),
-                        child:  DeleteTrainerDialog(id: trainer.id),
+                        create: (_) => getIt<DeleteTrainerCubit>(),
+                        child: DeleteTrainerDialog(id: trainer.id),
                       );
                     },
                   );

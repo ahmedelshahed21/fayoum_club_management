@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:fayoum_club_management/core/constants/app_colors.dart';
-import 'package:fayoum_club_management/core/constants/app_constants.dart';
-import 'package:fayoum_club_management/core/constants/app_styles.dart';
+import 'package:fayoum_club_management/core/utils/app_colors.dart';
+import 'package:fayoum_club_management/core/utils/app_constants.dart';
+import 'package:fayoum_club_management/core/utils/app_styles.dart';
 import 'package:fayoum_club_management/core/routes/app_router.dart';
 import 'package:fayoum_club_management/core/widgets/image_loading_effect.dart';
 import 'package:fayoum_club_management/core/widgets/spacing.dart';

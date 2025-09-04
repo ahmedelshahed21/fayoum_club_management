@@ -1,16 +1,17 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:fayoum_club_management/core/constants/app_colors.dart';
-import 'package:fayoum_club_management/core/constants/app_strings.dart';
+import 'package:fayoum_club_management/core/utils/app_colors.dart';
+import 'package:fayoum_club_management/core/utils/app_strings.dart';
 import 'package:fayoum_club_management/core/functions/navigation.dart';
 import 'package:fayoum_club_management/core/routes/app_router.dart';
 import 'package:fayoum_club_management/features/activites/presentation/views/activites_view.dart';
 import 'package:fayoum_club_management/features/activites/presentation/widgets/bottom_action_float.dart';
 import 'package:fayoum_club_management/features/home/presentation/views/home_view.dart';
+import 'package:fayoum_club_management/features/inquiries/presentation/views/inquiries_view.dart';
 import 'package:fayoum_club_management/features/more/presentation/views/more_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import '../../../../core/constants/app_styles.dart';
+import '../../../../core/utils/app_styles.dart';
 import '../../../../core/state_management/bottom_navigation_bar_cubit/bottom_navigation_bar_cubit.dart';
 
 class HomePage extends StatefulWidget {
@@ -26,6 +27,7 @@ class _HomePageState extends State<HomePage> {
     final List<Widget> views = [
       const HomeView(),
       const ActivitesView(),
+      const InquiriesView(),
       const MoreView(),
     ];
 
@@ -78,9 +80,14 @@ class _HomePageState extends State<HomePage> {
                 state == 1,
               ),
               _buildNavItem(
+                icon: Iconsax.message_question,
+                name: 'الاستعلامات',
+                state == 2,
+              ),
+              _buildNavItem(
                 icon: Iconsax.user,
                 name: AppStrings.profile.tr(),
-                state == 2,
+                state == 3,
               ),
             ],
           ),

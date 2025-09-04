@@ -1,10 +1,9 @@
-import 'package:fayoum_club_management/core/constants/app_strings.dart';
+import 'package:fayoum_club_management/core/utils/app_strings.dart';
 import 'package:fayoum_club_management/core/widgets/app_name_and_logo_widget.dart';
 import 'package:fayoum_club_management/core/widgets/spacing.dart';
 import 'package:fayoum_club_management/features/login/presentation/widgets/login_form.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});

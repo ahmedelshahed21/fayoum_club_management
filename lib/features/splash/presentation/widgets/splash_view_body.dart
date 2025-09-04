@@ -1,5 +1,5 @@
-import 'package:fayoum_club_management/core/constants/app_assets.dart';
-import 'package:fayoum_club_management/core/constants/app_colors.dart';
+import 'package:fayoum_club_management/core/utils/app_assets.dart';
+import 'package:fayoum_club_management/core/utils/app_colors.dart';
 // import 'package:fayoum_club_management/core/databases/cache/app_data_manager.dart';
 import 'package:fayoum_club_management/core/functions/navigation.dart';
 import 'package:fayoum_club_management/core/routes/app_router.dart';

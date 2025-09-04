@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:fayoum_club_management/core/constants/app_colors.dart';
-import 'package:fayoum_club_management/core/constants/app_strings.dart';
-import 'package:fayoum_club_management/core/constants/app_styles.dart';
+import 'package:fayoum_club_management/core/utils/app_colors.dart';
+import 'package:fayoum_club_management/core/utils/app_strings.dart';
+import 'package:fayoum_club_management/core/utils/app_styles.dart';
 import 'package:fayoum_club_management/core/functions/app_snack_bars.dart';
 import 'package:fayoum_club_management/core/widgets/app_buttons.dart';
 import 'package:fayoum_club_management/core/widgets/app_indicators.dart';
@@ -116,14 +116,13 @@ class _AddNewActivityFormState extends State<AddNewActivityForm> {
                   hintText: 'الوصف',
                   type: TextInputType.text,
                   minLines: 5,
-
                 ),
 
                 const VerticalSpace(64),
                 state is AddNewActivityLoading
                     ? PrimaryButton(
                       onPressed: () {},
-                      child:  PrimaryCircularProgressIndicator(
+                      child: PrimaryCircularProgressIndicator(
                         color: AppColors.pureWhiteColor,
                       ),
                     )
@@ -138,20 +137,20 @@ class _AddNewActivityFormState extends State<AddNewActivityForm> {
                             icon: Iconsax.danger,
                             iconSize: 32,
                             iconColor: Colors.yellow,
-                            boxColor: AppColors.pureBlackColor
+                            boxColor: AppColors.pureBlackColor,
                           );
                           return;
                         }
 
                         if (formKey.currentState!.validate()) {
                           context.read<AddNewActivityCubit>().addNewActivity(
-                            requestModel:  AddNewActivityRequestModel(
+                            requestModel: AddNewActivityRequestModel(
                               title: categoryNameController.text.trim(),
                               description: descriptionController.text.trim(),
                               money: guestPriceController.text.trim(),
                               moneyMember: memberPriceController.text.trim(),
                             ),
-                            image: selectedImage!
+                            image: selectedImage!,
                           );
                         }
                       },

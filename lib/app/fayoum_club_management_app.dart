@@ -5,7 +5,7 @@ import 'package:fayoum_club_management/features/news/presentation/manager/news_c
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import '../core/constants/app_colors.dart';
+import '../core/utils/app_colors.dart';
 import '../core/routes/app_router.dart';
 import '../core/services/service_locator.dart';
 import '../core/state_management/bottom_navigation_bar_cubit/bottom_navigation_bar_cubit.dart';

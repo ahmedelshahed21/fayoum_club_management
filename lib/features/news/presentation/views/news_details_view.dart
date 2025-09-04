@@ -7,8 +7,8 @@ import 'package:fayoum_club_management/core/widgets/tag_widget.dart';
 import 'package:fayoum_club_management/features/news/presentation/manager/delete_news_cubit/delete_news_cubit.dart';
 import 'package:fayoum_club_management/features/news/presentation/widgets/delete_news_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:fayoum_club_management/core/constants/app_colors.dart';
-import 'package:fayoum_club_management/core/constants/app_styles.dart';
+import 'package:fayoum_club_management/core/utils/app_colors.dart';
+import 'package:fayoum_club_management/core/utils/app_styles.dart';
 import 'package:fayoum_club_management/features/news/data/models/news_model.dart';
 import 'package:fayoum_club_management/core/widgets/image_loading_effect.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -59,7 +59,12 @@ class NewsDetailsView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const VerticalSpace(16),
-                        Text(news.title, style: AppStyles.styleBold24(context).copyWith(color: AppColors.pureBlackColor)),
+                        Text(
+                          news.title,
+                          style: AppStyles.styleBold24(
+                            context,
+                          ).copyWith(color: AppColors.pureBlackColor),
+                        ),
                         const VerticalSpace(8),
                         Row(
                           children: [
@@ -103,9 +108,8 @@ class NewsDetailsView extends StatelessWidget {
                   context: context,
                   builder: (builder) {
                     return BlocProvider(
-                      create:
-                          (_) => getIt<DeleteNewsCubit>(),
-                      child:  DeleteNewsDialog(id: news.id),
+                      create: (_) => getIt<DeleteNewsCubit>(),
+                      child: DeleteNewsDialog(id: news.id),
                     );
                   },
                 );

@@ -1,8 +1,8 @@
 import 'package:fayoum_club_management/core/widgets/icon_in_box_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../../core/constants/app_colors.dart';
-import '../../../../core/constants/app_styles.dart';
+import '../utils/app_colors.dart';
+import '../utils/app_styles.dart';
 import '../../../../core/widgets/spacing.dart';
 
 class CustomListTileWidget extends StatelessWidget {

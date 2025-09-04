@@ -4,7 +4,7 @@ import 'package:fayoum_club_management/features/activites/presentation/manager/a
 import 'package:fayoum_club_management/features/activites/presentation/widgets/activity_details_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fayoum_club_management/core/constants/app_colors.dart';
+import 'package:fayoum_club_management/core/utils/app_colors.dart';
 import 'package:fayoum_club_management/core/services/service_locator.dart';
 import 'package:fayoum_club_management/core/widgets/retry_widget.dart';
 import 'package:skeletonizer/skeletonizer.dart';

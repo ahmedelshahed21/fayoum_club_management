@@ -1,4 +1,4 @@
-import '../../constants/end_points.dart';
+import '../../utils/end_points.dart';
 
 class LocalizedText {
   final String ar;
@@ -14,9 +14,6 @@ class LocalizedText {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      ApiKey.ar: ar,
-      ApiKey.en: en,
-    };
+    return {ApiKey.ar: ar, ApiKey.en: en};
   }
 }

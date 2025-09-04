@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import '../constants/app_colors.dart';
+import '../utils/app_colors.dart';
 
 class ImagePickerWidget extends StatefulWidget {
   final Function(File?) onImageSelected;
@@ -42,7 +42,6 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -53,16 +52,18 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: AppColors.primaryColor.withValues(alpha: 0.3),
-          image: _selectedImage != null
-              ? DecorationImage(
-            image: FileImage(_selectedImage!),
-            fit: BoxFit.cover,
-          )
-              : null,
+          image:
+              _selectedImage != null
+                  ? DecorationImage(
+                    image: FileImage(_selectedImage!),
+                    fit: BoxFit.cover,
+                  )
+                  : null,
         ),
-        child: _selectedImage == null
-            ? const Icon(Icons.image, color: Colors.white, size: 40)
-            : null,
+        child:
+            _selectedImage == null
+                ? const Icon(Icons.image, color: Colors.white, size: 40)
+                : null,
       ),
     );
   }

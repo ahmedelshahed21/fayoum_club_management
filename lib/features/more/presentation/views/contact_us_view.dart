@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:fayoum_club_management/core/constants/app_strings.dart';
+import 'package:fayoum_club_management/core/utils/app_strings.dart';
 import 'package:fayoum_club_management/core/widgets/app_app_bars.dart'
     show PrimaryAppBar;
 import 'package:fayoum_club_management/core/widgets/spacing.dart';

@@ -1,5 +1,5 @@
-import 'package:fayoum_club_management/core/constants/app_strings.dart';
-import 'package:fayoum_club_management/core/constants/end_points.dart';
+import 'package:fayoum_club_management/core/utils/app_strings.dart';
+import 'package:fayoum_club_management/core/utils/end_points.dart';
 import 'package:fayoum_club_management/core/databases/api/dio_consumer.dart';
 import 'package:fayoum_club_management/core/databases/cache/secure_storage_helper.dart';
 import 'package:fayoum_club_management/core/databases/cache/user_data_manager.dart';

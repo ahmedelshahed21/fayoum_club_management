@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:fayoum_club_management/core/constants/app_colors.dart';
-import 'package:fayoum_club_management/core/constants/app_strings.dart';
-import 'package:fayoum_club_management/core/constants/app_styles.dart';
+import 'package:fayoum_club_management/core/utils/app_colors.dart';
+import 'package:fayoum_club_management/core/utils/app_strings.dart';
+import 'package:fayoum_club_management/core/utils/app_styles.dart';
 import 'package:fayoum_club_management/core/functions/app_snack_bars.dart';
 import 'package:fayoum_club_management/core/services/service_locator.dart';
 import 'package:fayoum_club_management/core/widgets/app_buttons.dart';
@@ -88,7 +88,10 @@ class _AddNewNewsFormState extends State<AddNewNewsForm> {
                     Expanded(
                       child: RadioListTile<String>(
                         activeColor: AppColors.primaryColor,
-                        title:  Text("ممارسة",style: AppStyles.styleSemiBold14(context)),
+                        title: Text(
+                          "ممارسة",
+                          style: AppStyles.styleSemiBold14(context),
+                        ),
                         value: "practice",
                         groupValue: newsType,
                         onChanged: (val) => setState(() => newsType = val),
@@ -98,7 +101,10 @@ class _AddNewNewsFormState extends State<AddNewNewsForm> {
                     Expanded(
                       child: RadioListTile<String>(
                         activeColor: AppColors.primaryColor,
-                        title:  Text("منافسة",style: AppStyles.styleSemiBold14(context)),
+                        title: Text(
+                          "منافسة",
+                          style: AppStyles.styleSemiBold14(context),
+                        ),
                         value: "competition",
                         groupValue: newsType,
                         onChanged: (val) => setState(() => newsType = val),
@@ -164,7 +170,7 @@ class _AddNewNewsFormState extends State<AddNewNewsForm> {
                           title: titleController.text.trim(),
                           description: descriptionController.text.trim(),
                           activityId: "8",
-                          status: isUrgent?1:0,
+                          status: isUrgent ? 1 : 0,
                           typeOption: newsType!,
                         );
 

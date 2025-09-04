@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:fayoum_club_management/core/constants/end_points.dart';
+import 'package:fayoum_club_management/core/utils/end_points.dart';
 import 'package:fayoum_club_management/core/databases/api/api_consumer.dart';
 
 class DioConsumer extends ApiConsumer {

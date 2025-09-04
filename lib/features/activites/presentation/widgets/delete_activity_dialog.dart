@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import '../../../../core/constants/app_colors.dart';
-import '../../../../core/constants/app_strings.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_strings.dart';
 import '../../../../core/functions/app_snack_bars.dart';
 import '../../../../core/routes/app_router.dart';
 
@@ -19,7 +19,6 @@ class DeleteActivityDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return BlocConsumer<DeleteActivityCubit, DeleteActivityState>(
       listener: (context, state) {
         if (state is DeleteActivitySuccess) {
@@ -27,16 +26,15 @@ class DeleteActivityDialog extends StatelessWidget {
           GoRouter.of(context).go(AppRouter.homePage);
           primarySnackBar(
             context,
-           'تم حذف النشاط بنجاح',
+            'تم حذف النشاط بنجاح',
             icon: Icons.check_circle_outline,
             boxColor: AppColors.greenColor,
           );
-
         } else if (state is DeleteActivityFailure) {
           GoRouter.of(context).pop();
           primarySnackBar(
             context,
-            state.error.message??state.error.status,
+            state.error.message ?? state.error.status,
             icon: Icons.error_outline,
             boxColor: AppColors.redColor,
           );

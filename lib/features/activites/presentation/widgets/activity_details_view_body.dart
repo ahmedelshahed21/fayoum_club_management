@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:fayoum_club_management/core/constants/app_colors.dart';
-import 'package:fayoum_club_management/core/constants/app_constants.dart';
-import 'package:fayoum_club_management/core/constants/app_styles.dart';
+import 'package:fayoum_club_management/core/utils/app_colors.dart';
+import 'package:fayoum_club_management/core/utils/app_constants.dart';
+import 'package:fayoum_club_management/core/utils/app_styles.dart';
 import 'package:fayoum_club_management/core/routes/app_router.dart';
 import 'package:fayoum_club_management/core/services/service_locator.dart';
 import 'package:fayoum_club_management/core/widgets/app_buttons.dart';
@@ -16,7 +16,6 @@ import 'package:fayoum_club_management/features/activites/presentation/widgets/t
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-
 
 class ActivityDetailsViewBody extends StatelessWidget {
   const ActivityDetailsViewBody({super.key, required this.detailsData});
@@ -38,8 +37,9 @@ class ActivityDetailsViewBody extends StatelessWidget {
                 centerTitle: true,
                 title: Text(
                   detailsData.title,
-                  style: AppStyles.styleSemiBold18(context)
-                      .copyWith(color: AppColors.pureWhiteColor),
+                  style: AppStyles.styleSemiBold18(
+                    context,
+                  ).copyWith(color: AppColors.pureWhiteColor),
                 ),
                 backgroundColor: AppColors.primaryColor,
                 leading: Padding(
@@ -52,12 +52,13 @@ class ActivityDetailsViewBody extends StatelessWidget {
                     width: double.infinity,
                     fit: BoxFit.cover,
                     placeholder: (context, url) => const ImageLoadingEffect(),
-                    errorWidget: (context, url, error) => Container(
-                      color: Colors.grey.shade300,
-                      width: double.infinity,
-                      height: 220,
-                      child: const Icon(Icons.broken_image, size: 40),
-                    ),
+                    errorWidget:
+                        (context, url, error) => Container(
+                          color: Colors.grey.shade300,
+                          width: double.infinity,
+                          height: 220,
+                          child: const Icon(Icons.broken_image, size: 40),
+                        ),
                   ),
                 ),
               ),
@@ -89,7 +90,7 @@ class ActivityDetailsViewBody extends StatelessWidget {
 
         /// bottomNavigationBar
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Row(
             children: [
               Expanded(
@@ -114,7 +115,9 @@ class ActivityDetailsViewBody extends StatelessWidget {
                 child: PrimaryButton(
                   backgroundColor: AppColors.greenColor,
                   onPressed: () {
-                   GoRouter.of(context).push(AppRouter.addNewTrainerView,extra: detailsData.id);
+                    GoRouter.of(
+                      context,
+                    ).push(AppRouter.addNewTrainerView, extra: detailsData.id);
                   },
                   text: 'إضافة مدرب',
                 ),
@@ -126,4 +129,3 @@ class ActivityDetailsViewBody extends StatelessWidget {
     );
   }
 }
-
