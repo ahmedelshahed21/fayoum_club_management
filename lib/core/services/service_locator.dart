@@ -11,12 +11,13 @@ import 'package:fayoum_club_management/features/activites/data/repos/delete_acti
 import 'package:fayoum_club_management/features/activites/presentation/manager/activity_details_cubit/activity_details_cubit.dart';
 import 'package:fayoum_club_management/features/activites/presentation/manager/add_new_activity_cubit/add_new_activity_cubit.dart';
 import 'package:fayoum_club_management/features/activites/presentation/manager/delete_activity_cubit/delete_activity_cubit.dart';
-import 'package:fayoum_club_management/features/more/data/repos/contact_us_repo/contact_us_repo_impl.dart';
-import 'package:fayoum_club_management/features/more/presentation/manager/contact_us_cubit/contact_us_cubit.dart';
 import 'package:fayoum_club_management/features/home/data/repos/banners_repo/banners_repo.dart';
 import 'package:fayoum_club_management/features/home/data/repos/banners_repo/banners_repo_impl.dart';
 import 'package:fayoum_club_management/features/activites/presentation/manager/activites_cubit/activites_cubit.dart';
 import 'package:fayoum_club_management/features/home/presentation/manager/banners_cubit/banners_cubit.dart';
+import 'package:fayoum_club_management/features/inquiries/data/repos/inquiries_repo/inqiries_repo.dart';
+import 'package:fayoum_club_management/features/inquiries/data/repos/inquiries_repo/inquiries_repo_impl.dart';
+import 'package:fayoum_club_management/features/inquiries/presentation/manager/inquiries_cubit.dart';
 import 'package:fayoum_club_management/features/news/data/repos/add_new_news_repo/add_new_news_repo.dart';
 import 'package:fayoum_club_management/features/news/data/repos/add_new_news_repo/add_new_news_repo_impl.dart';
 import 'package:fayoum_club_management/features/news/data/repos/delete_news_repo/delete_news_repo.dart';
@@ -189,15 +190,16 @@ void setupServiceLocator() {
     () => AddNewNewsCubit(addNewNewsRepo: getIt<AddNewNewsRepo>()),
   );
 
-  // Contact Us dependencies
-  getIt.registerSingleton<ContactUsRepoImpl>(
-    ContactUsRepoImpl(
-      dioConsumer: getIt.get<DioConsumer>(),
-      secureStorageHelper: getIt<SecureStorageHelper>(),
+  // Inquiries dependencies
+  getIt.registerLazySingleton<InquiriesRepo>(
+    () => InquiriesRepoImpl(
+      dioConsumer: getIt<DioConsumer>(),
       networkCubit: getIt<NetworkConnectionCubit>(),
+      secureStorageHelper: getIt<SecureStorageHelper>(),
     ),
   );
-  getIt.registerFactory<ContactUsCubit>(
-    () => ContactUsCubit(contactUsRepo: getIt<ContactUsRepoImpl>()),
+
+  getIt.registerFactory<InquiriesCubit>(
+    () => InquiriesCubit(getIt<InquiriesRepo>()),
   );
 }

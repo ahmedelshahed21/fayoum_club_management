@@ -115,7 +115,7 @@ class _AddNewTrainerFormState extends State<AddNewTrainerForm> {
                         //   return;
                         // }
 
-                        if (formKey.currentState!.validate()) {
+                  print(widget.activityId);
                           final requestModel = AddNewTrainerRequestModel(
                             name: nameController.text.trim(),
                             description: descriptionController.text.trim(),
@@ -127,7 +127,7 @@ class _AddNewTrainerFormState extends State<AddNewTrainerForm> {
                             requestModel: requestModel,
                             image: selectedImage,
                           );
-                        }
+
                       },
                       text: AppStrings.save.tr(),
                     ),

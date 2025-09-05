@@ -18,6 +18,7 @@ class AddNewTrainerRequestModel {
       ApiKey.name: name,
       'description': description,
       'isActive': isActive,
+      'activateId':activityId
     };
   }
 

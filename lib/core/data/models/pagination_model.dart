@@ -11,12 +11,15 @@ class Pagination {
     required this.totalPages,
   });
 
+  // Add hasNext getter
+  bool get hasNext => currentPage < totalPages;
+
   factory Pagination.fromJson(Map<String, dynamic> json) {
     return Pagination(
-      total: json['total'] ?? 0,
-      currentPage: json['currentPage'] ?? 0,
-      perPage: json['perPage'] ?? 0,
-      totalPages: json['totalPages'] ?? 0,
+      total: json['total'],
+      currentPage: json['currentPage'],
+      perPage: json['perPage'],
+      totalPages: json['totalPages'],
     );
   }
 

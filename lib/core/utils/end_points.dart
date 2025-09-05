@@ -1,5 +1,5 @@
 class EndPoints {
-  static const String baserUrl = "https://c5a10bdf5aa3.ngrok-free.app/api";
+  static const String baserUrl = "https://fayoum-club.com/GovernorateClub/api";
   static const String login = "/admin/login";
   static const String banners = "/banners";
   static const String news = "/news/lookup";
@@ -10,7 +10,7 @@ class EndPoints {
   static const String addNewActivity = "/admin/activate/";
   static const String deleteTrainer = "/admin/captain/";
   static const String addNewTrainer = "/admin/captain";
-  static const String contactUs = "/details";
+  static const String inquiries = "/admin/details";
 
   // static const String transportations = "/user/transportations";
   // static String transportationInvoice(String transportationId) =>

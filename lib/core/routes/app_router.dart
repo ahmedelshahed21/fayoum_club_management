@@ -3,7 +3,6 @@ import 'package:fayoum_club_management/features/activites/presentation/views/act
 import 'package:fayoum_club_management/features/activites/presentation/views/add_new_activity_view.dart';
 import 'package:fayoum_club_management/features/trainers/presentation/views/add_new_trainer_view.dart';
 import 'package:fayoum_club_management/features/trainers/presentation/views/trainer_view.dart';
-import 'package:fayoum_club_management/features/more/presentation/views/contact_us_view.dart';
 import 'package:fayoum_club_management/features/news/data/models/news_model.dart';
 import 'package:fayoum_club_management/features/home/presentation/views/home_page.dart';
 import 'package:fayoum_club_management/features/news/presentation/views/news_details_view.dart';
@@ -97,10 +96,10 @@ abstract class AppRouter {
         path: profileView,
         builder: (context, state) => const ProfileView(),
       ),
-      GoRoute(
-        path: contactUsView,
-        builder: (context, state) => const ContactUsView(),
-      ),
+      // GoRoute(
+      //   path: contactUsView,
+      //   builder: (context, state) => const ContactUsView(),
+      // ),
     ],
   );
 }
