@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:fayoum_club_management/core/services/service_locator.dart';
 import 'package:fayoum_club_management/core/widgets/app_app_bars.dart';
 import 'package:fayoum_club_management/core/widgets/app_buttons.dart';
@@ -20,6 +21,10 @@ class NewsDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final formattedDate = DateFormat(
+      'dd/MM/yyyy  HH:mm',
+      'en',
+    ).format(news.createdAt);
     return Scaffold(
       backgroundColor: AppColors.offWhiteColor,
       appBar: PrimaryAppBar(title: "تفاصيل الخبر"),
@@ -61,7 +66,7 @@ class NewsDetailsView extends StatelessWidget {
                         const VerticalSpace(16),
                         Text(
                           news.title,
-                          style: AppStyles.styleBold24(
+                          style: AppStyles.styleBold20(
                             context,
                           ).copyWith(color: AppColors.pureBlackColor),
                         ),
@@ -69,7 +74,7 @@ class NewsDetailsView extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              news.createdAt,
+                              formattedDate,
                               style: AppStyles.styleMedium14(context),
                             ),
                             const Spacer(),
@@ -81,7 +86,7 @@ class NewsDetailsView extends StatelessWidget {
                             ),
                           ],
                         ),
-                        const VerticalSpace(16),
+                        const VerticalSpace(32),
                         Text(
                           news.description,
                           style: AppStyles.styleRegular16(context),

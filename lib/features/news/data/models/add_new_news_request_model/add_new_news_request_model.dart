@@ -5,7 +5,7 @@ class AddNewNewsRequestModel {
   final String description;
   final String activityId;
   final int status;
-  final String typeOption;
+  final String? typeOption;
 
   AddNewNewsRequestModel({
 
@@ -13,7 +13,7 @@ class AddNewNewsRequestModel {
     required this.description,
     required this.activityId,
     required this.status,
-    required this.typeOption,
+     this.typeOption,
   });
 
   Map<String, dynamic> toJson() {

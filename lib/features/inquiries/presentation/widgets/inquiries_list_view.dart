@@ -1,3 +1,4 @@
+import 'package:fayoum_club_management/core/widgets/app_indicators.dart';
 import 'package:fayoum_club_management/features/inquiries/presentation/widgets/inquiry_card.dart';
 import 'package:flutter/material.dart';
 
@@ -26,12 +27,11 @@ class InquiriesListView extends StatelessWidget {
       separatorBuilder: (_, __) => const SizedBox(height: 12),
       itemBuilder: (context, index) {
         if (index < items.length) {
-          final item = items[index];
-          return InquiryCard(item: item);
+          return InquiryCard(item: items[index]);
         } else {
           return const Padding(
             padding: EdgeInsets.all(8.0),
-            child: Center(child: CircularProgressIndicator()),
+            child: Center(child: PrimaryCircularProgressIndicator()),
           );
         }
       },

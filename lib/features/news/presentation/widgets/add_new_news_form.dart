@@ -10,6 +10,7 @@ import 'package:fayoum_club_management/core/widgets/app_indicators.dart';
 import 'package:fayoum_club_management/core/widgets/app_text_fields.dart';
 import 'package:fayoum_club_management/core/widgets/spacing.dart';
 import 'package:fayoum_club_management/core/widgets/image_picker_widget.dart';
+import 'package:fayoum_club_management/features/home/presentation/manager/banners_cubit/banners_cubit.dart';
 import 'package:fayoum_club_management/features/news/data/models/add_new_news_request_model/add_new_news_request_model.dart';
 import 'package:fayoum_club_management/features/news/presentation/manager/add_new_news_cubit/add_new_news_cubit.dart';
 import 'package:fayoum_club_management/features/news/presentation/manager/add_new_news_cubit/add_new_news_state.dart';
@@ -47,6 +48,7 @@ class _AddNewNewsFormState extends State<AddNewNewsForm> {
             );
             Navigator.pop(context);
             context.read<NewsCubit>().getAllNews();
+            context.read<BannersCubit>().getBanners();
           } else if (state is AddNewNewsFailure) {
             primarySnackBar(
               context,
@@ -142,36 +144,12 @@ class _AddNewNewsFormState extends State<AddNewNewsForm> {
                       onPressed: () {
                         FocusScope.of(context).unfocus();
 
-                        // if (selectedImage == null) {
-                        //   primarySnackBar(
-                        //     context,
-                        //     'يجب تحديد صورة',
-                        //     icon: Iconsax.danger,
-                        //     iconSize: 32,
-                        //     iconColor: Colors.yellow,
-                        //     boxColor: AppColors.pureBlackColor,
-                        //   );
-                        //   return;
-                        // }
-
-                        // if (formKey.currentState!.validate()) {
-                        //   if (newsType == null) {
-                        //     primarySnackBar(
-                        //       context,
-                        //       'يجب اختيار نوع الخبر',
-                        //       icon: Iconsax.danger,
-                        //       iconColor: Colors.red,
-                        //       boxColor: AppColors.pureBlackColor,
-                        //     );
-                        //     return;
-                        //   }
-
                         final requestModel = AddNewNewsRequestModel(
                           title: titleController.text.trim(),
                           description: descriptionController.text.trim(),
                           activityId: "8",
                           status: isUrgent ? 1 : 0,
-                          typeOption: newsType!,
+                          typeOption: newsType,
                         );
 
                         context.read<AddNewNewsCubit>().addNewNews(

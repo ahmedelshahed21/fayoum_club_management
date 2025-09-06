@@ -9,10 +9,10 @@ class PrimaryCircularProgressIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 20,
-      width: 20,
+      height: 16,
+      width: 16,
       child: CircularProgressIndicator(
-        color: color ?? AppColors.pureWhiteColor,
+        color: color ?? AppColors.primaryColor,
         strokeWidth: 2.5,
         strokeAlign: 2,
       ),

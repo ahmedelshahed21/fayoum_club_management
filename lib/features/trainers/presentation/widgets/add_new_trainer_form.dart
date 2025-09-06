@@ -10,6 +10,7 @@ import 'package:fayoum_club_management/core/widgets/app_indicators.dart';
 import 'package:fayoum_club_management/core/widgets/app_text_fields.dart';
 import 'package:fayoum_club_management/core/widgets/spacing.dart';
 import 'package:fayoum_club_management/core/widgets/image_picker_widget.dart';
+import 'package:fayoum_club_management/features/activites/presentation/manager/activity_details_cubit/activity_details_cubit.dart';
 import 'package:fayoum_club_management/features/trainers/data/models/add_new_trainer_request_model.dart';
 import 'package:fayoum_club_management/features/trainers/presentation/manager/add_new_trainer_cubit/add_new_trainer_cubit.dart';
 import 'package:fayoum_club_management/features/trainers/presentation/manager/add_new_trainer_cubit/add_new_trainer_state.dart';
@@ -45,7 +46,7 @@ class _AddNewTrainerFormState extends State<AddNewTrainerForm> {
               boxColor: AppColors.greenColor,
             );
             Navigator.pop(context);
-            // يمكنك هنا تحديث قائمة المدربين إذا كان لديك Cubit خاص بهم
+            context.read<ActivityDetailsCubit>().getActivityDetails(widget.activityId);
           } else if (state is AddNewTrainerFailure) {
             primarySnackBar(
               context,
