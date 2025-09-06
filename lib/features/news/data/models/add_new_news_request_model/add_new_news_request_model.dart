@@ -3,7 +3,7 @@ class AddNewNewsRequestModel {
 
   final String title;
   final String description;
-  final String activityId;
+  final String? activityId;
   final int status;
   final String? typeOption;
 
@@ -11,7 +11,7 @@ class AddNewNewsRequestModel {
 
     required this.title,
     required this.description,
-    required this.activityId,
+     this.activityId,
     required this.status,
      this.typeOption,
   });

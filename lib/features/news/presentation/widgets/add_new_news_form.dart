@@ -15,8 +15,10 @@ import 'package:fayoum_club_management/features/news/data/models/add_new_news_re
 import 'package:fayoum_club_management/features/news/presentation/manager/add_new_news_cubit/add_new_news_cubit.dart';
 import 'package:fayoum_club_management/features/news/presentation/manager/add_new_news_cubit/add_new_news_state.dart';
 import 'package:fayoum_club_management/features/news/presentation/manager/news_cubit/news_cubit.dart';
+import 'package:fayoum_club_management/features/news/presentation/widgets/activities_dropdown_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 
 class AddNewNewsForm extends StatefulWidget {
   const AddNewNewsForm({super.key});
@@ -32,6 +34,7 @@ class _AddNewNewsFormState extends State<AddNewNewsForm> {
   File? selectedImage;
   bool isUrgent = false;
   String? newsType;
+  int? selectedActivityId;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +49,6 @@ class _AddNewNewsFormState extends State<AddNewNewsForm> {
               icon: Icons.check_circle_outline,
               boxColor: AppColors.greenColor,
             );
-            // Navigator.pop(context);
             context.read<NewsCubit>().fetchNews(refresh: true);
             context.read<BannersCubit>().getBanners();
           } else if (state is AddNewNewsFailure) {
@@ -81,8 +83,20 @@ class _AddNewNewsFormState extends State<AddNewNewsForm> {
                   controller: descriptionController,
                   hintText: 'تفاصيل الخبر',
                   type: TextInputType.multiline,
-                  minLines: 5,
+                  minLines: 4,
                 ),
+                const VerticalSpace(16),
+                // Text("النشاط", style: AppStyles.styleBold14(context)),
+                // const VerticalSpace(8),
+                ActivitiesDropdownWidget(
+                  selectedValue: selectedActivityId?.toString(),
+                  onChanged: (val) {
+                    setState(() {
+                      selectedActivityId = int.tryParse(val ?? "");
+                    });
+                  },
+                ),
+
                 const VerticalSpace(16),
                 Text("نوع الخبر", style: AppStyles.styleBold14(context)),
                 Row(
@@ -147,7 +161,7 @@ class _AddNewNewsFormState extends State<AddNewNewsForm> {
                         final requestModel = AddNewNewsRequestModel(
                           title: titleController.text.trim(),
                           description: descriptionController.text.trim(),
-                          activityId: "8",
+                          activityId: selectedActivityId?.toString(),
                           status: isUrgent ? 1 : 0,
                           typeOption: newsType,
                         );
@@ -156,7 +170,6 @@ class _AddNewNewsFormState extends State<AddNewNewsForm> {
                           requestModel: requestModel,
                           image: selectedImage,
                         );
-                        // }
                       },
                       text: AppStrings.save.tr(),
                     ),
