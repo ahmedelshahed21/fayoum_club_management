@@ -281,7 +281,7 @@ class UnderLineInputBorderTextFormField extends StatelessWidget {
           hintText: hintText,
           hintStyle: AppStyles.styleRegular16(
             context,
-          ).copyWith(color: AppColors.primaryColor),
+          ).copyWith(color: AppColors.greyColor),
           enabledBorder: buildUnderlineInputBorder(
             color: AppColors.lightGreyColor,
           ),
@@ -372,7 +372,7 @@ class OutLineInputBorderTextFormField extends StatelessWidget {
         hintText: hintText,
         hintStyle: AppStyles.styleRegular16(
           context,
-        ).copyWith(color: AppColors.primaryColor),
+        ).copyWith(color: AppColors.greyColor),
         enabledBorder: buildOutlineInputBorder(color: AppColors.lightGreyColor),
         focusedBorder: buildOutlineInputBorder(color: AppColors.lightGreyColor),
         errorBorder: buildOutlineInputBorder(color: AppColors.redColor),

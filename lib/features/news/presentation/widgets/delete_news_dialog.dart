@@ -22,7 +22,7 @@ class DeleteNewsDialog extends StatelessWidget {
     return BlocConsumer<DeleteNewsCubit, DeleteNewsState>(
       listener: (context, state) {
         if (state is DeleteNewsSuccess) {
-          context.read<NewsCubit>().getAllNews();
+          context.read<NewsCubit>().fetchNews();
           GoRouter.of(context).go(AppRouter.homePage);
           primarySnackBar(
             context,

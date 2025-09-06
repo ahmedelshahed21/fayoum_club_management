@@ -27,7 +27,7 @@ class ActivitiesVerticalListViewSection extends StatelessWidget {
             );
           } else if (state is ActivitesSuccess) {
             return ActivitesListView(
-              activites: state.activitesModel.data!.items,
+              activites: state.activitesModel.data,
             );
           } else if (state is ActivitesFailure) {
             return RetryWidget(

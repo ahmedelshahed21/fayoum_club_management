@@ -1,32 +1,17 @@
 class EndPoints {
   static const String baserUrl = "https://fayoum-club.com/GovernorateClub/api";
   static const String login = "/admin/login";
-  static const String banners = "/banners";
-  static const String news = "/news/lookup";
+  static const String banners = "/news/lookup";
+  static const String news = "/news";
   static const String deleteNews = "/admin/news/";
   static const String addNewNews = "/admin/news";
-  static const String activities = "/activate";
+  static const String activities = "/activate/lookup";
+  static const String activityDetails = "/activate";
   static const String deleteActivity = "/admin/activate/";
   static const String addNewActivity = "/admin/activate/";
   static const String deleteTrainer = "/admin/captain/";
   static const String addNewTrainer = "/admin/captain";
   static const String inquiries = "/admin/details";
-
-  // static const String transportations = "/user/transportations";
-  // static String transportationInvoice(String transportationId) =>
-  //     '/user/transportations/$transportationId/invoice';
-  // static String subscribeForTransportations(String transportationId) =>
-  //     '/user/transportations/$transportationId/subscribe';
-  // static const String residences = "/user/housings";
-  // static String residencesInvoice(String residenceId) =>
-  //     '/user/housings/$residenceId/invoice';
-  // static String subscribeForResidence(String residenceId) =>
-  //     '/user/housings/$residenceId/subscribe';
-  //
-  // static const String updateProfile = "/profile/update";
-  // static const String updatePassword = "/profile/update-password";
-  // static const String logout = "/logout";
-  // static const String deleteAccount = '/profile/delete';
 }
 
 class ApiKey {

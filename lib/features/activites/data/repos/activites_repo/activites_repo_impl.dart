@@ -43,6 +43,7 @@ class ActivitesRepoImpl implements ActivitesRepo {
         );
       }
     } catch (e) {
+      print(e.toString());
       return Left(
         ServerFailure(errMessage: AppStrings.serverConnectionFailed.tr()),
       );

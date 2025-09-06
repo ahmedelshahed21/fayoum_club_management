@@ -1,4 +1,4 @@
-import 'package:fayoum_club_management/features/news/data/models/news_model.dart';
+import 'package:fayoum_club_management/features/home/data/models/banners_models/urgent_news_model.dart';
 import 'package:fayoum_club_management/core/errors/failure.dart';
 import 'package:equatable/equatable.dart';
 
@@ -18,7 +18,7 @@ class BannersLoading extends BannersState {
 }
 
 class BannersSuccess extends BannersState {
-  final NewsModel bannersModel;
+  final UrgentNewsModel bannersModel;
 
   const BannersSuccess(this.bannersModel);
 

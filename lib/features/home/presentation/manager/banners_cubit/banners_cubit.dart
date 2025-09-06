@@ -1,4 +1,4 @@
-import 'package:fayoum_club_management/features/news/data/models/news_model.dart';
+import 'package:fayoum_club_management/features/home/data/models/banners_models/urgent_news_model.dart';
 import 'package:fayoum_club_management/core/errors/failure.dart';
 import 'package:fayoum_club_management/features/home/data/repos/banners_repo/banners_repo.dart';
 import 'package:fayoum_club_management/features/home/presentation/manager/banners_cubit/banners_state.dart';
@@ -13,7 +13,7 @@ class BannersCubit extends Cubit<BannersState> {
   Future<void> getBanners() async {
     emit(const BannersLoading());
 
-    final Either<Failure, NewsModel> result = await news.getBanners();
+    final Either<Failure, UrgentNewsModel> result = await news.getBanners();
 
     result.fold(
       (failure) => emit(BannersFailure(failure)),

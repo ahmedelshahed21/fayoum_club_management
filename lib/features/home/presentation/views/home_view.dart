@@ -11,8 +11,27 @@ import 'package:fayoum_club_management/features/news/presentation/widgets/news_s
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+
+}
+
+class _HomeViewState extends State<HomeView> {
+  final ScrollController _scrollController = ScrollController();
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels >=
+          _scrollController.position.maxScrollExtent - 100) {
+        context.read<NewsCubit>().fetchNews();
+      }
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +57,10 @@ class HomeView extends StatelessWidget {
           onRefresh: () async {
             context.read<BannersCubit>().getBanners();
             context.read<ActivitesCubit>().getActivites();
-            context.read<NewsCubit>().getAllNews();
+            context.read<NewsCubit>().fetchNews(refresh: true);
           },
           child: CustomScrollView(
+            controller: _scrollController,
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             physics: const BouncingScrollPhysics(),
             slivers: [

@@ -46,8 +46,8 @@ class _AddNewNewsFormState extends State<AddNewNewsForm> {
               icon: Icons.check_circle_outline,
               boxColor: AppColors.greenColor,
             );
-            Navigator.pop(context);
-            context.read<NewsCubit>().getAllNews();
+            // Navigator.pop(context);
+            context.read<NewsCubit>().fetchNews(refresh: true);
             context.read<BannersCubit>().getBanners();
           } else if (state is AddNewNewsFailure) {
             primarySnackBar(

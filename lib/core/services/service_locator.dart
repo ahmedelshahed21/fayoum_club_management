@@ -164,7 +164,7 @@ void setupServiceLocator() {
       networkCubit: getIt<NetworkConnectionCubit>(),
     ),
   );
-  getIt.registerFactory<NewsCubit>(() => NewsCubit(news: getIt<NewsRepo>()));
+  getIt.registerFactory<NewsCubit>(() => NewsCubit(newsRepo: getIt<NewsRepo>()));
 
   // Delete News dependencies
   getIt.registerLazySingleton<DeleteNewsRepo>(

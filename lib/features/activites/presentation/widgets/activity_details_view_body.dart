@@ -32,9 +32,10 @@ class ActivityDetailsViewBody extends StatelessWidget {
             slivers: [
               /// SliverAppBar لعرض صورة النشاط
               SliverAppBar(
-                expandedHeight: 220,
+                expandedHeight: 180,
                 pinned: true,
-                centerTitle: true,
+                titleSpacing: 2,
+                // centerTitle: true,
                 title: Text(
                   detailsData.title,
                   style: AppStyles.styleSemiBold18(

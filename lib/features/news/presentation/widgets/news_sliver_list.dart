@@ -6,11 +6,19 @@ import 'package:fayoum_club_management/features/news/presentation/widgets/news_t
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sliver_tools/sliver_tools.dart';
+import 'package:fayoum_club_management/core/widgets/app_indicators.dart';
 
 class NewsSliverList extends StatelessWidget {
   final List<NewsItem> news;
+  final bool hasMore;
+  final ScrollController? scrollController;
 
-  const NewsSliverList({super.key, required this.news});
+  const NewsSliverList({
+    super.key,
+    required this.news,
+    required this.hasMore,
+    this.scrollController,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,18 +26,28 @@ class NewsSliverList extends StatelessWidget {
       children: [
         Text(
           'الأخبار',
-          style: AppStyles.styleBold18(
-            context,
-          ).copyWith(color: AppColors.pureBlackColor),
+          style: AppStyles.styleBold18(context).copyWith(
+            color: AppColors.pureBlackColor,
+          ),
         ),
         VerticalSpace(12),
         SliverList(
           delegate: SliverChildBuilderDelegate(
-            childCount: news.length,
-            (context, index) => NewsTile(news: news[index]),
+            childCount: hasMore ? news.length + 1 : news.length,
+                (context, index) {
+              if (index < news.length) {
+                return NewsTile(news: news[index]);
+              } else {
+                return const Padding(
+                  padding: EdgeInsets.all(12),
+                  child: Center(child: PrimaryCircularProgressIndicator()),
+                );
+              }
+            },
           ),
         ),
       ],
     );
   }
 }
+

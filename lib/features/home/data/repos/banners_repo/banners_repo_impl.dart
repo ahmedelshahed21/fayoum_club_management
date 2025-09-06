@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fayoum_club_management/core/utils/app_strings.dart';
 import 'package:fayoum_club_management/core/utils/end_points.dart';
-import 'package:fayoum_club_management/features/news/data/models/news_model.dart';
+import 'package:fayoum_club_management/features/home/data/models/banners_models/urgent_news_model.dart';
 import 'package:fayoum_club_management/core/databases/api/dio_consumer.dart';
 import 'package:fayoum_club_management/core/errors/failure.dart';
 import 'package:fayoum_club_management/core/state_management/network_connection_cubit/network_connection_cubit.dart';
@@ -15,7 +15,7 @@ class BannersRepoImpl implements BannersRepo {
   BannersRepoImpl({required this.dioConsumer, required this.networkCubit});
 
   @override
-  Future<Either<Failure, NewsModel>> getBanners() async {
+  Future<Either<Failure, UrgentNewsModel>> getBanners() async {
     final isConnected = await networkCubit.networkInfo.isConnected;
 
     if (!isConnected) {
@@ -26,13 +26,13 @@ class BannersRepoImpl implements BannersRepo {
 
     try {
       final response = await dioConsumer.get(
-        EndPoints.news,
+        EndPoints.banners,
         queryParameters: {Params.status: 1},
       );
 
       if (response != null && response is Map<String, dynamic>) {
         if (response[ApiKey.code] == 200) {
-          final news = NewsModel.fromJson(response);
+          final news = UrgentNewsModel.fromJson(response);
           return Right(news);
         } else {
           return Left(
