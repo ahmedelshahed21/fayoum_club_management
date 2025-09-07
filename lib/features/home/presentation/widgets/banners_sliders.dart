@@ -2,20 +2,20 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fayoum_club_management/core/utils/app_colors.dart';
 import 'package:fayoum_club_management/core/utils/app_styles.dart';
-import 'package:fayoum_club_management/features/home/data/models/banners_models/urgent_news_model.dart';
 import 'package:fayoum_club_management/features/home/presentation/widgets/dots_indicator.dart';
 import 'package:fayoum_club_management/core/functions/is_arabic.dart';
 import 'package:fayoum_club_management/core/functions/run_if_connected.dart';
 import 'package:fayoum_club_management/core/routes/app_router.dart';
 import 'package:fayoum_club_management/core/widgets/image_loading_effect.dart';
 import 'package:fayoum_club_management/core/widgets/spacing.dart';
+import 'package:fayoum_club_management/features/news/data/models/news_model.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BannersSliders extends StatefulWidget {
   const BannersSliders({super.key, required this.newsData});
 
-  final List<UrgentNewsItem> newsData;
+  final List<NewsItem> newsData;
 
   @override
   State<BannersSliders> createState() => _BannersSlidersState();
