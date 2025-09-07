@@ -84,10 +84,13 @@ class ConfirmationDialogWithHorizontalButtons extends StatelessWidget {
                 ),
             const VerticalSpace(32),
             isLoading
-                ? Center(
-                  child: PrimaryCircularProgressIndicator(
-                    color: AppColors.primaryColor,
-                  ),
+                ? Column(
+                  children: [
+                    PrimaryCircularProgressIndicator(
+                      color: AppColors.primaryColor,
+                    ),
+                    VerticalSpace(8)
+                  ],
                 )
                 : Row(
                   children: [
