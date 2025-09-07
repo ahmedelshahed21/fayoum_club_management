@@ -17,65 +17,69 @@ class TrainerTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 0,
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      color: AppColors.primaryColor.withValues(alpha: 0.2),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(256),
-              child: CachedNetworkImage(
-                imageUrl: trainer.image ?? AppConstants.noImageUrl,
-                width: 60,
-                height: 60,
-                fit: BoxFit.cover,
-                placeholder: (context, url) => const ImageLoadingEffect(),
-                errorWidget:
-                    (context, url, error) => Container(
-                      width: 60,
-                      height: 60,
-                      color: AppColors.pureWhiteColor,
-                      child: Icon(
-                        Iconsax.user_copy,
-                        color: AppColors.greenColor,
-                        size: 28,
-                      ),
-                    ),
-              ),
-            ),
-            HorizontalSpace(12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    trainer.name,
-                    style: AppStyles.styleBold18(
-                      context,
-                    ).copyWith(color: AppColors.pureBlackColor),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: InkWell(
+          borderRadius: BorderRadius.circular(8),
+        onTap: (){
+          GoRouter.of(
+            context,
+          ).push(AppRouter.trainerView, extra: trainer);
+        },
+        child: Card(
+          elevation: 0,
+          margin:  EdgeInsets.zero,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          color: AppColors.primaryColor.withValues(alpha: 0.2),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(256),
+                  child: CachedNetworkImage(
+                    imageUrl: trainer.image ?? AppConstants.noImageUrl,
+                    width: 60,
+                    height: 60,
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) => const ImageLoadingEffect(),
+                    errorWidget:
+                        (context, url, error) => Container(
+                          width: 60,
+                          height: 60,
+                          color: AppColors.pureWhiteColor,
+                          child: Icon(
+                            Iconsax.user_copy,
+                            color: AppColors.greenColor,
+                            size: 28,
+                          ),
+                        ),
                   ),
-                ],
-              ),
+                ),
+                HorizontalSpace(12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        trainer.name,
+                        style: AppStyles.styleBold18(
+                          context,
+                        ).copyWith(color: AppColors.pureBlackColor),
+                      ),
+                    ],
+                  ),
+                ),
+                 Icon(
+                    Icons.arrow_forward_ios_outlined,
+                    color: AppColors.pureBlackColor,
+                    size: 28,
+                ),
+              ],
             ),
-            IconButton(
-              onPressed: () {
-                GoRouter.of(
-                  context,
-                ).push(AppRouter.trainerView, extra: trainer);
-              },
-              icon: Icon(
-                Icons.arrow_forward_ios_outlined,
-                color: AppColors.pureBlackColor,
-                size: 28,
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

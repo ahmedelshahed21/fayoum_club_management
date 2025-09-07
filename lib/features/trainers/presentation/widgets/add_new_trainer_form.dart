@@ -45,8 +45,8 @@ class _AddNewTrainerFormState extends State<AddNewTrainerForm> {
               icon: Icons.check_circle_outline,
               boxColor: AppColors.greenColor,
             );
-            Navigator.pop(context);
             context.read<ActivityDetailsCubit>().getActivityDetails(widget.activityId);
+
           } else if (state is AddNewTrainerFailure) {
             primarySnackBar(
               context,
@@ -116,7 +116,7 @@ class _AddNewTrainerFormState extends State<AddNewTrainerForm> {
                         //   return;
                         // }
 
-                  print(widget.activityId);
+
                           final requestModel = AddNewTrainerRequestModel(
                             name: nameController.text.trim(),
                             description: descriptionController.text.trim(),

@@ -1,4 +1,5 @@
 import 'package:fayoum_club_management/core/functions/dummy_lists.dart';
+import 'package:fayoum_club_management/core/utils/app_styles.dart';
 import 'package:fayoum_club_management/core/widgets/retry_widget.dart';
 import 'package:fayoum_club_management/features/home/presentation/manager/banners_cubit/banners_cubit.dart';
 import 'package:fayoum_club_management/features/news/presentation/manager/news_cubit/news_cubit.dart';
@@ -48,10 +49,16 @@ class _NewsSliverListSectionState extends State<NewsSliverListSection> {
             ),
           );
         } else if (state is NewsSuccess) {
-          return NewsSliverList(
-            news: state.news,
-            hasMore: state.hasMore,
-          );
+          if(state.news.isNotEmpty){
+            return NewsSliverList(
+              news: state.news,
+              hasMore: state.hasMore,
+            );
+          }
+          else{
+            SliverToBoxAdapter(child: Text('لم يتم إضافة أي أخبار',style: AppStyles.styleBold24(context),),);
+          }
+
         }
         return const SliverToBoxAdapter(child: SizedBox.shrink());
       },

@@ -10,7 +10,6 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/functions/app_snack_bars.dart';
-import '../../../../core/routes/app_router.dart';
 
 class DeleteActivityDialog extends StatelessWidget {
   const DeleteActivityDialog({super.key, required this.id});
@@ -23,7 +22,7 @@ class DeleteActivityDialog extends StatelessWidget {
       listener: (context, state) {
         if (state is DeleteActivitySuccess) {
           context.read<ActivitesCubit>().getActivites();
-          GoRouter.of(context).go(AppRouter.homePage);
+          Navigator.of(context).pop();
           primarySnackBar(
             context,
             'تم حذف النشاط بنجاح',

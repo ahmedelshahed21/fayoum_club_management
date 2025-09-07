@@ -22,7 +22,7 @@ class TrainersSection extends StatelessWidget {
                 context,
               ).copyWith(color: AppColors.pureBlackColor),
             ),
-            const VerticalSpace(4),
+            const VerticalSpace(8),
             Column(
               children:
                   detailsData.captans

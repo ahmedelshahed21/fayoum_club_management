@@ -18,39 +18,37 @@ class ActivityDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.pureWhiteColor,
-      body: SafeArea(
-        child: BlocProvider(
-          create:
-              (context) =>
-                  getIt<ActivityDetailsCubit>()..getActivityDetails(id),
-          child: BlocBuilder<ActivityDetailsCubit, ActivityDetailsState>(
-            builder: (context, state) {
-              if (state is ActivityDetailsLoading) {
-                return Skeletonizer(
-                  containersColor: AppColors.loadingEffectColor,
-                  textBoneBorderRadius: TextBoneBorderRadius(
-                    BorderRadius.circular(4),
-                  ),
-                  child: ActivityDetailsViewBody(
-                    detailsData: getDummyActivityDetails(), // dummy
-                  ),
-                );
-              } else if (state is ActivityDetailsSuccess) {
-                return ActivityDetailsViewBody(
-                  detailsData: state.activityDetailsModel.data!,
-                );
-              } else if (state is ActivityDetailsFailure) {
-                return RetryWidget(
-                  message: state.failure.errMessage,
-                  onPressed:
-                      () => context
-                          .read<ActivityDetailsCubit>()
-                          .getActivityDetails(id),
-                );
-              }
-              return const SizedBox.shrink();
-            },
-          ),
+      body: BlocProvider(
+        create:
+            (context) =>
+                getIt<ActivityDetailsCubit>()..getActivityDetails(id),
+        child: BlocBuilder<ActivityDetailsCubit, ActivityDetailsState>(
+          builder: (context, state) {
+            if (state is ActivityDetailsLoading) {
+              return Skeletonizer(
+                containersColor: AppColors.loadingEffectColor,
+                textBoneBorderRadius: TextBoneBorderRadius(
+                  BorderRadius.circular(4),
+                ),
+                child: ActivityDetailsViewBody(
+                  detailsData: getDummyActivityDetails(), // dummy
+                ),
+              );
+            } else if (state is ActivityDetailsSuccess) {
+              return ActivityDetailsViewBody(
+                detailsData: state.activityDetailsModel.data!,
+              );
+            } else if (state is ActivityDetailsFailure) {
+              return RetryWidget(
+                message: state.failure.errMessage,
+                onPressed:
+                    () => context
+                        .read<ActivityDetailsCubit>()
+                        .getActivityDetails(id),
+              );
+            }
+            return const SizedBox.shrink();
+          },
         ),
       ),
     );
