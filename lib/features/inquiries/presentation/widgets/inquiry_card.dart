@@ -1,10 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fayoum_club_management/core/functions/open_call_url.dart';
+import 'package:fayoum_club_management/core/functions/run_if_connected.dart';
+import 'package:fayoum_club_management/core/services/service_locator.dart';
 import 'package:fayoum_club_management/core/utils/app_colors.dart';
 import 'package:fayoum_club_management/core/utils/app_styles.dart';
 import 'package:fayoum_club_management/core/widgets/icon_in_box_widget.dart';
 import 'package:fayoum_club_management/core/widgets/spacing.dart';
+import 'package:fayoum_club_management/features/inquiries/presentation/manager/delete_inquiry_cubit/delete_inquiry_cubit.dart';
+import 'package:fayoum_club_management/features/inquiries/presentation/widgets/delete_inquiry_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// =====================
 /// Widget: InquiryCard
@@ -16,21 +21,39 @@ class InquiryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: AppColors.pureWhiteColor,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      elevation: 0.5,
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            InquiryHeader(item: item),
-            const VerticalSpace(8),
-            InquiryDetails(item: item),
-            const VerticalSpace(8),
-            InquiryTime(item: item),
-          ],
+    return InkWell(
+      onDoubleTap: () {
+        runIfConnected(
+          context: context,
+          onConnected: () {
+            showDialog(
+              context: context,
+              builder: (builder) {
+                return BlocProvider(
+                  create: (_) => getIt<DeleteInquiryCubit>(),
+                  child: DeleteInquiryDialog(id: item.id!),
+                );
+              },
+            );
+          },
+        );
+      },
+      child: Card(
+        color: AppColors.pureWhiteColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        elevation: 0.5,
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              InquiryHeader(item: item),
+              const VerticalSpace(8),
+              InquiryDetails(item: item),
+              const VerticalSpace(8),
+              InquiryTime(item: item),
+            ],
+          ),
         ),
       ),
     );

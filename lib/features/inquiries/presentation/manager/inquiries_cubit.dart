@@ -1,4 +1,4 @@
-import 'package:fayoum_club_management/features/inquiries/data/repos/inquiries_repo/inqiries_repo.dart';
+import 'package:fayoum_club_management/features/inquiries/data/repos/inquiries_repo/inquiries_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'inquiries_state.dart';
 import '../../data/models/inquiries_model.dart';

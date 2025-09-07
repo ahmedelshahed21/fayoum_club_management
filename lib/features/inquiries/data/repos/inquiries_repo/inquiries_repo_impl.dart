@@ -7,7 +7,7 @@ import 'package:fayoum_club_management/core/databases/api/dio_consumer.dart';
 import 'package:fayoum_club_management/core/errors/failure.dart';
 import 'package:fayoum_club_management/core/state_management/network_connection_cubit/network_connection_cubit.dart';
 import 'package:fayoum_club_management/features/inquiries/data/models/inquiries_model.dart';
-import 'package:fayoum_club_management/features/inquiries/data/repos/inquiries_repo/inqiries_repo.dart';
+import 'package:fayoum_club_management/features/inquiries/data/repos/inquiries_repo/inquiries_repo.dart';
 
 class InquiriesRepoImpl implements InquiriesRepo {
   final DioConsumer dioConsumer;

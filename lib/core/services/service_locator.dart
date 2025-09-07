@@ -15,8 +15,11 @@ import 'package:fayoum_club_management/features/home/data/repos/banners_repo/ban
 import 'package:fayoum_club_management/features/home/data/repos/banners_repo/banners_repo_impl.dart';
 import 'package:fayoum_club_management/features/activites/presentation/manager/activites_cubit/activites_cubit.dart';
 import 'package:fayoum_club_management/features/home/presentation/manager/banners_cubit/banners_cubit.dart';
-import 'package:fayoum_club_management/features/inquiries/data/repos/inquiries_repo/inqiries_repo.dart';
+import 'package:fayoum_club_management/features/inquiries/data/repos/delete_inquiry_repo/delete_inquiry_repo.dart';
+import 'package:fayoum_club_management/features/inquiries/data/repos/delete_inquiry_repo/delete_inquiry_repo_impl.dart';
+import 'package:fayoum_club_management/features/inquiries/data/repos/inquiries_repo/inquiries_repo.dart';
 import 'package:fayoum_club_management/features/inquiries/data/repos/inquiries_repo/inquiries_repo_impl.dart';
+import 'package:fayoum_club_management/features/inquiries/presentation/manager/delete_inquiry_cubit/delete_inquiry_cubit.dart';
 import 'package:fayoum_club_management/features/inquiries/presentation/manager/inquiries_cubit.dart';
 import 'package:fayoum_club_management/features/news/data/repos/add_new_news_repo/add_new_news_repo.dart';
 import 'package:fayoum_club_management/features/news/data/repos/add_new_news_repo/add_new_news_repo_impl.dart';
@@ -198,6 +201,19 @@ void setupServiceLocator() {
       secureStorageHelper: getIt<SecureStorageHelper>(),
     ),
   );
+
+  // Delete Inquiry dependencies
+  getIt.registerLazySingleton<DeleteInquiryRepo>(
+        () => DeleteInquiryRepoImpl(
+      dioConsumer: getIt<DioConsumer>(),
+      networkCubit: getIt<NetworkConnectionCubit>(),
+      secureStorageHelper: getIt<SecureStorageHelper>(),
+    ),
+  );
+  getIt.registerFactory<DeleteInquiryCubit>(
+        () => DeleteInquiryCubit(deleteInquiryRepo: getIt<DeleteInquiryRepo>()),
+  );
+
 
   getIt.registerFactory<InquiriesCubit>(
     () => InquiriesCubit(getIt<InquiriesRepo>()),
