@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:fayoum_club_management/core/databases/cache/secure_storage_helper.dart';
 import 'package:fayoum_club_management/core/functions/navigation.dart';
 import 'package:fayoum_club_management/core/state_management/bottom_navigation_bar_cubit/bottom_navigation_bar_cubit.dart';
 import 'package:fayoum_club_management/core/state_management/user_cubit/user_session_cubit.dart';
@@ -19,6 +20,7 @@ class LogoutDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final UserDataManager userDataManager = getIt<UserDataManager>();
+    final SecureStorageHelper secureStorageHelper = getIt<SecureStorageHelper>();
     return ConfirmationDialogWithHorizontalButtons(
       isLoading: false,
       iconData: Iconsax.logout_copy,
@@ -27,11 +29,15 @@ class LogoutDialog extends StatelessWidget {
       message: AppStrings.logoutMessage.tr(),
       confirmText: AppStrings.logout.tr(),
       cancelText: AppStrings.no.tr(),
-      onConfirm: () {
+      onConfirm: () async{
+        await secureStorageHelper.deleteToken();
         userDataManager.clearAllUserData();
-        context.read<BottomNavigationBarCubit>().changeIndex(0);
-        context.read<UserSessionCubit>().setGuestStatus(isGuest: true);
-        customGo(context, AppRouter.loginView);
+        if(context.mounted) {
+          context.read<BottomNavigationBarCubit>().changeIndex(0);
+          context.read<UserSessionCubit>().setGuestStatus(isGuest: true);
+          customGo(context, AppRouter.loginView);
+        }
+
       },
       onCancel: () => GoRouter.of(context).pop(),
     );
