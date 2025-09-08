@@ -52,7 +52,6 @@ class AddNewActivityRepoImpl implements AddNewActivityRepo {
             filename: image.path.split('/').last,
           ),
       });
-
       final response = await dioConsumer.post(
         EndPoints.addNewActivity,
         headers: {
@@ -61,6 +60,7 @@ class AddNewActivityRepoImpl implements AddNewActivityRepo {
         },
         data: formData,
       );
+      print(response);
 
       if (response != null && response is Map<String, dynamic>) {
         if (response[ApiKey.code] >= 200 && response[ApiKey.code] < 400) {

@@ -67,7 +67,7 @@ class ActivityCard extends StatelessWidget {
               children: [
                 CachedNetworkImage(
                   imageUrl: activityItem.image ?? AppConstants.noImageUrl,
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                   placeholder: (context, url) => const ImageLoadingEffect(),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
@@ -75,11 +75,11 @@ class ActivityCard extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 12,
-                      vertical: 8,
+                      vertical: 4,
                     ),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: AppColors.offWhiteColor,
+                      borderRadius: BorderRadius.circular(4),
+                      color: AppColors.offWhiteColor.withValues(alpha: 0.9),
                     ),
                     child: FittedBox(
                       child: Text(

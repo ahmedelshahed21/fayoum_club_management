@@ -9,7 +9,7 @@ class EndPoints {
   static const String activityDetails = "/activate";
   static const String deleteActivity = "/admin/activate/";
   static  String deleteInquiry({required int id})=> "/admin/details/$id";
-  static const String addNewActivity = "/admin/activate/";
+  static const String addNewActivity = "/admin/activate";
   static const String deleteTrainer = "/admin/captain/";
   static const String addNewTrainer = "/admin/captain";
   static const String inquiries = "/admin/details";

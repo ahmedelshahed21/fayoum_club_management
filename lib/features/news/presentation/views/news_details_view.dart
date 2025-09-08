@@ -1,13 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:fayoum_club_management/core/services/service_locator.dart';
 import 'package:fayoum_club_management/core/widgets/app_app_bars.dart';
+import 'package:fayoum_club_management/core/widgets/app_buttons.dart';
 import 'package:fayoum_club_management/core/widgets/spacing.dart';
 import 'package:fayoum_club_management/core/widgets/tag_widget.dart';
+import 'package:fayoum_club_management/features/news/presentation/manager/delete_news_cubit/delete_news_cubit.dart';
+import 'package:fayoum_club_management/features/news/presentation/widgets/delete_news_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:fayoum_club_management/core/utils/app_colors.dart';
 import 'package:fayoum_club_management/core/utils/app_styles.dart';
 import 'package:fayoum_club_management/features/news/data/models/news_model.dart';
 import 'package:fayoum_club_management/core/widgets/image_loading_effect.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 class NewsDetailsView extends StatelessWidget {
@@ -25,74 +30,98 @@ class NewsDetailsView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.offWhiteColor,
       appBar: PrimaryAppBar(title: "تفاصيل الخبر"),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(16),
-                bottomRight: Radius.circular(16),
-              ),
-              child: CachedNetworkImage(
-                imageUrl: news.image,
-                height: 220,
-                width: double.infinity,
-                fit: BoxFit.cover,
-                placeholder: (context, url) => const ImageLoadingEffect(),
-                errorWidget: (context, url, error) => Container(
-                  height: 220,
-                  color: AppColors.lightGreyColor,
-                  child: const Icon(
-                    Icons.image_not_supported,
-                    size: 60,
-                  ),
-                ),
-              ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const VerticalSpace(16),
-                  Text(
-                    news.title,
-                    style: AppStyles.styleBold20(context)
-                        .copyWith(color: AppColors.pureBlackColor),
-                  ),
-                  const VerticalSpace(24),
-                  Row(
-                    children: [
-                      TagWidget(
-                        tag:
-                        news.typeOption == 'practice' ? 'ممارسة' : "منافسة",
-                        backgroundColor:
-                        AppColors.primaryColor.withValues(alpha: 0.3),
-                        textColor: AppColors.pureBlackColor,
+                  ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(16),
+                      bottomRight: Radius.circular(16),
+                    ),
+                    child: CachedNetworkImage(
+                      imageUrl: news.image,
+                      height: 220,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) => const ImageLoadingEffect(),
+                      errorWidget: (context, url, error) => Container(
+                        height: 220,
+                        color: AppColors.lightGreyColor,
+                        child: const Icon(
+                          Icons.image_not_supported,
+                          size: 60,
+                        ),
                       ),
-                      const Spacer(),
-                      Text(
-                        formattedDate,
-                        style: AppStyles.styleMedium14(context),
-                      ),
-                    ],
+                    ),
                   ),
-                  const VerticalSpace(32),
-                  Text(
-                    news.description,
-                    style: AppStyles.styleRegular16(context),
-                    textAlign: TextAlign.justify,
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const VerticalSpace(16),
+                        Text(
+                          news.title,
+                          style: AppStyles.styleBold20(context)
+                              .copyWith(color: AppColors.pureBlackColor),
+                        ),
+                        const VerticalSpace(24),
+                        Row(
+                          children: [
+                            TagWidget(
+                              tag:
+                              news.typeOption == 'practice' ? 'ممارسة' : "منافسة",
+                              backgroundColor:
+                              AppColors.primaryColor.withValues(alpha: 0.3),
+                              textColor: AppColors.pureBlackColor,
+                            ),
+                            const Spacer(),
+                            Text(
+                              formattedDate,
+                              style: AppStyles.styleMedium14(context),
+                            ),
+                          ],
+                        ),
+                        const VerticalSpace(32),
+                        Text(
+                          news.description,
+                          style: AppStyles.styleRegular16(context),
+                          textAlign: TextAlign.justify,
+                        ),
+                        const VerticalSpace(64),
+                        // if(news.activate!=null)
+                        //   RelatedNewsSection(news: news),
+                      ],
+                    ),
                   ),
-                  const VerticalSpace(64),
-                  // if(news.activate!=null)
-                  //   RelatedNewsSection(news: news),
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 16),
+            child: PrimaryButton(
+              backgroundColor: AppColors.redColor,
+              text: 'حذف الخبر',
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (builder) {
+                    return BlocProvider(
+                      create: (_) => getIt<DeleteNewsCubit>(),
+                      child: DeleteNewsDialog(id: news.id),
+                    );
+                  },
+                );
+              },
+            ),
+          )
+        ],
       ),
     );
   }

@@ -163,7 +163,7 @@ class _AddNewNewsFormState extends State<AddNewNewsForm> {
                           description: descriptionController.text.trim(),
                           activityId: selectedActivityId?.toString(),
                           status: isUrgent ? 1 : 0,
-                          typeOption: newsType,
+                          typeOption: newsType ?? 'general',
                         );
 
                         context.read<AddNewNewsCubit>().addNewNews(
