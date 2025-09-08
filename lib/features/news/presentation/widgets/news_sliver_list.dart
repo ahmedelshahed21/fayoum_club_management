@@ -38,9 +38,9 @@ class NewsSliverList extends StatelessWidget {
               if (index < news.length) {
                 return NewsTile(news: news[index]);
               } else {
-                return const Padding(
+                return  Padding(
                   padding: EdgeInsets.all(12),
-                  child: Center(child: PrimaryCircularProgressIndicator()),
+                  child: Center(child: PrimaryCircularProgressIndicator(color: AppColors.primaryColor)),
                 );
               }
             },

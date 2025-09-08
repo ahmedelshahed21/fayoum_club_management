@@ -1,5 +1,4 @@
-import 'package:fayoum_club_management/core/utils/app_colors.dart'
-    show AppColors;
+import 'package:fayoum_club_management/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class PrimaryCircularProgressIndicator extends StatelessWidget {
@@ -12,7 +11,7 @@ class PrimaryCircularProgressIndicator extends StatelessWidget {
       height: 16,
       width: 16,
       child: CircularProgressIndicator(
-        color: color ?? AppColors.primaryColor,
+        color: color ?? AppColors.pureWhiteColor,
         strokeWidth: 2.5,
         strokeAlign: 2,
       ),

@@ -1,3 +1,4 @@
+import 'package:fayoum_club_management/core/utils/app_colors.dart';
 import 'package:fayoum_club_management/core/widgets/app_indicators.dart';
 import 'package:fayoum_club_management/features/inquiries/presentation/widgets/inquiry_card.dart';
 import 'package:flutter/material.dart';
@@ -29,9 +30,9 @@ class InquiriesListView extends StatelessWidget {
         if (index < items.length) {
           return InquiryCard(item: items[index]);
         } else {
-          return const Padding(
+          return  Padding(
             padding: EdgeInsets.all(8.0),
-            child: Center(child: PrimaryCircularProgressIndicator()),
+            child: Center(child: PrimaryCircularProgressIndicator(color: AppColors.primaryColor)),
           );
         }
       },
