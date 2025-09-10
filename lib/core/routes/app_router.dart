@@ -13,16 +13,16 @@ import '../../features/login/presentation/views/login_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 
 abstract class AppRouter {
-  static const welcomeView = '/welcomeView';
+  // static const welcomeView = '/welcomeView';
   static const loginView = '/loginView';
   static const registerView = '/registerView';
   static const homePage = '/homePage';
+  static const addNewNewsView = '/addNewNewsView';
+  static const newsDetailsView = '/newsDetailsView';
   static const addNewActivityView = '/addNewActivityView';
   static const activityDetailsView = '/activityDetailsView';
   static const addNewTrainerView = '/addNewTrainerView';
-  static const trainerView = '/trainerView';
-  static const addNewNewsView = '/addNewNewsView';
-  static const newsDetailsView = '/newsDetailsView';
+  static const trainerDetailsView = '/trainerDetailsView';
 
   static const profileView = '/profileView';
   static const contactUsView = '/contactUsView';
@@ -36,6 +36,14 @@ abstract class AppRouter {
       // ),
       GoRoute(path: loginView, builder: (context, state) => const LoginView()),
       GoRoute(path: homePage, builder: (context, state) => const HomePage()),
+      GoRoute(path: addNewNewsView, builder: (context, state) => const AddNewNewsView()),
+      GoRoute(
+        path: newsDetailsView,
+        builder: (context, state) {
+          final NewsItem news = state.extra as NewsItem;
+          return NewsDetailsView(news: news);
+        },
+      ),
       GoRoute(
         path: addNewActivityView,
         builder: (context, state) => const AddNewActivityView(),
@@ -44,7 +52,7 @@ abstract class AppRouter {
         path: activityDetailsView,
         builder: (context, state) {
           final int id = state.extra as int;
-          return ActivityDetailsView(id: id);
+          return ActivityDetailsView(activityId: id);
         },
       ),
       GoRoute(
@@ -55,43 +63,12 @@ abstract class AppRouter {
         },
       ),
       GoRoute(
-        path: newsDetailsView,
-        builder: (context, state) {
-          final NewsItem news = state.extra as NewsItem;
-          return NewsDetailsView(news: news);
-        },
-      ),
-      GoRoute(
-        path: trainerView,
+        path: trainerDetailsView,
         builder: (context, state) {
           final CaptainModel trainer = state.extra as CaptainModel;
           return TrainerView(trainer: trainer);
         },
       ),
-      GoRoute(
-        path: addNewNewsView,
-        builder: (context, state) => const AddNewNewsView(),
-      ),
-      // GoRoute(
-      //   path: payMobView,
-      //   builder: (context, state) {
-      //     final ActivityDetailsData activityDetailsData =
-      //         state.extra as ActivityDetailsData;
-      //     return PayMobView(activityDetailsData: activityDetailsData);
-      //   },
-      // ),
-      // GoRoute(
-      //   path: payMobView,
-      //   builder: (context, state) {
-      //     final data = state.extra as Map<String, dynamic>;
-      //     return PayMobView(
-      //       activityDetailsData: data['activityDetailsData'],
-      //       transactionId: data['transactionId'],
-      //       residenceBookingInvoiceData: data['residenceBookingInvoiceData'],
-      //
-      //     );
-      //   },
-      // ),
       GoRoute(
         path: profileView,
         builder: (context, state) => const ProfileView(),

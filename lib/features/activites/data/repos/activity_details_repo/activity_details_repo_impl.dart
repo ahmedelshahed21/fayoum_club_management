@@ -19,7 +19,7 @@ class ActivityDetailsRepoImpl implements ActivityDetailsRepo {
 
   @override
   Future<Either<Failure, ActivityDetailsModel>> getActivityDetails({
-    required int id,
+    required int activityId,
   }) async {
     final isConnected = await networkCubit.networkInfo.isConnected;
 
@@ -31,7 +31,7 @@ class ActivityDetailsRepoImpl implements ActivityDetailsRepo {
 
     try {
       final response = await dioConsumer.get(
-        '${EndPoints.activityDetails}/${id.toString()}',
+        '${EndPoints.activityDetails}/${activityId.toString()}',
       );
 
       print(response);

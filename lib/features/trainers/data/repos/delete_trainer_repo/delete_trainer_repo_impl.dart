@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:fayoum_club_management/core/data/models/basic_model.dart';
+import 'package:fayoum_club_management/core/data/models/success_model.dart';
 import 'package:fayoum_club_management/core/databases/api/dio_consumer.dart';
 import 'package:fayoum_club_management/core/databases/cache/secure_storage_helper.dart';
 import 'package:fayoum_club_management/core/state_management/network_connection_cubit/network_connection_cubit.dart';
@@ -19,11 +19,11 @@ class DeleteTrainerRepoImpl implements DeleteTrainerRepo {
   });
 
   @override
-  Future<BasicModel> deleteTrainer({required int id}) async {
+  Future<SuccessModel> deleteTrainer({required int id}) async {
     final isConnected = await networkCubit.networkInfo.isConnected;
 
     if (!isConnected) {
-      return BasicModel(
+      return SuccessModel(
         version: 1,
         code: 0,
         status: "failed",
@@ -41,9 +41,9 @@ class DeleteTrainerRepoImpl implements DeleteTrainerRepo {
       );
 
       if (response != null && response is Map<String, dynamic>) {
-        return BasicModel.fromJson(response);
+        return SuccessModel.fromJson(response);
       } else {
-        return BasicModel(
+        return SuccessModel(
           version: 1,
           code: 0,
           status: "failed",
@@ -52,7 +52,7 @@ class DeleteTrainerRepoImpl implements DeleteTrainerRepo {
         );
       }
     } catch (e) {
-      return BasicModel(
+      return SuccessModel(
         version: 1,
         code: 0,
         status: "failed",

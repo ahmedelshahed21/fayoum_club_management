@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:fayoum_club_management/core/data/models/basic_model.dart';
+import 'package:fayoum_club_management/core/data/models/success_model.dart';
 import 'package:fayoum_club_management/core/databases/api/dio_consumer.dart';
 import 'package:fayoum_club_management/core/databases/cache/secure_storage_helper.dart';
 import 'package:fayoum_club_management/core/state_management/network_connection_cubit/network_connection_cubit.dart';
@@ -19,11 +19,11 @@ class DeleteActivityRepoImpl implements DeleteActivityRepo {
   });
 
   @override
-  Future<BasicModel> deleteActivity({required int id}) async {
+  Future<SuccessModel> deleteActivity({required int activityId}) async {
     final isConnected = await networkCubit.networkInfo.isConnected;
 
     if (!isConnected) {
-      return BasicModel(
+      return SuccessModel(
         version: 1,
         code: 0,
         status: "failed",
@@ -36,18 +36,18 @@ class DeleteActivityRepoImpl implements DeleteActivityRepo {
 
     try {
       final response = await dioConsumer.delete(
-        '${EndPoints.deleteActivity}/$id',
+        EndPoints.deleteActivity(id: activityId),
         headers: {Params.authorization: '${Params.bearer} $token'},
       );
 
       if (response != null && response is Map<String, dynamic>) {
         if (response[ApiKey.code] >= 200 && response[ApiKey.code] < 400) {
-          return BasicModel.fromJson(response);
+          return SuccessModel.fromJson(response);
         } else {
-          return BasicModel.fromJson(response);
+          return SuccessModel.fromJson(response);
         }
       } else {
-        return BasicModel(
+        return SuccessModel(
           version: 1,
           code: 0,
           status: "failed",
@@ -56,7 +56,7 @@ class DeleteActivityRepoImpl implements DeleteActivityRepo {
         );
       }
     } catch (e) {
-      return BasicModel(
+      return SuccessModel(
         version: 1,
         code: 0,
         status: "failed",

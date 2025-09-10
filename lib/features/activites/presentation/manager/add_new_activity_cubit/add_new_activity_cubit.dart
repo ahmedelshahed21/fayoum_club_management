@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:fayoum_club_management/core/data/models/basic_model.dart';
+import 'package:fayoum_club_management/core/data/models/success_model.dart';
 import 'package:fayoum_club_management/core/data/models/validation_model.dart';
 import 'package:fayoum_club_management/features/activites/data/models/add_new_activity_model/add_new_activity_request_model.dart';
 import 'package:fayoum_club_management/features/activites/data/repos/add_new_activity_repo/add_new_activity_repo.dart';
@@ -19,7 +19,7 @@ class AddNewActivityCubit extends Cubit<AddNewActivityState> {
   }) async {
     emit(const AddNewActivityLoading());
 
-    final Either<ValidationModel, BasicModel> result = await addNewActivityRepo
+    final Either<ValidationModel, SuccessModel> result = await addNewActivityRepo
         .addNewActivity(requestModel: requestModel, image: image);
 
     result.fold(

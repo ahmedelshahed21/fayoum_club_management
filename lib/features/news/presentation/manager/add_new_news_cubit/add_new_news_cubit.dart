@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:fayoum_club_management/core/data/models/validation_model.dart';
-import 'package:fayoum_club_management/core/data/models/basic_model.dart';
+import 'package:fayoum_club_management/core/data/models/success_model.dart';
 import 'package:fayoum_club_management/features/news/data/models/add_new_news_request_model/add_new_news_request_model.dart';
 import 'package:fayoum_club_management/features/news/data/repos/add_new_news_repo/add_new_news_repo.dart';
 import 'package:fayoum_club_management/features/news/presentation/manager/add_new_news_cubit/add_new_news_state.dart';
@@ -18,7 +18,7 @@ class AddNewNewsCubit extends Cubit<AddNewNewsState> {
   }) async {
     emit(const AddNewNewsLoading());
 
-    final Either<ValidationModel, BasicModel> result = await addNewNewsRepo
+    final Either<ValidationModel, SuccessModel> result = await addNewNewsRepo
         .addNewNews(requestModel: requestModel, image: image);
 
     result.fold(

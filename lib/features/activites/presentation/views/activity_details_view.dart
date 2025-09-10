@@ -10,9 +10,9 @@ import 'package:fayoum_club_management/core/widgets/retry_widget.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class ActivityDetailsView extends StatelessWidget {
-  const ActivityDetailsView({super.key, required this.id});
+  const ActivityDetailsView({super.key, required this.activityId});
 
-  final int id;
+  final int activityId;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class ActivityDetailsView extends StatelessWidget {
       body: BlocProvider(
         create:
             (context) =>
-                getIt<ActivityDetailsCubit>()..getActivityDetails(id),
+                getIt<ActivityDetailsCubit>()..getActivityDetails(activityId: activityId),
         child: BlocBuilder<ActivityDetailsCubit, ActivityDetailsState>(
           builder: (context, state) {
             if (state is ActivityDetailsLoading) {
@@ -31,12 +31,12 @@ class ActivityDetailsView extends StatelessWidget {
                   BorderRadius.circular(4),
                 ),
                 child: ActivityDetailsViewBody(
-                  detailsData: getDummyActivityDetails(), // dummy
+                  activityDetailsData: getDummyActivityDetails(), // dummy
                 ),
               );
             } else if (state is ActivityDetailsSuccess) {
               return ActivityDetailsViewBody(
-                detailsData: state.activityDetailsModel.data!,
+                activityDetailsData: state.activityDetailsModel.data!,
               );
             } else if (state is ActivityDetailsFailure) {
               return RetryWidget(
@@ -44,7 +44,7 @@ class ActivityDetailsView extends StatelessWidget {
                 onPressed:
                     () => context
                         .read<ActivityDetailsCubit>()
-                        .getActivityDetails(id),
+                        .getActivityDetails(activityId: activityId),
               );
             }
             return const SizedBox.shrink();

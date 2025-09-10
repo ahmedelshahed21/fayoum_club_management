@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:fayoum_club_management/core/data/models/validation_model.dart';
-import 'package:fayoum_club_management/core/data/models/basic_model.dart';
+import 'package:fayoum_club_management/core/data/models/success_model.dart';
 
 abstract class AddNewTrainerState extends Equatable {
   const AddNewTrainerState();
@@ -19,7 +19,7 @@ class AddNewTrainerLoading extends AddNewTrainerState {
 }
 
 class AddNewTrainerSuccess extends AddNewTrainerState {
-  final BasicModel model;
+  final SuccessModel model;
 
   const AddNewTrainerSuccess(this.model);
 

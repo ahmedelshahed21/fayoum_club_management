@@ -44,9 +44,9 @@ class LoginRepoImpl implements LoginRepo {
     try {
       final response = await dioConsumer.post(
         EndPoints.login,
-        data: {ApiKey.phoneNumber: phoneNumber, ApiKey.password: password},
+        data: {ApiKey.phone: phoneNumber, ApiKey.password: password},
       );
-      print(response);
+      // print(response);
       if (response != null && response is Map<String, dynamic>) {
         if (response[ApiKey.code] >= 200 && response[ApiKey.code] < 400) {
           final loginSuccessModel = AuthSuccessModel.fromJson(response);

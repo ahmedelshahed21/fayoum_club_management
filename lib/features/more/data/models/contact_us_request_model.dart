@@ -14,7 +14,7 @@ class ContactUsRequestModel {
   Map<String, dynamic> toJson() {
     return {
       ApiKey.name: name,
-      ApiKey.phoneNumber: phoneNumber,
+      ApiKey.phone: phoneNumber,
       ApiKey.details: message,
     };
   }
@@ -22,7 +22,7 @@ class ContactUsRequestModel {
   factory ContactUsRequestModel.fromJson(Map<String, dynamic> json) {
     return ContactUsRequestModel(
       name: json[ApiKey.name],
-      phoneNumber: json[ApiKey.phoneNumber],
+      phoneNumber: json[ApiKey.phone],
       message: json[ApiKey.details],
     );
   }

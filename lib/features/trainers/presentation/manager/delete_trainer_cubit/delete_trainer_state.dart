@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:fayoum_club_management/core/data/models/basic_model.dart';
+import 'package:fayoum_club_management/core/data/models/success_model.dart';
 
 abstract class DeleteTrainerState extends Equatable {
   const DeleteTrainerState();
@@ -20,7 +20,7 @@ class DeleteTrainerLoading extends DeleteTrainerState {
 }
 
 class DeleteTrainerSuccess extends DeleteTrainerState {
-  final BasicModel model;
+  final SuccessModel model;
 
   const DeleteTrainerSuccess(this.model);
 
@@ -29,7 +29,7 @@ class DeleteTrainerSuccess extends DeleteTrainerState {
 }
 
 class DeleteTrainerFailure extends DeleteTrainerState {
-  final BasicModel error;
+  final SuccessModel error;
 
   const DeleteTrainerFailure(this.error);
 

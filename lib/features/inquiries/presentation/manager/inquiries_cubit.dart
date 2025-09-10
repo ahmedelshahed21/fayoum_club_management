@@ -36,7 +36,7 @@ class InquiriesCubit extends Cubit<InquiriesState> {
       },
           (data) {
         _items.addAll(data.items);
-        _hasMore = _currentPage < data.pagination.totalPages;
+        _hasMore = _currentPage < data.pagination!.totalPages;
 
         emit(InquiriesLoaded(
           items: List.from(_items),

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:fayoum_club_management/core/data/models/basic_model.dart';
+import 'package:fayoum_club_management/core/data/models/success_model.dart';
 
 abstract class DeleteInquiryState extends Equatable {
   const DeleteInquiryState();
@@ -20,7 +20,7 @@ class DeleteInquiryLoading extends DeleteInquiryState {
 }
 
 class DeleteInquirySuccess extends DeleteInquiryState {
-  final BasicModel model;
+  final SuccessModel model;
 
   const DeleteInquirySuccess(this.model);
 
@@ -29,7 +29,7 @@ class DeleteInquirySuccess extends DeleteInquiryState {
 }
 
 class DeleteInquiryFailure extends DeleteInquiryState {
-  final BasicModel error;
+  final SuccessModel error;
 
   const DeleteInquiryFailure(this.error);
 

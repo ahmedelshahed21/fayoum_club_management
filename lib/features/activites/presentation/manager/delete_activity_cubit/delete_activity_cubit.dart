@@ -8,10 +8,10 @@ class DeleteActivityCubit extends Cubit<DeleteActivityState> {
   DeleteActivityCubit({required this.deleteActivityRepo})
       : super(DeleteActivityInitial());
 
-  Future<void> deleteActivity(int id) async {
-    emit(DeleteActivityLoading(id));
+  Future<void> deleteActivity({required int activityId}) async {
+    emit(DeleteActivityLoading(activityId));
 
-    final result = await deleteActivityRepo.deleteActivity(id: id);
+    final result = await deleteActivityRepo.deleteActivity(activityId: activityId);
 
     if (result.status=='success') {
       emit(DeleteActivitySuccess(result));

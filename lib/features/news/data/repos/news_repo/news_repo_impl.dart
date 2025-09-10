@@ -15,7 +15,7 @@ class NewsRepoImpl implements NewsRepo {
   NewsRepoImpl({required this.dioConsumer, required this.networkCubit});
 
   @override
-  Future<Either<Failure, NewsModel>> getAllNews({int page = 1}) async {
+  Future<Either<Failure, NewsModel>> getAllNews({int page = 1,int? activityId,int? status,String? typeOption}) async {
     final isConnected = await networkCubit.networkInfo.isConnected;
 
     if (!isConnected) {
@@ -26,12 +26,15 @@ class NewsRepoImpl implements NewsRepo {
 
     try {
       final response = await dioConsumer.get(EndPoints.news,
-        queryParameters: {
-        Params.page:page,
-          'perPage':3
-        }
+          queryParameters: {
+            Params.page:page,
+            'perPage':5,
+            'activateId': activityId,
+            'status': status,
+            'typeOption':typeOption
+          }
       );
-
+print(response);
       if (response != null && response is Map<String, dynamic>) {
         if (response[ApiKey.code] == 200) {
           final news = NewsModel.fromJson(response);
@@ -47,9 +50,11 @@ class NewsRepoImpl implements NewsRepo {
         );
       }
     } catch (e) {
+      print(e.toString());
       return Left(
         UnexpectedFailure(errMessage: AppStrings.unexpectedError.tr()),
       );
     }
   }
 }
+

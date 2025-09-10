@@ -11,11 +11,11 @@ class ActivityDetailsCubit extends Cubit<ActivityDetailsState> {
   ActivityDetailsCubit({required this.activityDetailsRepo})
     : super(const ActivityDetailsInitial());
 
-  Future<void> getActivityDetails(int id) async {
+  Future<void> getActivityDetails({required int activityId}) async {
     emit(const ActivityDetailsLoading());
 
     final Either<Failure, ActivityDetailsModel> result =
-        await activityDetailsRepo.getActivityDetails(id: id);
+        await activityDetailsRepo.getActivityDetails(activityId: activityId);
 
     result.fold(
       (failure) => emit(ActivityDetailsFailure(failure)),

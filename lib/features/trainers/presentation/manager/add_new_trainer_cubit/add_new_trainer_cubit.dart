@@ -5,7 +5,7 @@ import 'package:fayoum_club_management/features/trainers/presentation/manager/ad
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:fayoum_club_management/core/data/models/validation_model.dart';
-import 'package:fayoum_club_management/core/data/models/basic_model.dart';
+import 'package:fayoum_club_management/core/data/models/success_model.dart';
 
 class AddNewTrainerCubit extends Cubit<AddNewTrainerState> {
   final AddNewTrainerRepo addNewTrainerRepo;
@@ -19,7 +19,7 @@ class AddNewTrainerCubit extends Cubit<AddNewTrainerState> {
   }) async {
     emit(const AddNewTrainerLoading());
 
-    final Either<ValidationModel, BasicModel> result = await addNewTrainerRepo
+    final Either<ValidationModel, SuccessModel> result = await addNewTrainerRepo
         .addNewTrainer(requestModel: requestModel, image: image);
 
     result.fold(

@@ -7,6 +7,7 @@ import 'package:fayoum_club_management/core/widgets/spacing.dart';
 import 'package:fayoum_club_management/core/widgets/tag_widget.dart';
 import 'package:fayoum_club_management/features/news/presentation/manager/delete_news_cubit/delete_news_cubit.dart';
 import 'package:fayoum_club_management/features/news/presentation/widgets/delete_news_dialog.dart';
+import 'package:fayoum_club_management/features/news/presentation/widgets/related_news_section.dart';
 import 'package:flutter/material.dart';
 import 'package:fayoum_club_management/core/utils/app_colors.dart';
 import 'package:fayoum_club_management/core/utils/app_styles.dart';
@@ -94,8 +95,8 @@ class NewsDetailsView extends StatelessWidget {
                           textAlign: TextAlign.justify,
                         ),
                         const VerticalSpace(64),
-                        // if(news.activate!=null)
-                        //   RelatedNewsSection(news: news),
+                        // if(news.activate!=null || news.status!=0)
+                          RelatedNewsSection(news: news),
                       ],
                     ),
                   ),

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:fayoum_club_management/core/data/models/basic_model.dart';
+import 'package:fayoum_club_management/core/data/models/success_model.dart';
 
 abstract class DeleteNewsState extends Equatable {
   const DeleteNewsState();
@@ -20,7 +20,7 @@ class DeleteNewsLoading extends DeleteNewsState {
 }
 
 class DeleteNewsSuccess extends DeleteNewsState {
-  final BasicModel model;
+  final SuccessModel model;
 
   const DeleteNewsSuccess(this.model);
 
@@ -29,7 +29,7 @@ class DeleteNewsSuccess extends DeleteNewsState {
 }
 
 class DeleteNewsFailure extends DeleteNewsState {
-  final BasicModel error;
+  final SuccessModel error;
 
   const DeleteNewsFailure(this.error);
 

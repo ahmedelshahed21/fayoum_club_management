@@ -31,7 +31,7 @@ class InquiryCard extends StatelessWidget {
               builder: (builder) {
                 return BlocProvider(
                   create: (_) => getIt<DeleteInquiryCubit>(),
-                  child: DeleteInquiryDialog(id: item.id!),
+                  child: DeleteInquiryDialog(id: item.activityId!),
                 );
               },
             );

@@ -5,6 +5,7 @@ import 'package:fayoum_club_management/features/activites/data/models/activity_d
 import 'package:fayoum_club_management/features/trainers/presentation/widgets/trainer_tile.dart';
 import 'package:flutter/material.dart';
 
+
 class TrainersSection extends StatelessWidget {
   const TrainersSection({super.key, required this.detailsData});
 
@@ -12,29 +13,32 @@ class TrainersSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return detailsData.captans.isNotEmpty
+    return detailsData.captains.isNotEmpty
         ? Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "المدربون",
-              style: AppStyles.styleBold18(
-                context,
-              ).copyWith(color: AppColors.pureBlackColor),
-            ),
-            const VerticalSpace(8),
-            Column(
-              children:
-                  detailsData.captans
-                      .map((trainer) => TrainerTile(trainer: trainer))
-                      .toList(),
-            ),
-          ],
-        )
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "المدربون",
+          style: AppStyles.styleSemiBold16(
+            context,
+          ).copyWith(color: AppColors.pureBlackColor),
+        ),
+        const VerticalSpace(16),
+        SizedBox(
+          height: 120,
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            physics: const BouncingScrollPhysics(),
+            itemCount: detailsData.captains.length,
+            separatorBuilder: (_, __) => const HorizontalSpace(12),
+            itemBuilder: (context, index) {
+              return TrainerTile(trainer: detailsData.captains[index]);
+            },
+          ),
+        ),
+      ],
+    )
         : SizedBox.shrink();
-    // Text(
-    //   "لا يوجد مدربين متاحين",
-    //   style: AppStyles.styleRegular16(context),
-    // );
   }
 }
+

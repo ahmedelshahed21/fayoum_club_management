@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:fayoum_club_management/core/data/models/validation_model.dart';
-import 'package:fayoum_club_management/core/data/models/basic_model.dart';
+import 'package:fayoum_club_management/core/data/models/success_model.dart';
 
 abstract class AddNewNewsState extends Equatable {
   const AddNewNewsState();
@@ -19,7 +19,7 @@ class AddNewNewsLoading extends AddNewNewsState {
 }
 
 class AddNewNewsSuccess extends AddNewNewsState {
-  final BasicModel model;
+  final SuccessModel model;
 
   const AddNewNewsSuccess(this.model);
 

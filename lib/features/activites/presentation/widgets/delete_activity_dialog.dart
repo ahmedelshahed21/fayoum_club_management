@@ -12,9 +12,9 @@ import '../../../../core/utils/app_strings.dart';
 import '../../../../core/functions/app_snack_bars.dart';
 
 class DeleteActivityDialog extends StatelessWidget {
-  const DeleteActivityDialog({super.key, required this.id});
+  const DeleteActivityDialog({super.key, required this.activityId});
 
-  final int id;
+  final int activityId;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class DeleteActivityDialog extends StatelessWidget {
           confirmText: AppStrings.confirm.tr(),
           cancelText: AppStrings.no.tr(),
           onConfirm: () {
-            context.read<DeleteActivityCubit>().deleteActivity(id);
+            context.read<DeleteActivityCubit>().deleteActivity(activityId: activityId);
           },
           onCancel: () => GoRouter.of(context).pop(),
         );

@@ -26,7 +26,7 @@ class ActivitesRepoImpl implements ActivitesRepo {
     try {
       final response = await dioConsumer.get(EndPoints.activities);
 
-      print(response);
+      // print(response);
 
       if (response != null && response is Map<String, dynamic>) {
         if (response[ApiKey.code] == 200) {

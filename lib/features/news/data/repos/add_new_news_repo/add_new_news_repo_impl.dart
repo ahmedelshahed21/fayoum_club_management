@@ -5,7 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:fayoum_club_management/core/utils/app_strings.dart';
 import 'package:fayoum_club_management/core/utils/end_points.dart';
 import 'package:fayoum_club_management/core/data/models/validation_model.dart';
-import 'package:fayoum_club_management/core/data/models/basic_model.dart';
+import 'package:fayoum_club_management/core/data/models/success_model.dart';
 import 'package:fayoum_club_management/core/databases/api/dio_consumer.dart';
 import 'package:fayoum_club_management/core/databases/cache/secure_storage_helper.dart';
 import 'package:fayoum_club_management/core/state_management/network_connection_cubit/network_connection_cubit.dart';
@@ -24,7 +24,7 @@ class AddNewNewsRepoImpl implements AddNewNewsRepo {
   });
 
   @override
-  Future<Either<ValidationModel, BasicModel>> addNewNews({
+  Future<Either<ValidationModel, SuccessModel>> addNewNews({
     required AddNewNewsRequestModel requestModel,
     File? image,
   }) async {
@@ -61,7 +61,7 @@ class AddNewNewsRepoImpl implements AddNewNewsRepo {
 
       if (response != null && response is Map<String, dynamic>) {
         if (response[ApiKey.code] >= 200 && response[ApiKey.code] < 400) {
-          return Right(BasicModel.fromJson(response));
+          return Right(SuccessModel.fromJson(response));
         } else {
           return Left(ValidationModel.fromJson(response));
         }

@@ -1,5 +1,5 @@
-import '../../../../../core/data/models/basic_model.dart';
+import '../../../../../core/data/models/success_model.dart';
 
 abstract class DeleteInquiryRepo {
-  Future<BasicModel> deleteInquiry({required int id});
+  Future<SuccessModel> deleteInquiry({required int id});
 }

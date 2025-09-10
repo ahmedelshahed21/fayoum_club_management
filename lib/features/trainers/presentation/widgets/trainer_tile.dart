@@ -1,12 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:fayoum_club_management/core/utils/app_colors.dart';
-import 'package:fayoum_club_management/core/utils/app_constants.dart';
-import 'package:fayoum_club_management/core/utils/app_styles.dart';
 import 'package:fayoum_club_management/core/routes/app_router.dart';
-import 'package:fayoum_club_management/core/widgets/image_loading_effect.dart';
+import 'package:fayoum_club_management/core/utils/app_colors.dart';
+import 'package:fayoum_club_management/core/utils/app_styles.dart';
 import 'package:fayoum_club_management/core/widgets/spacing.dart';
-import 'package:flutter/material.dart';
 import 'package:fayoum_club_management/features/activites/data/models/activity_details_model/activity_details_model.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
@@ -17,71 +15,46 @@ class TrainerTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: InkWell(
-          borderRadius: BorderRadius.circular(8),
-        onTap: (){
-          GoRouter.of(
-            context,
-          ).push(AppRouter.trainerView, extra: trainer);
-        },
-        child: Card(
-          elevation: 0,
-          margin:  EdgeInsets.zero,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          color: AppColors.primaryColor.withValues(alpha: 0.2),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(256),
-                  child: CachedNetworkImage(
-                    imageUrl: trainer.image ?? AppConstants.noImageUrl,
-                    width: 60,
-                    height: 60,
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) => const ImageLoadingEffect(),
-                    errorWidget:
-                        (context, url, error) => Container(
-                          width: 60,
-                          height: 60,
-                          color: AppColors.pureWhiteColor,
-                          child: Icon(
-                            Iconsax.user_copy,
-                            color: AppColors.greenColor,
-                            size: 28,
-                          ),
-                        ),
-                  ),
-                ),
-                HorizontalSpace(12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        trainer.name,
-                        style: AppStyles.styleBold18(
-                          context,
-                        ).copyWith(color: AppColors.pureBlackColor),
-                      ),
-                    ],
-                  ),
-                ),
-                 Icon(
-                    Icons.arrow_forward_ios_outlined,
-                    color: AppColors.pureBlackColor,
-                    size: 28,
-                ),
-              ],
+    return InkWell(
+      borderRadius: BorderRadius.circular(12),
+      onTap: () {
+        GoRouter.of(context).push(AppRouter.trainerDetailsView, extra: trainer);
+      },
+      child: SizedBox(
+        width: 100,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CircleAvatar(
+              radius: 40,
+              backgroundColor: AppColors.primaryColor.withValues(alpha: 0.1),
+              backgroundImage: trainer.image != null
+                  ? CachedNetworkImageProvider(trainer.image!)
+                  : null,
+              child: trainer.image == null
+                  ? Icon(
+                Iconsax.user_copy,
+                color: AppColors.greenColor,
+                size: 32,
+              )
+                  : null,
             ),
-          ),
+
+            const VerticalSpace(8),
+            Text(
+              trainer.name,
+              textAlign: TextAlign.center,
+              style: AppStyles.styleBold14(context).copyWith(
+                color: AppColors.primaryColor,
+              ),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
         ),
       ),
     );
   }
 }
+
+

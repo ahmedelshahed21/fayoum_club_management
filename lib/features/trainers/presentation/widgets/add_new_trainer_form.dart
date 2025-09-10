@@ -45,7 +45,7 @@ class _AddNewTrainerFormState extends State<AddNewTrainerForm> {
               icon: Icons.check_circle_outline,
               boxColor: AppColors.greenColor,
             );
-            context.read<ActivityDetailsCubit>().getActivityDetails(widget.activityId);
+            context.read<ActivityDetailsCubit>().getActivityDetails(activityId:widget.activityId);
 
           } else if (state is AddNewTrainerFailure) {
             primarySnackBar(

@@ -1,5 +1,5 @@
-import '../../../../../core/data/models/basic_model.dart';
+import '../../../../../core/data/models/success_model.dart';
 
 abstract class DeleteActivityRepo {
-  Future<BasicModel> deleteActivity({required int id});
+  Future<SuccessModel> deleteActivity({required int activityId});
 }

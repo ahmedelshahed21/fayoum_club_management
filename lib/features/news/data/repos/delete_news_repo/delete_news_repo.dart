@@ -1,5 +1,5 @@
-import '../../../../../core/data/models/basic_model.dart';
+import '../../../../../core/data/models/success_model.dart';
 
 abstract class DeleteNewsRepo {
-  Future<BasicModel> deleteNews({required int id});
+  Future<SuccessModel> deleteNews({required int id});
 }

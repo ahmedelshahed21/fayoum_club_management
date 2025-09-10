@@ -13,14 +13,15 @@ import 'package:fayoum_club_management/features/activites/presentation/manager/d
 import 'package:fayoum_club_management/features/activites/presentation/widgets/delete_activity_dialog.dart';
 import 'package:fayoum_club_management/features/activites/presentation/widgets/subscription_section.dart';
 import 'package:fayoum_club_management/features/activites/presentation/widgets/trainers_section.dart';
+import 'package:fayoum_club_management/features/news/presentation/widgets/categorized_news_sliver_list_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class ActivityDetailsViewBody extends StatelessWidget {
-  const ActivityDetailsViewBody({super.key, required this.detailsData});
+  const ActivityDetailsViewBody({super.key, required this.activityDetailsData});
 
-  final ActivityDetailsData detailsData;
+  final ActivityDetailsData activityDetailsData;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +38,7 @@ class ActivityDetailsViewBody extends StatelessWidget {
                 titleSpacing: 2,
                 // centerTitle: true,
                 title: Text(
-                  detailsData.title,
+                  activityDetailsData.title,
                   style: AppStyles.styleSemiBold18(
                     context,
                   ).copyWith(color: AppColors.pureWhiteColor),
@@ -49,7 +50,7 @@ class ActivityDetailsViewBody extends StatelessWidget {
                 ),
                 flexibleSpace: FlexibleSpaceBar(
                   background: CachedNetworkImage(
-                    imageUrl: detailsData.image ?? AppConstants.noImageUrl,
+                    imageUrl: activityDetailsData.image ?? AppConstants.noImageUrl,
                     width: double.infinity,
                     fit: BoxFit.cover,
                     placeholder: (context, url) => const ImageLoadingEffect(),
@@ -67,23 +68,27 @@ class ActivityDetailsViewBody extends StatelessWidget {
               /// باقي المحتوى
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const VerticalSpace(8),
+                      const VerticalSpace(12),
                       Text(
-                        detailsData.description ?? '',
+                        activityDetailsData.description ?? '',
                         style: AppStyles.styleRegular16(context),
                       ),
                       const VerticalSpace(24),
-                      SubscriptionSection(detailsData: detailsData),
+                      SubscriptionSection(detailsData: activityDetailsData),
                       const VerticalSpace(24),
-                      TrainersSection(detailsData: detailsData),
-                      const VerticalSpace(80),
+                      TrainersSection(detailsData: activityDetailsData),
+                      const VerticalSpace(24),
                     ],
                   ),
                 ),
+              ),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                sliver: CategorizedNewsSliverListSection(activityId: activityDetailsData.id),
               ),
             ],
           ),
@@ -103,7 +108,7 @@ class ActivityDetailsViewBody extends StatelessWidget {
                       builder: (builder) {
                         return BlocProvider(
                           create: (_) => getIt<DeleteActivityCubit>(),
-                          child: DeleteActivityDialog(id: detailsData.id),
+                          child: DeleteActivityDialog(activityId: activityDetailsData.id),
                         );
                       },
                     );
@@ -118,7 +123,7 @@ class ActivityDetailsViewBody extends StatelessWidget {
                   onPressed: () {
                     GoRouter.of(
                       context,
-                    ).push(AppRouter.addNewTrainerView, extra: detailsData.id);
+                    ).push(AppRouter.addNewTrainerView, extra: activityDetailsData.id);
                   },
                   text: 'إضافة مدرب',
                 ),

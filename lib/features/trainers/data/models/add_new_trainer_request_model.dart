@@ -16,18 +16,18 @@ class AddNewTrainerRequestModel {
   Map<String, dynamic> toJson() {
     return {
       ApiKey.name: name,
-      'description': description,
-      'isActive': isActive,
-      'activateId':activityId
+      ApiKey.description: description,
+      ApiKey.isActive: isActive,
+      ApiKey.activityId:activityId
     };
   }
 
   factory AddNewTrainerRequestModel.fromJson(Map<String, dynamic> json) {
     return AddNewTrainerRequestModel(
-      activityId: json['activateId'],
+      activityId: json[ApiKey.activityId],
       name: json[ApiKey.name],
-      description: json['description'],
-      isActive: json['isActive'],
+      description: json[ApiKey.description],
+      isActive: json[ApiKey.isActive],
     );
   }
 }

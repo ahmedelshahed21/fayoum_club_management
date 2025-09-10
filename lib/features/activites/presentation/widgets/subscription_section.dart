@@ -38,14 +38,14 @@ class SubscriptionSection extends StatelessWidget {
                   Expanded(
                     child: SubscriptionCard(
                       title: "للأعضاء",
-                      price: detailsData.monyMember.toString(),
+                      price: detailsData.moneyMember.toString(),
                     ),
                   ),
                   const HorizontalSpace(6),
                   Expanded(
                     child: SubscriptionCard(
                       title: "لغير الأعضاء",
-                      price: detailsData.mony.toString(),
+                      price: detailsData.money.toString(),
                     ),
                   ),
                 ],
@@ -63,7 +63,7 @@ class SubscriptionSection extends StatelessWidget {
             ),
             const Spacer(),
             PriceWidget(
-              price: detailsData.monyMember.toString(),
+              price: detailsData.moneyMember.toString(),
               currency: 'ج.م',
             ),
             const HorizontalSpace(16),

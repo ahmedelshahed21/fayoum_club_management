@@ -5,6 +5,6 @@ import 'package:fayoum_club_management/features/activites/data/models/activity_d
 
 abstract class ActivityDetailsRepo {
   Future<Either<Failure, ActivityDetailsModel>> getActivityDetails({
-    required int id,
+    required int activityId,
   });
 }

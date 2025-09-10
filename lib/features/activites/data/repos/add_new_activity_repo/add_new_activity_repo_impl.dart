@@ -5,7 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:fayoum_club_management/core/utils/app_strings.dart';
 import 'package:fayoum_club_management/core/utils/end_points.dart';
 import 'package:fayoum_club_management/core/data/models/validation_model.dart';
-import 'package:fayoum_club_management/core/data/models/basic_model.dart';
+import 'package:fayoum_club_management/core/data/models/success_model.dart';
 import 'package:fayoum_club_management/core/databases/api/dio_consumer.dart';
 import 'package:fayoum_club_management/core/databases/cache/secure_storage_helper.dart';
 import 'package:fayoum_club_management/core/state_management/network_connection_cubit/network_connection_cubit.dart';
@@ -24,7 +24,7 @@ class AddNewActivityRepoImpl implements AddNewActivityRepo {
   });
 
   @override
-  Future<Either<ValidationModel, BasicModel>> addNewActivity({
+  Future<Either<ValidationModel, SuccessModel>> addNewActivity({
     required AddNewActivityRequestModel requestModel,
     File? image,
   }) async {
@@ -56,15 +56,14 @@ class AddNewActivityRepoImpl implements AddNewActivityRepo {
         EndPoints.addNewActivity,
         headers: {
           Params.authorization: '${Params.bearer} $token',
-          // سيب Dio يحدد الـ Content-Type
         },
         data: formData,
       );
-      print(response);
+      // print(response);
 
       if (response != null && response is Map<String, dynamic>) {
         if (response[ApiKey.code] >= 200 && response[ApiKey.code] < 400) {
-          return Right(BasicModel.fromJson(response));
+          return Right(SuccessModel.fromJson(response));
         } else {
           return Left(ValidationModel.fromJson(response));
         }

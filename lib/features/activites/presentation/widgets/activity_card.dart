@@ -30,7 +30,7 @@ class ActivityCard extends StatelessWidget {
                 builder: (builder) {
                   return BlocProvider(
                     create: (_) => getIt<DeleteActivityCubit>(),
-                    child: DeleteActivityDialog(id: activityItem.id!),
+                    child: DeleteActivityDialog(activityId: activityItem.id!),
                   );
                 },
               );

@@ -1,6 +1,6 @@
-import 'package:fayoum_club_management/features/news/data/models/news_model.dart';
-import 'package:fayoum_club_management/core/errors/failure.dart';
 import 'package:dartz/dartz.dart';
+import 'package:fayoum_club_management/core/errors/failure.dart';
+import 'package:fayoum_club_management/features/news/data/models/news_model.dart';
 import 'package:fayoum_club_management/features/news/data/repos/news_repo/news_repo.dart';
 import 'package:fayoum_club_management/features/news/presentation/manager/news_cubit/news_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,7 +15,7 @@ class NewsCubit extends Cubit<NewsState> {
   bool _isLoading = false;
   final List<NewsItem> _items = [];
 
-  Future<void> fetchNews({bool refresh = false}) async {
+  Future<void> fetchNews({bool refresh = false, int? activityId,int? status,String? typeOption}) async {
     if (_isLoading) return;
 
     if (refresh) {
@@ -30,7 +30,7 @@ class NewsCubit extends Cubit<NewsState> {
     if (_currentPage == 1) emit(const NewsLoading());
 
     final Either<Failure, NewsModel> result =
-    await newsRepo.getAllNews(page: _currentPage);
+    await newsRepo.getAllNews(page: _currentPage,activityId: activityId,status: status,typeOption: typeOption);
 
     result.fold(
           (failure) {
