@@ -3,6 +3,7 @@ import 'package:fayoum_club_management/features/activites/presentation/manager/a
 import 'package:fayoum_club_management/features/home/presentation/manager/banners_cubit/banners_cubit.dart';
 import 'package:fayoum_club_management/features/inquiries/presentation/manager/inquiries_cubit.dart';
 import 'package:fayoum_club_management/features/news/presentation/manager/news_cubit/news_cubit.dart';
+import 'package:fayoum_club_management/features/subscriptions/presentation/manager/activities_subscriptions_cubit/activities_subscriptions_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -38,6 +39,9 @@ class FayoumClubManagementApp extends StatelessWidget {
         ),
         BlocProvider<InquiriesCubit>(
           create: (_) => getIt<InquiriesCubit>(),
+        ),
+        BlocProvider<ActivitiesSubscriptionsCubit>(
+          create: (_) => getIt<ActivitiesSubscriptionsCubit>(),
         ),
       ],
       child: MaterialApp.router(

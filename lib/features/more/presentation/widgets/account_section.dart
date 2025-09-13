@@ -33,14 +33,14 @@ class AccountSection extends StatelessWidget {
             customPush(context, AppRouter.profileView);
           },
         ),
-
-        // CustomListTileWidget(
-        //   title: AppStrings.qrCode,
-        //   iconData: Icons.qr_code_2,
-        //   onPressed: () {
-        //     customPush(context, AppRouter.qrCodeView);
-        //   },
-        // ),
+        const VerticalSpace(8),
+        CustomListTileWidget(
+          title: 'الاشتراكات',
+          iconData: Icons.monetization_on_outlined,
+          onPressed: () {
+            customPush(context, AppRouter.activitiesSubscriptionsView);
+          },
+        ),
       ],
     );
   }

@@ -74,7 +74,7 @@ class _BannersSlidersState extends State<BannersSliders> {
                   ),
                   PositionedDirectional(
                     start: 16,
-                    top: 24,
+                    top: 20,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -82,9 +82,10 @@ class _BannersSlidersState extends State<BannersSliders> {
                           isArabic(context)
                               ? widget.newsData[index].title
                               : widget.newsData[index].title,
-                          style: AppStyles.styleBold20(
+                          style: AppStyles.styleBold18(
                             context,
-                          ).copyWith(color: AppColors.pureBlackColor),
+                          ).copyWith(color: AppColors.pureWhiteColor),
+                          maxLines: 2,
                         ),
                         // const VerticalSpace(96),
                         // SecondaryButton(

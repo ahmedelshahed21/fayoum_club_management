@@ -30,6 +30,9 @@ import 'package:fayoum_club_management/features/news/data/repos/news_repo/news_r
 import 'package:fayoum_club_management/features/news/presentation/manager/add_new_news_cubit/add_new_news_cubit.dart';
 import 'package:fayoum_club_management/features/news/presentation/manager/delete_news_cubit/delete_news_cubit.dart';
 import 'package:fayoum_club_management/features/news/presentation/manager/news_cubit/news_cubit.dart';
+import 'package:fayoum_club_management/features/subscriptions/data/repos/activities_subscriptions_repo/activities_subscriptions_repo.dart';
+import 'package:fayoum_club_management/features/subscriptions/data/repos/activities_subscriptions_repo/activities_subscriptions_repo_impl.dart';
+import 'package:fayoum_club_management/features/subscriptions/presentation/manager/activities_subscriptions_cubit/activities_subscriptions_cubit.dart';
 import 'package:fayoum_club_management/features/trainers/data/repos/add_new_trainer_repo/add_new_trainer_repo.dart';
 import 'package:fayoum_club_management/features/trainers/data/repos/add_new_trainer_repo/add_new_trainer_repo_impl.dart';
 import 'package:fayoum_club_management/features/trainers/data/repos/delete_trainer_repo/delete_trainer_repo.dart';
@@ -222,4 +225,15 @@ void setupServiceLocator() {
         () => DeleteInquiryCubit(deleteInquiryRepo: getIt<DeleteInquiryRepo>()),
   );
 
+  // Activities Subscriptions dependencies
+  getIt.registerLazySingleton<ActivitiesSubscriptionsRepo>(
+        () => ActivitiesSubscriptionsRepoImpl(
+      dioConsumer: getIt<DioConsumer>(),
+      networkCubit: getIt<NetworkConnectionCubit>(),
+      secureStorageHelper: getIt<SecureStorageHelper>(),
+    ),
+  );
+  getIt.registerFactory<ActivitiesSubscriptionsCubit>(
+        () => ActivitiesSubscriptionsCubit(getIt<ActivitiesSubscriptionsRepo>()),
+  );
 }

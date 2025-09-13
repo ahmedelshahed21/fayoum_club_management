@@ -11,9 +11,6 @@ import 'package:fayoum_club_management/features/inquiries/presentation/widgets/d
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-/// =====================
-/// Widget: InquiryCard
-/// =====================
 class InquiryCard extends StatelessWidget {
   final dynamic item;
 
@@ -59,10 +56,6 @@ class InquiryCard extends StatelessWidget {
     );
   }
 }
-
-/// =====================
-/// Widget: InquiryHeader
-/// =====================
 class InquiryHeader extends StatelessWidget {
   final dynamic item;
 
@@ -72,12 +65,12 @@ class InquiryHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       contentPadding: EdgeInsets.zero,
-      title: Text(item.name, style: AppStyles.styleSemiBold16(context)),
+      title: Text(item.name, style: AppStyles.styleBold18(context).copyWith(color: AppColors.pureBlackColor)),
       subtitle: Text(
         item.phone,
-        style: AppStyles.styleRegular14(
+        style: AppStyles.styleSemiBold16(
           context,
-        ).copyWith(color: AppColors.customGreyColor),
+        ).copyWith(color: AppColors.greyColor),
       ),
       trailing: IconInBoxWidget(
         size: 50,
@@ -92,9 +85,7 @@ class InquiryHeader extends StatelessWidget {
   }
 }
 
-/// =====================
-/// Widget: InquiryDetails
-/// =====================
+
 class InquiryDetails extends StatelessWidget {
   final dynamic item;
 
@@ -122,9 +113,6 @@ class InquiryDetails extends StatelessWidget {
   }
 }
 
-/// =====================
-/// Widget: InquiryTime
-/// =====================
 class InquiryTime extends StatelessWidget {
   final dynamic item;
 
