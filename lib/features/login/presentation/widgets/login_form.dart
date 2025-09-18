@@ -112,7 +112,7 @@ class _LoginFormState extends State<LoginForm> {
                     onPressed: () {
                       FocusScope.of(context).unfocus();
                       context.read<LoginCubit>().login(
-                        phoneNumber: "+2${_phoneNumberController.text}",
+                        phoneNumber: _phoneNumberController.text,
                         password: _passwordController.text.trim(),
                       );
                     },

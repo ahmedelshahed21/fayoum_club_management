@@ -46,7 +46,7 @@ class LoginRepoImpl implements LoginRepo {
         EndPoints.login,
         data: {ApiKey.phone: phoneNumber, ApiKey.password: password},
       );
-      // print(response);
+
       if (response != null && response is Map<String, dynamic>) {
         if (response[ApiKey.code] >= 200 && response[ApiKey.code] < 400) {
           final loginSuccessModel = AuthSuccessModel.fromJson(response);

@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="fayoum_club_managment_managment"
+        android:label="إدارة النادي"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
