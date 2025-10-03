@@ -3,6 +3,14 @@ class AppConstants {
   static const tempImageUrl = "https://t4.ftcdn.net/jpg/03/65/47/95/360_F_365479512_bboDY2fesAvMaUn8IOqj98kt07bMfWB7.jpg";
   static const appId = "7bd68f16-d310-4b5b-9734-7ddbf5089dc9";
   static const type = "user";
+  static const List<String> activityTypes = [
+    "ألعاب فردية ومنازلات",
+    "ألعاب جماعية",
+    "ألعاب المضرب",
+    "لياقة بدنية",
+    "رياضات مائية",
+  ];
+
 }
 
 class PayMobConstants {

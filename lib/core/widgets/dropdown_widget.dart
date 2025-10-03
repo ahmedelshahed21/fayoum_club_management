@@ -42,10 +42,11 @@ class DropdownWidget extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: AppColors.primaryColor),
+          borderSide: BorderSide(color: AppColors.lightGreyColor),
         ),
       ),
       buttonStyleData: ButtonStyleData(
+        elevation: 0,
         padding: const EdgeInsets.symmetric(horizontal: 8),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
@@ -53,16 +54,16 @@ class DropdownWidget extends StatelessWidget {
         height: 56,
       ),
       dropdownStyleData: DropdownStyleData(
-        maxHeight: 200,
+        maxHeight: 160,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           color: AppColors.pureWhiteColor,
         ),
       ),
       menuItemStyleData: const MenuItemStyleData(
-        padding: EdgeInsets.symmetric(horizontal: 8),
 
-        height: 48,
+        padding: EdgeInsets.symmetric(horizontal: 8),
+        height: 36,
       ),
       items: items,
       onChanged: (newValue) {

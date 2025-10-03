@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
+
 class TrainerTile extends StatelessWidget {
   const TrainerTile({super.key, required this.trainer});
 
@@ -16,7 +17,7 @@ class TrainerTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(8),
       onTap: () {
         GoRouter.of(context).push(AppRouter.trainerDetailsView, extra: trainer);
       },
@@ -26,12 +27,14 @@ class TrainerTile extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             CircleAvatar(
-              radius: 40,
+              radius: 36,
               backgroundColor: AppColors.primaryColor.withValues(alpha: 0.1),
-              backgroundImage: trainer.image != null
+              backgroundImage:
+              trainer.image != null
                   ? CachedNetworkImageProvider(trainer.image!)
                   : null,
-              child: trainer.image == null
+              child:
+              trainer.image == null
                   ? Icon(
                 Iconsax.user_copy,
                 color: AppColors.greenColor,
@@ -44,9 +47,9 @@ class TrainerTile extends StatelessWidget {
             Text(
               trainer.name,
               textAlign: TextAlign.center,
-              style: AppStyles.styleBold14(context).copyWith(
-                color: AppColors.primaryColor,
-              ),
+              style: AppStyles.styleBold14(
+                context,
+              ).copyWith(color: AppColors.primaryColor),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
@@ -56,5 +59,6 @@ class TrainerTile extends StatelessWidget {
     );
   }
 }
+
 
 

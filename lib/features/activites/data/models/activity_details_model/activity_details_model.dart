@@ -1,6 +1,5 @@
 import 'package:fayoum_club_management/core/utils/end_points.dart';
 
-
 class ActivityDetailsModel {
   final int version;
   final int code;
@@ -107,6 +106,7 @@ class CaptainModel {
   final String? image;
   final String createdAt;
   final String updatedAt;
+  final List<CaptainTimeModel> time;
 
   CaptainModel({
     required this.id,
@@ -117,6 +117,7 @@ class CaptainModel {
     this.image,
     required this.createdAt,
     required this.updatedAt,
+    required this.time,
   });
 
   factory CaptainModel.fromJson(Map<String, dynamic> json) {
@@ -129,6 +130,10 @@ class CaptainModel {
       image: json[ApiKey.image],
       createdAt: json[ApiKey.createdAt] ?? '',
       updatedAt: json[ApiKey.updatedAt] ?? '',
+      time: (json[ApiKey.time] as List<dynamic>?)
+          ?.map((e) => CaptainTimeModel.fromJson(e))
+          .toList() ??
+          [],
     );
   }
 
@@ -140,6 +145,59 @@ class CaptainModel {
       ApiKey.activityId: activateId,
       ApiKey.isActive: isActive,
       ApiKey.image: image,
+      ApiKey.createdAt: createdAt,
+      ApiKey.updatedAt: updatedAt,
+      ApiKey.time: time.map((e) => e.toJson()).toList(),
+    };
+  }
+}
+
+class CaptainTimeModel {
+  final int id;
+  final int captainId;
+  final String day;
+  final String fromTime;
+  final String toTime;
+  final String status;
+  final String? note;
+  final String createdAt;
+  final String updatedAt;
+
+  CaptainTimeModel({
+    required this.id,
+    required this.captainId,
+    required this.day,
+    required this.fromTime,
+    required this.toTime,
+    required this.status,
+    this.note,
+    required this.createdAt,
+    required this.updatedAt,
+  });
+
+  factory CaptainTimeModel.fromJson(Map<String, dynamic> json) {
+    return CaptainTimeModel(
+      id: json[ApiKey.id] ?? 0,
+      captainId: json[ApiKey.captainId] ?? 0,
+      day: json[ApiKey.day] ?? '',
+      fromTime: json[ApiKey.fromTime] ?? '',
+      toTime: json[ApiKey.toTime] ?? '',
+      status: json[ApiKey.status] ?? '',
+      note: json[ApiKey.note],
+      createdAt: json[ApiKey.createdAt] ?? '',
+      updatedAt: json[ApiKey.updatedAt] ?? '',
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      ApiKey.id: id,
+      ApiKey.captainId: captainId,
+      ApiKey.day: day,
+      ApiKey.fromTime: fromTime,
+      ApiKey.toTime: toTime,
+      ApiKey.status: status,
+      ApiKey.note: note,
       ApiKey.createdAt: createdAt,
       ApiKey.updatedAt: updatedAt,
     };

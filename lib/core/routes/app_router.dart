@@ -54,7 +54,7 @@ abstract class AppRouter {
         path: activityDetailsView,
         builder: (context, state) {
           final int id = state.extra as int;
-          return ActivityDetailsView(activityId: id);
+          return ActivityDetailsView(id: id);
         },
       ),
       GoRoute(

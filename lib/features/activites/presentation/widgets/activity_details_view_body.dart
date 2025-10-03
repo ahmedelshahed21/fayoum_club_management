@@ -19,9 +19,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class ActivityDetailsViewBody extends StatelessWidget {
-  const ActivityDetailsViewBody({super.key, required this.activityDetailsData});
+  const ActivityDetailsViewBody({
+    super.key,
+    required this.activityDetailsData,
+    required this.scrollController,
+  });
 
   final ActivityDetailsData activityDetailsData;
+  final ScrollController scrollController;
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +34,14 @@ class ActivityDetailsViewBody extends StatelessWidget {
       children: [
         Expanded(
           child: CustomScrollView(
+            controller: scrollController,
             physics: const BouncingScrollPhysics(),
             slivers: [
               /// SliverAppBar لعرض صورة النشاط
               SliverAppBar(
                 expandedHeight: 180,
                 pinned: true,
-                titleSpacing: 2,
-                // centerTitle: true,
+                centerTitle: true,
                 title: Text(
                   activityDetailsData.title,
                   style: AppStyles.styleSemiBold18(
@@ -50,7 +55,8 @@ class ActivityDetailsViewBody extends StatelessWidget {
                 ),
                 flexibleSpace: FlexibleSpaceBar(
                   background: CachedNetworkImage(
-                    imageUrl: activityDetailsData.image ?? AppConstants.noImageUrl,
+                    imageUrl:
+                        activityDetailsData.image ?? AppConstants.noImageUrl,
                     width: double.infinity,
                     fit: BoxFit.cover,
                     placeholder: (context, url) => const ImageLoadingEffect(),
@@ -88,15 +94,17 @@ class ActivityDetailsViewBody extends StatelessWidget {
               ),
               SliverPadding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                sliver: CategorizedNewsSliverListSection(activityId: activityDetailsData.id),
+                sliver: CategorizedNewsSliverListSection(
+                  activityId: activityDetailsData.id,
+                ),
               ),
             ],
           ),
         ),
 
         /// bottomNavigationBar
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        SafeArea(
+          minimum: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Row(
             children: [
               Expanded(
@@ -108,7 +116,9 @@ class ActivityDetailsViewBody extends StatelessWidget {
                       builder: (builder) {
                         return BlocProvider(
                           create: (_) => getIt<DeleteActivityCubit>(),
-                          child: DeleteActivityDialog(activityId: activityDetailsData.id),
+                          child: DeleteActivityDialog(
+                            activityId: activityDetailsData.id,
+                          ),
                         );
                       },
                     );
@@ -119,11 +129,11 @@ class ActivityDetailsViewBody extends StatelessWidget {
               HorizontalSpace(12),
               Expanded(
                 child: PrimaryButton(
-                  backgroundColor: AppColors.greenColor,
                   onPressed: () {
-                    GoRouter.of(
-                      context,
-                    ).push(AppRouter.addNewTrainerView, extra: activityDetailsData.id);
+                    GoRouter.of(context).push(
+                      AppRouter.addNewTrainerView,
+                      extra: activityDetailsData.id,
+                    );
                   },
                   text: 'إضافة مدرب',
                 ),

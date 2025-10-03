@@ -11,7 +11,7 @@ class AddNewTrainerCubit extends Cubit<AddNewTrainerState> {
   final AddNewTrainerRepo addNewTrainerRepo;
 
   AddNewTrainerCubit({required this.addNewTrainerRepo})
-    : super(AddNewTrainerInitial());
+      : super(AddNewTrainerInitial());
 
   Future<void> addNewTrainer({
     required AddNewTrainerRequestModel requestModel,
@@ -19,12 +19,15 @@ class AddNewTrainerCubit extends Cubit<AddNewTrainerState> {
   }) async {
     emit(const AddNewTrainerLoading());
 
-    final Either<ValidationModel, SuccessModel> result = await addNewTrainerRepo
-        .addNewTrainer(requestModel: requestModel, image: image);
+    final Either<ValidationModel, SuccessModel> result =
+    await addNewTrainerRepo.addNewTrainer(
+      requestModel: requestModel,
+      image: image,
+    );
 
     result.fold(
-      (failure) => emit(AddNewTrainerFailure(failure)),
-      (success) => emit(AddNewTrainerSuccess(success)),
+          (failure) => emit(AddNewTrainerFailure(failure)),
+          (success) => emit(AddNewTrainerSuccess(success)),
     );
   }
 }

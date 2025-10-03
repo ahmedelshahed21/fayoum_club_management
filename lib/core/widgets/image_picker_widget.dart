@@ -47,10 +47,10 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
     return GestureDetector(
       onTap: pickImage,
       child: Container(
-        width: 100,
-        height: 100,
+        width: 96,
+        height: 96,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(8),
           color: AppColors.primaryColor.withValues(alpha: 0.3),
           image:
               _selectedImage != null
@@ -62,7 +62,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
         ),
         child:
             _selectedImage == null
-                ? const Icon(Icons.image, color: Colors.white, size: 40)
+                ? const Icon(Icons.image, color: Colors.white, size: 36)
                 : null,
       ),
     );

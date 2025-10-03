@@ -18,27 +18,29 @@ class InquiryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onDoubleTap: () {
-        runIfConnected(
-          context: context,
-          onConnected: () {
-            showDialog(
-              context: context,
-              builder: (builder) {
-                return BlocProvider(
-                  create: (_) => getIt<DeleteInquiryCubit>(),
-                  child: DeleteInquiryDialog(id: item.activityId!),
-                );
-              },
-            );
-          },
-        );
-      },
-      child: Card(
-        color: AppColors.pureWhiteColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        elevation: 0.5,
+    return Card(
+      color: AppColors.pureWhiteColor,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      elevation: 0.2,
+      child: InkWell(
+          borderRadius: BorderRadius.circular(8),
+        splashColor: AppColors.loadingEffectColor,
+        onDoubleTap: () {
+          runIfConnected(
+            context: context,
+            onConnected: () {
+              showDialog(
+                context: context,
+                builder: (builder) {
+                  return BlocProvider(
+                    create: (_) => getIt<DeleteInquiryCubit>(),
+                    child: DeleteInquiryDialog(id: item.activityId!),
+                  );
+                },
+              );
+            },
+          );
+        },
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Column(

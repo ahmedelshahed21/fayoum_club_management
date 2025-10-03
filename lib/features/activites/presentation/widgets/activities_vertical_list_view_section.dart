@@ -1,3 +1,4 @@
+import 'package:fayoum_club_management/core/utils/app_colors.dart';
 import 'package:fayoum_club_management/core/utils/app_strings.dart';
 import 'package:fayoum_club_management/core/functions/dummy_lists.dart';
 import 'package:fayoum_club_management/core/widgets/app_indicators.dart';
@@ -23,6 +24,8 @@ class ActivitiesVerticalListViewSection extends StatelessWidget {
         builder: (context, state) {
           if (state is ActivitesLoading) {
             return Skeletonizer(
+              containersColor: AppColors.loadingEffectColor,
+              textBoneBorderRadius: TextBoneBorderRadius(BorderRadius.circular(4)),
               child: ActivitesListView(activites: getDummyActivitiesList()),
             );
           } else if (state is ActivitesSuccess) {

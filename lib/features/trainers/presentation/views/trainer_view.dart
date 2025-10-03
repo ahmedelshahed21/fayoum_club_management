@@ -10,6 +10,7 @@ import 'package:fayoum_club_management/core/widgets/spacing.dart';
 import 'package:fayoum_club_management/features/activites/data/models/activity_details_model/activity_details_model.dart';
 import 'package:fayoum_club_management/features/trainers/presentation/manager/delete_trainer_cubit/delete_trainer_cubit.dart';
 import 'package:fayoum_club_management/features/trainers/presentation/widgets/delete_trainer_dialog.dart';
+import 'package:fayoum_club_management/features/trainers/presentation/widgets/trainer_time_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -18,7 +19,6 @@ class TrainerView extends StatelessWidget {
   const TrainerView({super.key, required this.trainer});
 
   final CaptainModel trainer;
-  // final ActivityDetailsData activityDetailsData;
 
   @override
   Widget build(BuildContext context) {
@@ -30,63 +30,67 @@ class TrainerView extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  VerticalSpace(16),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Center(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(120),
-                          child: CachedNetworkImage(
-                            imageUrl: trainer.image ?? AppConstants.noImageUrl,
-                            width: 150,
-                            height: 150,
-                            fit: BoxFit.cover,
-                            placeholder:
-                                (context, url) => const ImageLoadingEffect(),
-                            errorWidget:
-                                (context, url, error) => Container(
-                                  width: 150,
-                                  height: 150,
-                                  color: AppColors.pureWhiteColor,
-                                  child: Icon(
-                                    Iconsax.user_copy,
-                                    color: AppColors.greenColor,
-                                    size: 60,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    VerticalSpace(16),
+                    Column(
+                      children: [
+                        Center(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(64),
+                            child: CachedNetworkImage(
+                              imageUrl:
+                                  trainer.image ?? AppConstants.noImageUrl,
+                              width: 120,
+                              height: 120,
+                              fit: BoxFit.cover,
+                              placeholder:
+                                  (context, url) => const ImageLoadingEffect(),
+                              errorWidget:
+                                  (context, url, error) => Container(
+                                    width: 150,
+                                    height: 150,
+                                    color: AppColors.pureWhiteColor,
+                                    child: Icon(
+                                      Iconsax.user_copy,
+                                      color: AppColors.greenColor,
+                                      size: 60,
+                                    ),
                                   ),
-                                ),
+                            ),
                           ),
                         ),
-                      ),
-                      VerticalSpace(16),
+                        VerticalSpace(16),
+                        Text(
+                          trainer.name,
+                          style: AppStyles.styleBold20(
+                            context,
+                          ).copyWith(color: AppColors.primaryColor),
+                        ),
+                      ],
+                    ),
+                    VerticalSpace(32),
+                    if (trainer.description != null &&
+                        trainer.description!.isNotEmpty)
                       Text(
-                        trainer.name,
-                        style: AppStyles.styleBold20(
+                        trainer.description!,
+                        style: AppStyles.styleRegular14(
                           context,
-                        ).copyWith(color: AppColors.pureBlackColor),
+                        ).copyWith(color: AppColors.greyColor),
+                        textAlign: TextAlign.center,
                       ),
-                    ],
-                  ),
-                  VerticalSpace(48),
-                  Text(
-                    trainer.description ?? '',
-                    style: AppStyles.styleRegular14(
-                      context,
-                    ).copyWith(color: AppColors.greyColor),
-                    textAlign: TextAlign.center,
-                  ),
+                    VerticalSpace(32),
+                    TrainerTimeSection(trainer: trainer),
 
-                  VerticalSpace(24),
-                ],
+                  ],
+                ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
+
+
+            SafeArea(
+              minimum: const EdgeInsets.symmetric(vertical: 16),
               child: PrimaryButton(
                 backgroundColor: AppColors.redColor,
                 text: 'حذف المدرب',

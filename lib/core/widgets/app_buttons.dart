@@ -75,7 +75,7 @@ class SecondaryButton extends StatelessWidget {
         shadowColor: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
-          side: BorderSide(color: AppColors.primaryColor),
+          side: BorderSide(color: borderColor ?? AppColors.primaryColor),
         ),
       ),
       onPressed: onPressed,
@@ -84,9 +84,9 @@ class SecondaryButton extends StatelessWidget {
             child ??
             Text(
               text ?? '',
-              style: AppStyles.styleSemiBold16(
+              style: AppStyles.styleMedium14(
                 context,
-              ).copyWith(color: AppColors.primaryColor),
+              ).copyWith(color: AppColors.greyColor),
             ),
       ),
     );
@@ -204,6 +204,7 @@ class ActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
+        elevation: 0,
         backgroundColor: backgroundColor ?? AppColors.primaryColor,
         foregroundColor: AppColors.offWhiteColor,
         shape: RoundedRectangleBorder(

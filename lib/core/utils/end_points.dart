@@ -42,7 +42,6 @@ class ApiKey {
   static const String gender = "gender";
   static const String phone = "phone";
 
-
   // Content / Entities
   static const String title = "title";
   static const String description = "description";
@@ -53,11 +52,9 @@ class ApiKey {
   static const String subject = "subject";
   static const String body = "body";
 
-
   // Languages
   static const String ar = "ar";
   static const String en = "en";
-
 
   static const String active = "active";
 
@@ -82,7 +79,16 @@ class ApiKey {
   static const String money = "mony";
   static const String captains = "captans";
   static const String activityId = "activateId";
+
+  // Captain Time
+  static const String time = "time";
+  static const String captainId = "captin_id";
+  static const String day = "day";
+  static const String fromTime = "from_time";
+  static const String toTime = "to_time";
+  static const String note = "note";
 }
+
 
 
 class Params {

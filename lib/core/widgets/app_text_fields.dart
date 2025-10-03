@@ -314,6 +314,7 @@ class OutLineInputBorderTextFormField extends StatelessWidget {
   final int? maxLength;
   final Widget? prefix;
   final bool? readOnly;
+  final TextStyle? textStyle;
 
   const OutLineInputBorderTextFormField({
     super.key,
@@ -331,6 +332,7 @@ class OutLineInputBorderTextFormField extends StatelessWidget {
     this.prefix,
     this.maxLength,
     this.readOnly,
+    this.textStyle,
   });
 
   @override
@@ -356,7 +358,7 @@ class OutLineInputBorderTextFormField extends StatelessWidget {
       onFieldSubmitted: onSubmit,
       onChanged: onChanged,
       keyboardType: type,
-      style: AppStyles.styleMedium18(
+      style: textStyle ?? AppStyles.styleMedium18(
         context,
       ).copyWith(color: AppColors.pureBlackColor),
       validator: validate,

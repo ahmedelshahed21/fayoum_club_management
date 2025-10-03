@@ -18,7 +18,7 @@ abstract class AppColors {
   static Color loadingEffectColor = const Color(0xFFEBEBF4);
   static Color customGreyColor = const Color(0xFF9E9E9E);
   static Color rateColor = const Color(0xFF66737F);
-  static Color busesSectionColor = const Color(0xFFD58A19);
+  static Color brownColor = const Color(0xFFAE6F0E);
   static Color residencesSectionColor = const Color(0xFF16A358);
   static Color greenColor = Colors.green;
 }
