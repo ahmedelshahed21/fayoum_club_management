@@ -104,7 +104,7 @@ class ActivityDetailsViewBody extends StatelessWidget {
 
         /// bottomNavigationBar
         SafeArea(
-          minimum: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          minimum: const EdgeInsets.all(16),
           child: Row(
             children: [
               Expanded(

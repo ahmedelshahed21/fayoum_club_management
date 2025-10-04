@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final List<Widget> views = [
       const HomeView(),
-      const ActivitesView(),
+      const ActivitiesView(),
       const InquiriesView(),
       const MoreView(),
     ];

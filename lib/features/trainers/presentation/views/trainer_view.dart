@@ -38,12 +38,12 @@ class TrainerView extends StatelessWidget {
                       children: [
                         Center(
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(64),
+                            borderRadius: BorderRadius.circular(128),
                             child: CachedNetworkImage(
                               imageUrl:
                                   trainer.image ?? AppConstants.noImageUrl,
-                              width: 120,
-                              height: 120,
+                              width: 150,
+                              height: 150,
                               fit: BoxFit.cover,
                               placeholder:
                                   (context, url) => const ImageLoadingEffect(),

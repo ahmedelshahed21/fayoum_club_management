@@ -100,4 +100,5 @@ class Params {
   static const String applicationJson = 'application/json';
   static const String contentType = 'contentType';
   static const String multipartFormData = 'multipartFormData';
+  static const String type = "type";
 }

@@ -51,14 +51,14 @@ class ActivityCard extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             color: AppColors.pureWhiteColor,
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.lightGreyColor,
-                spreadRadius: 2,
-                blurRadius: 8,
-                offset: const Offset(0, 4),
-              ),
-            ],
+            // boxShadow: [
+            //   BoxShadow(
+            //     color: AppColors.lightGreyColor,
+            //     spreadRadius: 2,
+            //     blurRadius: 8,
+            //     offset: const Offset(0, 4),
+            //   ),
+            // ],
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8),

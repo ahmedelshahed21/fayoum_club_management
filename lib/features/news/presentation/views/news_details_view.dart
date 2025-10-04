@@ -104,8 +104,8 @@ class NewsDetailsView extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 16),
+          SafeArea(
+            minimum: const EdgeInsets.all(16),
             child: PrimaryButton(
               backgroundColor: AppColors.redColor,
               text: 'حذف الخبر',

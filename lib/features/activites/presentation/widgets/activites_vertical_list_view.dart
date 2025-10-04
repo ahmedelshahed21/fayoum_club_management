@@ -11,11 +11,11 @@ class ActivitesListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       physics: const BouncingScrollPhysics(),
-      padding: const EdgeInsets.symmetric(vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       itemCount: activites.length,
       itemBuilder: (context, index) {
         return Padding(
-          padding: const EdgeInsets.only(bottom: 24),
+          padding: const EdgeInsets.only(top: 32),
           child: ActivityCard(activityItem: activites[index]),
         );
       },
