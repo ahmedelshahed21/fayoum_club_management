@@ -21,30 +21,32 @@ class ActivityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onDoubleTap:
-          () => runIfConnected(
-            context: context,
-            onConnected: () {
-              showDialog(
-                context: context,
-                builder: (builder) {
-                  return BlocProvider(
-                    create: (_) => getIt<DeleteActivityCubit>(),
-                    child: DeleteActivityDialog(activityId: activityItem.id!),
-                  );
-                },
-              );
-            },
-          ),
-      onTap:
-          () => runIfConnected(
-            context: context,
-            onConnected: () {
-              GoRouter.of(
-                context,
-              ).push(AppRouter.activityDetailsView, extra: activityItem.id);
-            },
-          ),
+      onDoubleTap: () {
+        runIfConnected(
+          context: context,
+          onConnected: () {
+            showDialog(
+              context: context,
+              builder: (builder) {
+                return BlocProvider(
+                  create: (_) => getIt<DeleteActivityCubit>(),
+                  child: DeleteActivityDialog(activityId: activityItem.id!),
+                );
+              },
+            );
+          },
+        );
+      },
+      onTap: () {
+        runIfConnected(
+          context: context,
+          onConnected: () {
+            GoRouter.of(
+              context,
+            ).push(AppRouter.activityDetailsView, extra: activityItem.id);
+          },
+        );
+      },
       child: AspectRatio(
         aspectRatio: 8 / 5,
         child: Container(

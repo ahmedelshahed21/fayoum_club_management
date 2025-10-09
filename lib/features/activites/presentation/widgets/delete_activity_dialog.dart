@@ -1,4 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:fayoum_club_management/core/functions/navigation.dart';
+import 'package:fayoum_club_management/core/routes/app_router.dart';
 import 'package:fayoum_club_management/core/widgets/confirmation_dialog_with_horizontal_buttons.dart';
 import 'package:fayoum_club_management/features/activites/presentation/manager/activites_cubit/activites_cubit.dart';
 import 'package:fayoum_club_management/features/activites/presentation/manager/delete_activity_cubit/delete_activity_cubit.dart';
@@ -23,6 +25,7 @@ class DeleteActivityDialog extends StatelessWidget {
         if (state is DeleteActivitySuccess) {
           context.read<ActivitesCubit>().getActivites();
           Navigator.of(context).pop();
+          customGo(context, AppRouter.homePage);
           primarySnackBar(
             context,
             'تم حذف النشاط بنجاح',
