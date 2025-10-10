@@ -15,8 +15,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
-class TrainerView extends StatelessWidget {
-  const TrainerView({super.key, required this.trainer});
+class TrainerDetailsView extends StatelessWidget {
+  const TrainerDetailsView({super.key, required this.trainer});
 
   final CaptainModel trainer;
 
@@ -81,14 +81,13 @@ class TrainerView extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                     VerticalSpace(32),
-                    TrainerTimeSection(trainer: trainer),
-
+                    trainer.time.isNotEmpty
+                        ? TrainerTimeSection(trainer: trainer)
+                        : SizedBox.shrink(),
                   ],
                 ),
               ),
             ),
-
-
             SafeArea(
               minimum: const EdgeInsets.symmetric(vertical: 16),
               child: PrimaryButton(

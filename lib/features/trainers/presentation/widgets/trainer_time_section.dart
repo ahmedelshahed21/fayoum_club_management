@@ -1,3 +1,4 @@
+import 'package:fayoum_club_management/core/functions/format_time_12.dart';
 import 'package:fayoum_club_management/core/utils/app_colors.dart';
 import 'package:fayoum_club_management/core/utils/app_styles.dart';
 import 'package:fayoum_club_management/core/widgets/spacing.dart';
@@ -6,10 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class TrainerTimeSection extends StatelessWidget {
-  const TrainerTimeSection({
-    super.key,
-    required this.trainer,
-  });
+  const TrainerTimeSection({super.key, required this.trainer});
 
   final CaptainModel trainer;
 
@@ -20,7 +18,7 @@ class TrainerTimeSection extends StatelessWidget {
         Align(
           alignment: Alignment.centerRight,
           child: Text(
-            "المواعيد",
+            'المواعيد',
             style: AppStyles.styleSemiBold16(
               context,
             ).copyWith(color: AppColors.pureBlackColor),
@@ -28,17 +26,11 @@ class TrainerTimeSection extends StatelessWidget {
         ),
         VerticalSpace(16),
         if (trainer.time.isEmpty)
-          Center(
-            child: Text(
-              "لا توجد مواعيد حالياً",
-              style: AppStyles.styleRegular14(
-                context,
-              ).copyWith(color: AppColors.greyColor),
-            ),
-          )
+          SizedBox.shrink()
         else
           Column(
-            children: trainer.time.map((t) {
+            children:
+            trainer.time.map((t) {
               return Card(
                 color: AppColors.pureWhiteColor,
                 margin: const EdgeInsets.only(bottom: 8),
@@ -48,7 +40,9 @@ class TrainerTimeSection extends StatelessWidget {
                 elevation: 0,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0, vertical: 8.0),
+                    horizontal: 16.0,
+                    vertical: 8.0,
+                  ),
                   child: Row(
                     children: [
                       Icon(
@@ -65,18 +59,14 @@ class TrainerTimeSection extends StatelessWidget {
                               t.day,
                               style: AppStyles.styleBold18(
                                 context,
-                              ).copyWith(
-                                color: AppColors.greenColor,
-                              ),
+                              ).copyWith(color: AppColors.greenColor),
                             ),
                             Spacer(),
                             Text(
-                              "${_formatTime12(t.fromTime)} - ${_formatTime12(t.toTime)}",
+                              "${formatTime12(t.fromTime)} - ${formatTime12(t.toTime)}",
                               style: AppStyles.styleSemiBold16(
                                 context,
-                              ).copyWith(
-                                color: AppColors.greyColor,
-                              ),
+                              ).copyWith(color: AppColors.greyColor),
                             ),
                           ],
                         ),
@@ -89,20 +79,5 @@ class TrainerTimeSection extends StatelessWidget {
           ),
       ],
     );
-  }
-
-
-  String _formatTime12(String time24) {
-    try {
-      final parts = time24.split(':');
-      int hour = int.parse(parts[0]);
-      final minute = int.parse(parts[1]);
-      final period = hour >= 12 ? 'م' : 'ص';
-      hour = hour % 12;
-      if (hour == 0) hour = 12; // 12 صباحاً أو مساءً
-      return "${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')} $period";
-    } catch (e) {
-      return time24;
-    }
   }
 }

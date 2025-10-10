@@ -3,7 +3,7 @@ import 'package:fayoum_club_management/features/activites/presentation/views/act
 import 'package:fayoum_club_management/features/activites/presentation/views/add_new_activity_view.dart';
 import 'package:fayoum_club_management/features/subscriptions/presentation/views/activities_subscriptions_view.dart';
 import 'package:fayoum_club_management/features/trainers/presentation/views/add_new_trainer_view.dart';
-import 'package:fayoum_club_management/features/trainers/presentation/views/trainer_view.dart';
+import 'package:fayoum_club_management/features/trainers/presentation/views/trainer_details_view.dart';
 import 'package:fayoum_club_management/features/news/data/models/news_model.dart';
 import 'package:fayoum_club_management/features/home/presentation/views/home_page.dart';
 import 'package:fayoum_club_management/features/news/presentation/views/news_details_view.dart';
@@ -68,7 +68,7 @@ abstract class AppRouter {
         path: trainerDetailsView,
         builder: (context, state) {
           final CaptainModel trainer = state.extra as CaptainModel;
-          return TrainerView(trainer: trainer);
+          return TrainerDetailsView(trainer: trainer);
         },
       ),
       GoRoute(
