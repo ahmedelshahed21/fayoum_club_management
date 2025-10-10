@@ -1,4 +1,6 @@
 
+import 'package:fayoum_club_management/core/utils/end_points.dart';
+
 class AddNewNewsRequestModel {
 
   final String title;
@@ -19,21 +21,21 @@ class AddNewNewsRequestModel {
   Map<String, dynamic> toJson() {
     return {
 
-      'title': title,
-      'description': description,
-      'activateId':activityId,
-      'status': status,
-      'typeOption': typeOption,
+      ApiKey.title: title,
+      ApiKey.description: description,
+      ApiKey.activityId:activityId,
+      ApiKey.status: status,
+      ApiKey.typeOption: typeOption,
     };
   }
 
   factory AddNewNewsRequestModel.fromJson(Map<String, dynamic> json) {
     return AddNewNewsRequestModel(
-      title: json['title'],
-      description: json['description'],
-      activityId:  json['activateId'],
-      status: json['status'],
-      typeOption: json['typeOption'],
+      title: json[ApiKey.title],
+      description: json[ApiKey.description],
+      activityId:  json[ApiKey.activityId],
+      status: json[ApiKey.status],
+      typeOption: json[ApiKey.typeOption],
     );
   }
 }

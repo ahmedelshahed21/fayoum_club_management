@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/databases/cache/user_data_manager.dart';
 import '../../../../core/routes/app_router.dart';
@@ -24,7 +23,6 @@ class LogoutDialog extends StatelessWidget {
     return ConfirmationDialogWithHorizontalButtons(
       isLoading: false,
       iconData: Iconsax.logout_copy,
-      iconAsset: AppAssets.logoutIcon,
       title: AppStrings.logout.tr(),
       message: AppStrings.logoutMessage.tr(),
       confirmText: AppStrings.logout.tr(),

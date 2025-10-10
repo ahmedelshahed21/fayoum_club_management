@@ -49,20 +49,20 @@ class ActivitySubscriptionItem {
 
   factory ActivitySubscriptionItem.fromJson(Map<String, dynamic> json) {
     return ActivitySubscriptionItem(
-      id: json["id"] ?? 0,
-      userId: json["userId"] ?? 0,
-      activityId: json["activiteId"] ?? 0, // 👈 لاحظ التسمية
-      user: User.fromJson(json["user"]),
-      activity: ActivityModel.fromJson(json["activite"]), // 👈 لاحظ التسمية
+      id: json[ApiKey.id] ?? 0,
+      userId: json[ApiKey.userId] ?? 0,
+      activityId: json[ApiKey.activityId] ?? 0,
+      user: User.fromJson(json[ApiKey.user]),
+      activity: ActivityModel.fromJson(json[ApiKey.activity]),
       moneyPay: json["monyPay"] is int
           ? json["monyPay"]
           : int.tryParse(json["monyPay"].toString()) ?? 0,
-      numberCode: json["numberCode"]?.toString() ?? "",
-      createdAt: json["createdAt"] != null
-          ? DateTime.tryParse(json["createdAt"])
+      numberCode: json[ApiKey.title]?.toString() ?? "",
+      createdAt: json[ApiKey.createdAt] != null
+          ? DateTime.tryParse(json[ApiKey.createdAt])
           : null,
-      updatedAt: json["updatedAt"] != null
-          ? DateTime.tryParse(json["updatedAt"])
+      updatedAt: json[ApiKey.updatedAt] != null
+          ? DateTime.tryParse(json[ApiKey.updatedAt])
           : null,
     );
   }

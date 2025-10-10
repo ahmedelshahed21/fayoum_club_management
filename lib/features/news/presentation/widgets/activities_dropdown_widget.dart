@@ -1,3 +1,4 @@
+import 'package:fayoum_club_management/core/widgets/retry_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -54,9 +55,11 @@ class ActivitiesDropdownWidget extends StatelessWidget {
             onChanged: onChanged,
           );
         } else if (state is ActivitesFailure) {
-          return Text(
-            "فشل تحميل الأنشطة",
-            style: const TextStyle(color: Colors.red),
+          return RetryWidget(
+            message: "فشل تحميل الأنشطة",
+            onPressed: () {
+              context.read<ActivitesCubit>().getActivites();
+            },
           );
         }
         return const SizedBox.shrink();

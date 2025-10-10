@@ -50,11 +50,11 @@ class NewsItem {
       id: json[ApiKey.id],
       title: json[ApiKey.title] ?? '',
       description: json[ApiKey.description] ?? '',
-      activate: json['activate'] != null
-          ? ActivityModel.fromJson(json['activate'])
+      activate: json[ApiKey.activity] != null
+          ? ActivityModel.fromJson(json[ApiKey.activity])
           : null,
       status: json[ApiKey.status],
-      typeOption: json['typeOption'] ?? '',
+      typeOption: json[ApiKey.typeOption] ?? '',
       image: json[ApiKey.image] ?? '',
       createdAt: DateTime.parse(json[ApiKey.createdAt]),
       updatedAt: DateTime.parse(json[ApiKey.updatedAt]),

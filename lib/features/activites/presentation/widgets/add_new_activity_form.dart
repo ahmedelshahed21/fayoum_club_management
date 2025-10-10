@@ -160,7 +160,7 @@ class _AddNewActivityFormState extends State<AddNewActivityForm> {
 
                 const VerticalSpace(48),
 
-                /// زر الحفظ
+
                 state is AddNewActivityLoading
                     ? PrimaryButton(
                       onPressed: () {},
@@ -171,19 +171,6 @@ class _AddNewActivityFormState extends State<AddNewActivityForm> {
                     : PrimaryButton(
                       onPressed: () {
                         FocusScope.of(context).unfocus();
-
-                        // if (selectedImage == null) {
-                        //   primarySnackBar(
-                        //     context,
-                        //     'يجب تحديد صورة',
-                        //     icon: Iconsax.danger,
-                        //     iconSize: 32,
-                        //     iconColor: Colors.yellow,
-                        //     boxColor: AppColors.pureBlackColor,
-                        //   );
-                        //   return;
-                        // }
-
                         if (formKey.currentState!.validate()) {
                           context.read<AddNewActivityCubit>().addNewActivity(
                             requestModel: AddNewActivityRequestModel(

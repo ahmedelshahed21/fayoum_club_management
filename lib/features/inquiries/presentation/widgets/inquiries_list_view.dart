@@ -3,9 +3,7 @@ import 'package:fayoum_club_management/core/widgets/app_indicators.dart';
 import 'package:fayoum_club_management/features/inquiries/presentation/widgets/inquiry_card.dart';
 import 'package:flutter/material.dart';
 
-/// =====================
-/// Widget: InquiriesList
-/// =====================
+
 class InquiriesListView extends StatelessWidget {
   final List items;
   final bool hasMore;

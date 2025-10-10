@@ -21,6 +21,7 @@ class ApiKey {
   static const String id = "id";
   static const String name = "name";
   static const String type = "type";
+  static const String typeOption = "typeOption";
   static const String value = "value";
   static const String code = "code";
   static const String version = "version";
@@ -78,6 +79,7 @@ class ApiKey {
   static const String moneyMember = "monyMember";
   static const String money = "mony";
   static const String captains = "captans";
+  static const String activity = "activate";
   static const String activityId = "activateId";
 
   // Captain Time
