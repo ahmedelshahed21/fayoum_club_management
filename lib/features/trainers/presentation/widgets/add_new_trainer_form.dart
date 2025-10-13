@@ -37,7 +37,7 @@ class _AddNewTrainerFormState extends State<AddNewTrainerForm> {
   final List<String> days = [
     "السبت",
     "الأحد",
-    "الإثنين",
+    "الاثنين",
     "الثلاثاء",
     "الأربعاء",
     "الخميس",
@@ -46,7 +46,6 @@ class _AddNewTrainerFormState extends State<AddNewTrainerForm> {
 
   List<TrainerTime> trainerTimes = [];
 
-
   Future<void> showAddTimeDialog(BuildContext context) async {
     String? selectedDay;
     TimeOfDay? fromTime;
@@ -54,42 +53,50 @@ class _AddNewTrainerFormState extends State<AddNewTrainerForm> {
 
     await showDialog(
       context: context,
+      barrierDismissible: false,
       builder: (context) {
         return Dialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
           backgroundColor: AppColors.pureWhiteColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
           child: StatefulBuilder(
             builder: (context, setState) {
               return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 24,
+                ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const VerticalSpace(48),
+                    VerticalSpace(24),
+
                     Text(
                       "إضافة موعد جديد",
                       style: AppStyles.styleBold24(
                         context,
                       ).copyWith(color: AppColors.primaryColor),
                     ),
-                    const VerticalSpace(32),
+                    const VerticalSpace(24),
 
+                    /// اليوم
                     Transform.scale(
-                      scaleY:0.9 ,
+                      scaleY: 0.95,
                       child: DropdownWidget(
                         value: selectedDay,
                         items:
-                            days.map(
+                            days
+                                .map(
                                   (day) => DropdownMenuItem(
                                     value: day,
                                     child: Text(
                                       day,
                                       style: AppStyles.styleBold18(
                                         context,
-                                      ), // 🎨 ستايل من AppStyles
+                                      ).copyWith(
+                                        color: AppColors.lightBlackColor,
+                                      ),
                                     ),
                                   ),
                                 )
@@ -98,10 +105,9 @@ class _AddNewTrainerFormState extends State<AddNewTrainerForm> {
                         hintText: "اختر اليوم",
                       ),
                     ),
-
                     const VerticalSpace(16),
 
-                    /// وقت البداية + النهاية جنب بعض
+                    /// وقت البداية والنهاية
                     Row(
                       children: [
                         Expanded(
@@ -119,39 +125,34 @@ class _AddNewTrainerFormState extends State<AddNewTrainerForm> {
                                   return Theme(
                                     data: Theme.of(context).copyWith(
                                       timePickerTheme: TimePickerThemeData(
-                                        backgroundColor: AppColors.pureWhiteColor, // خلفية البوكس
-                                        hourMinuteTextStyle: AppStyles.styleBold24(context).copyWith(
-                                          color: AppColors.primaryColor,
-                                        ), // النص الأساسي للوقت
-                                        dayPeriodTextStyle: AppStyles.styleMedium16(context).copyWith(
-                                          color: AppColors.primaryColor,
-                                        ),
-                                        dialHandColor: AppColors.primaryColor, // لون مؤشر الساعة
-                                        dialBackgroundColor: AppColors.lightGreyColor.withOpacity(0.2),
-                                        entryModeIconColor: AppColors.primaryColor,
-                                        hourMinuteColor: MaterialStateColor.resolveWith((states) {
-                                          if (states.contains(MaterialState.selected)) {
-                                            return AppColors.primaryColor;
-                                          }
-                                          return AppColors.lightGreyColor;
-                                        }),
+                                        backgroundColor:
+                                            AppColors.pureWhiteColor,
+                                        hourMinuteTextStyle:
+                                            AppStyles.styleBold24(
+                                              context,
+                                            ).copyWith(
+                                              color: AppColors.primaryColor,
+                                            ),
+                                        dayPeriodTextStyle:
+                                            AppStyles.styleMedium16(
+                                              context,
+                                            ).copyWith(
+                                              color: AppColors.primaryColor,
+                                            ),
+                                        dialHandColor: AppColors.primaryColor,
+                                        dialBackgroundColor:
+                                            AppColors.lightGreyColor,
                                       ),
                                       colorScheme: ColorScheme.light(
-                                        primary: AppColors.primaryColor, // اللون الأساسي للأزرار
-                                        onPrimary: AppColors.pureWhiteColor, // لون النص فوق الزر الأساسي
-                                        onSurface: AppColors.greyColor, // لون النصوص العادية
-                                      ),
-                                      textTheme: Theme.of(context).textTheme.copyWith(
-                                        bodyLarge: AppStyles.styleRegular16(context),
-                                        bodyMedium: AppStyles.styleRegular14(context),
-                                        titleMedium: AppStyles.styleBold18(context),
+                                        primary: AppColors.primaryColor,
+                                        onPrimary: AppColors.pureWhiteColor,
+                                        onSurface: AppColors.greyColor,
                                       ),
                                     ),
                                     child: child!,
                                   );
                                 },
                               );
-
                               if (picked != null) {
                                 setState(() => fromTime = picked);
                               }
@@ -174,40 +175,28 @@ class _AddNewTrainerFormState extends State<AddNewTrainerForm> {
                                   return Theme(
                                     data: Theme.of(context).copyWith(
                                       timePickerTheme: TimePickerThemeData(
-                                        backgroundColor: AppColors.pureWhiteColor, // خلفية البوكس
-                                        hourMinuteTextStyle: AppStyles.styleBold24(context).copyWith(
-                                          color: AppColors.primaryColor,
-                                        ), // النص الأساسي للوقت
-                                        dayPeriodTextStyle: AppStyles.styleBold24(context).copyWith(
-                                          color: AppColors.primaryColor,
-                                        ),
-                                        dialHandColor: AppColors.primaryColor, // لون مؤشر الساعة
-                                        dialBackgroundColor: AppColors.lightGreyColor.withOpacity(0.2),
-                                        entryModeIconColor: AppColors.primaryColor,
-                                        hourMinuteColor: MaterialStateColor.resolveWith((states) {
-                                          if (states.contains(MaterialState.selected)) {
-                                            return AppColors.primaryColor;
-                                          }
-                                          return AppColors.lightGreyColor;
-                                        }),
+                                        backgroundColor:
+                                            AppColors.pureWhiteColor,
+                                        hourMinuteTextStyle:
+                                            AppStyles.styleBold24(
+                                              context,
+                                            ).copyWith(
+                                              color: AppColors.primaryColor,
+                                            ),
+                                        dialHandColor: AppColors.primaryColor,
+                                        dialBackgroundColor:
+                                            AppColors.lightGreyColor,
                                       ),
                                       colorScheme: ColorScheme.light(
-                                        primary: AppColors.primaryColor, // اللون الأساسي للأزرار
-                                        onPrimary: AppColors.pureWhiteColor, // لون النص فوق الزر الأساسي
-                                        onSurface: AppColors.greyColor, // لون النصوص العادية
-                                      ),
-                                      textTheme: Theme.of(context).textTheme.copyWith(
-                                        bodyLarge: AppStyles.styleSemiBold16(context),
-                                        bodyMedium: AppStyles.styleMedium16(context),
-                                        titleMedium: AppStyles.styleBold18(context),
-                                        bodySmall: AppStyles.styleRegular14(context),
+                                        primary: AppColors.primaryColor,
+                                        onPrimary: AppColors.pureWhiteColor,
+                                        onSurface: AppColors.greyColor,
                                       ),
                                     ),
                                     child: child!,
                                   );
                                 },
                               );
-
                               if (picked != null) {
                                 setState(() => toTime = picked);
                               }
@@ -217,27 +206,52 @@ class _AddNewTrainerFormState extends State<AddNewTrainerForm> {
                       ],
                     ),
 
-                    const VerticalSpace(48),
+                    const VerticalSpace(64),
 
-                    /// الأزرار (إلغاء / إضافة)
-                    PrimaryButton(
-                      text: "إضافة",
-                      onPressed: () {
-                        if (selectedDay != null &&
-                            fromTime != null &&
-                            toTime != null) {
-                          final newTime = TrainerTime(
-                            day: selectedDay!,
-                            fromTime:
-                                "${fromTime!.hour.toString().padLeft(2, '0')}:${fromTime!.minute.toString().padLeft(2, '0')}",
-                            toTime:
-                                "${toTime!.hour.toString().padLeft(2, '0')}:${toTime!.minute.toString().padLeft(2, '0')}",
-                          );
-                          Navigator.pop(context, newTime);
-                        }
-                      },
+                    /// الأزرار
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 4,
+                          child: ActionButton(
+                            text: "إلغاء",
+                            borderColor: AppColors.greyColor,
+                            backgroundColor: AppColors.pureWhiteColor,
+                            onPressed: () => Navigator.pop(context),
+                          ),
+                        ),
+                        const HorizontalSpace(12),
+                        Expanded(
+                          flex: 5,
+                          child: ActionButton(
+                            text: "إضافة",
+                            textColor: AppColors.pureWhiteColor,
+                            onPressed: () {
+                              if (selectedDay != null &&
+                                  fromTime != null &&
+                                  toTime != null) {
+                                final newTime = TrainerTime(
+                                  day: selectedDay!,
+                                  fromTime:
+                                      "${fromTime!.hour.toString().padLeft(2, '0')}:${fromTime!.minute.toString().padLeft(2, '0')}",
+                                  toTime:
+                                      "${toTime!.hour.toString().padLeft(2, '0')}:${toTime!.minute.toString().padLeft(2, '0')}",
+                                );
+                                Navigator.pop(context, newTime);
+                              } else {
+                                primarySnackBar(
+                                  context,
+                                  "الرجاء اختيار اليوم ووقت البداية والنهاية",
+                                  icon: Icons.warning_amber_rounded,
+                                  boxColor: Colors.orange,
+                                );
+                              }
+                            },
+                          ),
+                        ),
+                      ],
                     ),
-                    const VerticalSpace(48),
+                    VerticalSpace(32),
                   ],
                 ),
               );
@@ -304,7 +318,7 @@ class _AddNewTrainerFormState extends State<AddNewTrainerForm> {
                 ),
                 const VerticalSpace(16),
 
-                // ✅ زرار لإضافة موعد
+                /// زرار إضافة موعد
                 ActionButton(
                   backgroundColor: AppColors.pureWhiteColor,
                   textColor: AppColors.primaryColor,
@@ -315,13 +329,9 @@ class _AddNewTrainerFormState extends State<AddNewTrainerForm> {
                   },
                   text: "إضافة موعد",
                 ),
+                const VerticalSpace(8),
 
-                // ElevatedButton.icon(
-                //   onPressed: () => _showAddTimeDialog(context),
-                //   icon: const Icon(Icons.add),
-                //   label: const Text("إضافة موعد"),
-                // ),
-                const VerticalSpace(4),
+                /// عرض المواعيد المضافة
                 ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
@@ -330,9 +340,7 @@ class _AddNewTrainerFormState extends State<AddNewTrainerForm> {
                     final t = trainerTimes[index];
                     return Card(
                       shape: RoundedRectangleBorder(
-                        side: BorderSide(
-                          color: AppColors.lightGreyColor
-                        ),
+                        side: BorderSide(color: AppColors.lightGreyColor),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       elevation: 0,
@@ -381,6 +389,7 @@ class _AddNewTrainerFormState extends State<AddNewTrainerForm> {
                       },
                       text: AppStrings.save.tr(),
                     ),
+                const VerticalSpace(48),
               ],
             ),
           );
