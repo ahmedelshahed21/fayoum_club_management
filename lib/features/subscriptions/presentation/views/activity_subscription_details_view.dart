@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fayoum_club_management/core/functions/open_call_url.dart';
 import 'package:fayoum_club_management/core/utils/app_colors.dart';
+import 'package:fayoum_club_management/core/utils/app_strings.dart';
 import 'package:fayoum_club_management/core/utils/app_styles.dart';
 import 'package:fayoum_club_management/core/widgets/app_app_bars.dart';
 import 'package:fayoum_club_management/core/widgets/app_buttons.dart';
@@ -22,15 +23,19 @@ class ActivitySubscriptionDetailsView extends StatelessWidget {
     ).format(item.createdAt!);
 
     return Scaffold(
-      appBar: PrimaryAppBar(title: '',backgroundColor: AppColors.offWhiteColor,iconColor: AppColors.primaryColor,),
+      appBar: PrimaryAppBar(
+        title: '',
+        backgroundColor: AppColors.offWhiteColor,
+        iconColor: AppColors.primaryColor,
+      ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               "# ${item.numberCode}",
-              style: AppStyles.styleExtraBold28(
+              style: AppStyles.styleBold24(
                 context,
               ).copyWith(color: AppColors.greyColor),
             ),
@@ -41,7 +46,13 @@ class ActivitySubscriptionDetailsView extends StatelessWidget {
                 shape: BoxShape.circle,
                 color: AppColors.blueColor.withValues(alpha: 0.08),
               ),
-              child: PriceWidget(price: item.moneyPay.toString(),priceStyle: AppStyles.styleExtraBold28(context).copyWith(color: AppColors.blueColor), currency: "ج.م")
+              child: PriceWidget(
+                price: item.moneyPay.toString(),
+                priceStyle: AppStyles.styleExtraBold28(
+                  context,
+                ).copyWith(color: AppColors.blueColor),
+                currency: "ج.م",
+              ),
             ),
             VerticalSpace(24),
             Text(
@@ -51,8 +62,12 @@ class ActivitySubscriptionDetailsView extends StatelessWidget {
               ).copyWith(color: AppColors.primaryColor),
             ),
             VerticalSpace(32),
-            _buildInfoRow(context, "اسم المستخدم", item.user.name),
-            _buildInfoRow(context, "رقم الهاتف", item.user.phone),
+            _buildInfoRow(context, AppStrings.name.tr(), item.user.name),
+            _buildInfoRow(
+              context,
+              AppStrings.phoneNumber.tr(),
+              item.user.phone,
+            ),
             _buildInfoRow(context, "التاريخ", formattedDate),
             VerticalSpace(6),
 

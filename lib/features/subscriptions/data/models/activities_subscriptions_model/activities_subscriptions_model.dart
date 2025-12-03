@@ -49,26 +49,28 @@ class ActivitySubscriptionItem {
 
   factory ActivitySubscriptionItem.fromJson(Map<String, dynamic> json) {
     return ActivitySubscriptionItem(
-      id: json[ApiKey.id] ?? 0,
-      userId: json[ApiKey.userId] ?? 0,
-      activityId: json[ApiKey.activityId] ?? 0,
-      user: User.fromJson(json[ApiKey.user]),
-      activity: ActivityModel.fromJson(json[ApiKey.activity]),
+      id: json["id"] ?? 0,
+      userId: json["userId"] ?? 0,
+      activityId: json["activiteId"] ?? 0,
+      user: User.fromJson(json["user"]),
+      activity: ActivityModel.fromJson(json["activite"]),
       moneyPay: json["monyPay"] is int
           ? json["monyPay"]
           : int.tryParse(json["monyPay"].toString()) ?? 0,
-      numberCode: json[ApiKey.title]?.toString() ?? "",
-      createdAt: json[ApiKey.createdAt] != null
-          ? DateTime.tryParse(json[ApiKey.createdAt])
+      numberCode: json["numberCode"]?.toString() ?? "",
+      createdAt: json["createdAt"] != null
+          ? DateTime.tryParse(
+        json["createdAt"].replaceAll(" ", "T"),
+      )
           : null,
-      updatedAt: json[ApiKey.updatedAt] != null
-          ? DateTime.tryParse(json[ApiKey.updatedAt])
+      updatedAt: json["updatedAt"] != null
+          ? DateTime.tryParse(
+        json["updatedAt"].replaceAll(" ", "T"),
+      )
           : null,
     );
   }
 }
-
-
 
 class User {
   final int id;
@@ -85,10 +87,10 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      id: json[ApiKey.id],
-      email: json[ApiKey.email],
-      phone: json[ApiKey.phone],
-      name: json[ApiKey.name],
+      id: json["id"] ?? 0,
+      email: json["email"] ?? "",
+      phone: json["phone"] ?? "",
+      name: json["name"] ?? "",
     );
   }
 }

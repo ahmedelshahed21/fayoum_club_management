@@ -46,7 +46,7 @@ class ActivitiesSubscriptionsRepoImpl implements ActivitiesSubscriptionsRepo {
           Params.authorization: '${Params.bearer} $token',
         },
       );
-print(response);
+// print(response);
       if (response != null && response is Map<String, dynamic>) {
         if (response[ApiKey.code] == 200) {
           final model = ActivitiesSubscriptionsModel.fromJson(response);

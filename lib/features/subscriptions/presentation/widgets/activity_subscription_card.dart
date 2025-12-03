@@ -20,6 +20,7 @@ class ActivitySubscriptionCard extends StatelessWidget {
     ).format(item.createdAt!);
 
     return InkWell(
+        borderRadius: BorderRadius.circular(8),
       onTap: () {
         Navigator.push(
           context,
@@ -38,7 +39,7 @@ class ActivitySubscriptionCard extends StatelessWidget {
           child: Column(
             children: [
               Text('# ${item.numberCode}',
-                style: AppStyles.styleBold24(context).copyWith(color: AppColors.greyColor),
+                style: AppStyles.styleBold20(context).copyWith(color: AppColors.greyColor),
               ),
               VerticalSpace(12),
               Column(
@@ -51,7 +52,7 @@ class ActivitySubscriptionCard extends StatelessWidget {
                         children: [
                           Text(
                             item.user.name,
-                            style: AppStyles.styleBold18(
+                            style: AppStyles.styleSemiBold16(
                               context,
                             ).copyWith(color: AppColors.pureBlackColor),
                           ),
@@ -67,7 +68,7 @@ class ActivitySubscriptionCard extends StatelessWidget {
                       ),
                       Spacer(),
                       Container(
-                        padding:  EdgeInsets.symmetric(horizontal: 20,vertical: 16),
+                        padding:  EdgeInsets.symmetric(horizontal: 12,vertical: 16),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.blueColor.withValues(alpha: 0.1),

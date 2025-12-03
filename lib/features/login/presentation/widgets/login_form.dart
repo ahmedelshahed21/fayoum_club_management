@@ -15,7 +15,7 @@ import 'package:fayoum_club_management/features/login/presentation/manager/login
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 
 class LoginForm extends StatefulWidget {
@@ -97,7 +97,7 @@ class _LoginFormState extends State<LoginForm> {
                     });
                   },
                   icon: Icon(
-                    isSecure ? FontAwesomeIcons.eyeSlash : FontAwesomeIcons.eye,
+                    isSecure ? Iconsax.eye_slash : Iconsax.eye,
                   ),
                 ),
               ),

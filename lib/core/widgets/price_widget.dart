@@ -34,7 +34,7 @@ class PriceWidget extends StatelessWidget {
             text: currency,
             style:
                 currencyStyle ??
-                AppStyles.styleSemiBold14(
+                AppStyles.styleSemiBold12(
                   context,
                 ).copyWith(color: AppColors.pureBlackColor),
           ),
