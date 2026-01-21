@@ -40,7 +40,7 @@ class NewsRepoImpl implements NewsRepo {
           'typeOption': typeOption,
         },
       );
-      print(response);
+      // print(response);
       if (response != null && response is Map<String, dynamic>) {
         if (response[ApiKey.code] == 200) {
           final news = NewsModel.fromJson(response);
@@ -56,7 +56,7 @@ class NewsRepoImpl implements NewsRepo {
         );
       }
     } catch (e) {
-      print(e.toString());
+      // print(e.toString());
       return Left(
         UnexpectedFailure(errMessage: AppStrings.unexpectedError.tr()),
       );

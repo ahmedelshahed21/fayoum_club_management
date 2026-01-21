@@ -329,7 +329,7 @@ abstract class AppStyles {
     );
   }
 
-  static TextStyle stylefayoum_clubApp(BuildContext context) {
+  static TextStyle styleFayoumClubApp(BuildContext context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 36),
       fontWeight: FontWeight.w900,

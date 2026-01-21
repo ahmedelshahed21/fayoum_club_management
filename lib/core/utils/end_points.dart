@@ -13,6 +13,9 @@ class EndPoints {
   static const String deleteTrainer = "/admin/captain/";
   static const String inquiries = "/admin/details";
   static  String deleteInquiry({required int id})=> "/admin/details/$id";
+  static const String subscriptions = "/admin/mony-pay";
+  static const String users = "/admin/users";
+  static  String deleteUser({required int id})=> "/admin/users/$id";
 }
 
 class ApiKey {

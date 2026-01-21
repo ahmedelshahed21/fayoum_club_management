@@ -39,6 +39,12 @@ import 'package:fayoum_club_management/features/trainers/data/repos/delete_train
 import 'package:fayoum_club_management/features/trainers/data/repos/delete_trainer_repo/delete_trainer_repo_impl.dart';
 import 'package:fayoum_club_management/features/trainers/presentation/manager/add_new_trainer_cubit/add_new_trainer_cubit.dart';
 import 'package:fayoum_club_management/features/trainers/presentation/manager/delete_trainer_cubit/delete_trainer_cubit.dart';
+import 'package:fayoum_club_management/features/users/data/repos/delete_user_repo/delete_user_repo.dart';
+import 'package:fayoum_club_management/features/users/data/repos/delete_user_repo/delete_user_repo_impl.dart';
+import 'package:fayoum_club_management/features/users/data/repos/users_repo/users_repo.dart';
+import 'package:fayoum_club_management/features/users/data/repos/users_repo/users_repo_impl.dart';
+import 'package:fayoum_club_management/features/users/presentation/manager/delete_user_cubit/delete_user_cubit.dart';
+import 'package:fayoum_club_management/features/users/presentation/manager/users_cubit/users_cubit.dart';
 import 'package:get_it/get_it.dart';
 import '../../features/login/data/repos/login_repo_impl.dart';
 import '../../features/login/presentation/manager/login_cubit.dart';
@@ -142,7 +148,7 @@ void setupServiceLocator() {
 
   // Activites dependencies
   getIt.registerLazySingleton<ActivitesRepo>(
-    () => ActivitesRepoImpl(
+    () => ActivitiesRepoImpl(
       dioConsumer: getIt<DioConsumer>(),
       networkCubit: getIt<NetworkConnectionCubit>(),
     ),
@@ -236,4 +242,32 @@ void setupServiceLocator() {
   getIt.registerFactory<ActivitiesSubscriptionsCubit>(
         () => ActivitiesSubscriptionsCubit(getIt<ActivitiesSubscriptionsRepo>()),
   );
+
+
+  // Users dependencies
+  getIt.registerLazySingleton<UsersRepo>(
+        () => UsersRepoImpl(
+      dioConsumer: getIt<DioConsumer>(),
+      networkCubit: getIt<NetworkConnectionCubit>(),
+      secureStorageHelper: getIt<SecureStorageHelper>(),
+    ),
+  );
+
+  getIt.registerFactory<UsersCubit>(
+        () => UsersCubit(getIt<UsersRepo>()),
+  );
+
+
+  // Delete User dependencies
+  getIt.registerLazySingleton<DeleteUserRepo>(
+        () => DeleteUserRepoImpl(
+      dioConsumer: getIt<DioConsumer>(),
+      networkCubit: getIt<NetworkConnectionCubit>(),
+      secureStorageHelper: getIt<SecureStorageHelper>(),
+    ),
+  );
+  getIt.registerFactory<DeleteUserCubit>(
+        () => DeleteUserCubit(deleteUserRepo: getIt<DeleteUserRepo>()),
+  );
+
 }

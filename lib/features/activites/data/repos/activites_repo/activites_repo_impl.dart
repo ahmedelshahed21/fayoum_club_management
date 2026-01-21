@@ -8,11 +8,11 @@ import 'package:fayoum_club_management/core/state_management/network_connection_
 import 'package:fayoum_club_management/features/activites/data/models/activites_model/activites_model.dart';
 import 'package:fayoum_club_management/features/activites/data/repos/activites_repo/activites_repo.dart';
 
-class ActivitesRepoImpl implements ActivitesRepo {
+class ActivitiesRepoImpl implements ActivitesRepo {
   final DioConsumer dioConsumer;
   final NetworkConnectionCubit networkCubit;
 
-  ActivitesRepoImpl({required this.dioConsumer, required this.networkCubit});
+  ActivitiesRepoImpl({required this.dioConsumer, required this.networkCubit});
   @override
   Future<Either<Failure, ActivitesModel>> getActivites({String? type}) async {
     final isConnected = await networkCubit.networkInfo.isConnected;
@@ -47,7 +47,7 @@ class ActivitesRepoImpl implements ActivitesRepo {
         );
       }
     } catch (e) {
-      print(e.toString());
+      // print(e.toString());
       return Left(
         ServerFailure(errMessage: AppStrings.serverConnectionFailed.tr()),
       );

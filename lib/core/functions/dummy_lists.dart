@@ -2,6 +2,7 @@ import 'package:fayoum_club_management/core/data/models/activity_model.dart';
 import 'package:fayoum_club_management/features/activites/data/models/activity_details_model/activity_details_model.dart';
 import 'package:fayoum_club_management/features/news/data/models/news_model.dart';
 import 'package:fayoum_club_management/features/activites/data/models/activites_model/activites_model.dart';
+import 'package:fayoum_club_management/features/users/data/models/users_model/users_model.dart';
 
 List<NewsItem> getDummyBanners() {
   return [
@@ -195,4 +196,95 @@ ActivityDetailsData getDummyActivityDetails() {
 }
 
 
-
+List<UserItem> getDummyUsers() {
+  return [
+    UserItem(
+      id: 1,
+      name: 'Ahmed Elshahed',
+      phone: '01068192572',
+      isActive: 1,
+      isMember: 1,
+      email: 'ahmed.elshahed.pro@gmail.com',
+      gender: 'Male',
+      createdAt: '',
+      updatedAt: '',
+    ),
+    UserItem(
+      id: 2,
+      name: 'Ahmed Elshahed',
+      phone: '01068192572',
+      isActive: 1,
+      isMember: 1,
+      email: 'ahmed.elshahed.pro@gmail.com',
+      gender: 'Male',
+      createdAt: '',
+      updatedAt: '',
+    ),
+    UserItem(
+      id: 1,
+      name: 'Ahmed Elshahed',
+      phone: '01068192572',
+      isActive: 1,
+      isMember: 1,
+      email: 'ahmed.elshahed.pro@gmail.com',
+      gender: 'Male',
+      createdAt: '',
+      updatedAt: '',
+    ),
+    UserItem(
+      id: 1,
+      name: 'Ahmed Elshahed',
+      phone: '01068192572',
+      isActive: 1,
+      isMember: 1,
+      email: 'ahmed.elshahed.pro@gmail.com',
+      gender: 'Male',
+      createdAt: '',
+      updatedAt: '',
+    ),
+    UserItem(
+      id: 1,
+      name: 'Ahmed Elshahed',
+      phone: '01068192572',
+      isActive: 1,
+      isMember: 1,
+      email: 'ahmed.elshahed.pro@gmail.com',
+      gender: 'Male',
+      createdAt: '',
+      updatedAt: '',
+    ),
+    UserItem(
+      id: 1,
+      name: 'Ahmed Elshahed',
+      phone: '01068192572',
+      isActive: 1,
+      isMember: 1,
+      email: 'ahmed.elshahed.pro@gmail.com',
+      gender: 'Male',
+      createdAt: '',
+      updatedAt: '',
+    ),
+    UserItem(
+      id: 1,
+      name: 'Ahmed Elshahed',
+      phone: '01068192572',
+      isActive: 1,
+      isMember: 1,
+      email: 'ahmed.elshahed.pro@gmail.com',
+      gender: 'Male',
+      createdAt: '',
+      updatedAt: '',
+    ),
+    UserItem(
+      id: 1,
+      name: 'Ahmed Elshahed',
+      phone: '01068192572',
+      isActive: 1,
+      isMember: 1,
+      email: 'ahmed.elshahed.pro@gmail.com',
+      gender: 'Male',
+      createdAt: '',
+      updatedAt: '',
+    ),
+  ];
+}

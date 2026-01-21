@@ -6,7 +6,6 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_styles.dart';
-
 import '../../../../core/widgets/custom_list_tile_widget.dart';
 import '../../../../core/widgets/spacing.dart';
 
@@ -39,6 +38,14 @@ class AccountSection extends StatelessWidget {
           iconData: Icons.monetization_on_outlined,
           onPressed: () {
             customPush(context, AppRouter.activitiesSubscriptionsView);
+          },
+        ),
+        const VerticalSpace(8),
+        CustomListTileWidget(
+          title: 'المستخدمون',
+          iconData: Iconsax.people_copy,
+          onPressed: () {
+            customPush(context, AppRouter.usersView);
           },
         ),
       ],

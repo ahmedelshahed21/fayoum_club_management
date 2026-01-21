@@ -9,6 +9,7 @@ import 'package:fayoum_club_management/features/home/presentation/views/home_pag
 import 'package:fayoum_club_management/features/news/presentation/views/news_details_view.dart';
 import 'package:fayoum_club_management/features/news/presentation/views/add_new_news_view.dart';
 import 'package:fayoum_club_management/features/profile/presentation/view/profile_view.dart';
+import 'package:fayoum_club_management/features/users/presentation/views/users_view.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/login/presentation/views/login_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
@@ -25,6 +26,7 @@ abstract class AppRouter {
   static const addNewTrainerView = '/addNewTrainerView';
   static const trainerDetailsView = '/trainerDetailsView';
   static const activitiesSubscriptionsView = '/activitiesSubscriptionsView';
+  static const usersView = '/usersView';
 
   static const profileView = '/profileView';
   static const contactUsView = '/contactUsView';
@@ -79,10 +81,10 @@ abstract class AppRouter {
         path: profileView,
         builder: (context, state) => const ProfileView(),
       ),
-      // GoRoute(
-      //   path: contactUsView,
-      //   builder: (context, state) => const ContactUsView(),
-      // ),
+      GoRoute(
+        path: usersView,
+        builder: (context, state) => const UsersView(),
+      ),
     ],
   );
 }
