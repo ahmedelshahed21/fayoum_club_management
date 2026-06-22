@@ -333,7 +333,7 @@ abstract class AppStyles {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 36),
       fontWeight: FontWeight.w900,
-      fontFamily: AppFonts.lobsterFont,
+      fontFamily: AppFonts.almaraiFont,
       color: AppColors.pureBlackColor,
     );
   }
